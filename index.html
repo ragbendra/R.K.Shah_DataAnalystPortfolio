@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raghabendra Kumar Shah - Portfolio</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      .container {
+        --uib-size: 40px;
+        --uib-color: black;
+        --uib-speed: .9s;
+        --uib-center: calc(var(--uib-size) / 2 - var(--uib-size) / 5 / 2);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: var(--uib-size);
+        width: var(--uib-size);
+        animation: rotate calc(var(--uib-speed) * 3) linear infinite;
+        z-index: 9999;
+      }
+
+      .dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100%;
+        width: 100%;
+      }
+
+      .dot::before {
+        content: '';
+        height: 20%;
+        width: 20%;
+        border-radius: 50%;
+        background-color: var(--uib-color);
+        animation: oscillate var(--uib-speed) ease-in-out infinite alternate;
+        transition: background-color 0.3s ease;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+
+      @keyframes oscillate {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(0, calc(var(--uib-size) / 5));
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+    <div id="particles-js"></div>
+    <nav class="navbar">
+        <div class="nav-content">
+            <button class="menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <div class="dropdown dropdown-1">
+                    <a href="#" class="nav-link">Area of Interest</a>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-link">Machine Learning</a>
+                        <a href="#" class="dropdown-link">Data Analysis</a>
+                        <a href="#" class="dropdown-link">Data Visualization</a>
+                    </div>
+                </div>
+                <div class="dropdown dropdown-2">
+                    <a href="#" class="nav-link">Projects</a>
+                    <div class="dropdown-content">
+                        <a href="/pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
+                        <a href="/pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
+                        <a href="/pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
+                        <a href="/pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <span>rk</span>
+                </div>
+                <div class="brand-name">
+                    <h1>Raghabendra<br>Kumar Shah</h1>
+                    <p>Data Analyst</p>
+                    <br>
+                    <p class="tagline">Turning Data into Insights</p>
+                </div>
+            </div>
+            <a href="index.html#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="images/profile.jpg" alt="Your Name - Data Scientist" class="profile-pic">
+            </div>
+            <div class="about-text">
+                <h3>Hello, I'm <span class="highlight">Your Name</span></h3>
+                <p class="about-description">
+                    I am a passionate Data Scientist with X years of experience in turning complex data into actionable insights. 
+                    My journey in data science began at [University/Company], where I developed a strong foundation in statistical analysis and machine learning.
+                </p>
+                <p class="about-description">
+                    Currently, I specialize in [Your Specializations, e.g., "predictive modeling, natural language processing, and computer vision"]. 
+                    I've successfully led projects that have [Brief Achievement, e.g., "reduced operational costs by 25% through predictive maintenance solutions"].
+                </p>
+                <p class="about-description">
+                    When I'm not working with data, you can find me [Your Interests/Hobbies, e.g., "contributing to open-source projects, writing technical blogs, or mentoring aspiring data scientists"].
+                </p>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>MSc in Data Science</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-briefcase"></i>
+                        <span>X Years Experience</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Your Location</span>
+                    </div>
+                </div>
+                <div class="about-cta">
+                    <a href="index.html#contact" class="cta-button">Get in Touch</a>
+                    <a href="path/to/your/resume.pdf" class="cta-button secondary" target="_blank">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Areas of Interest</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Machine Learning</h3>
+                <p>Experience in developing and implementing machine learning algorithms for predictive analytics.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Power BI</h3>
+                <p>Skilled in creating interactive dashboards and reports to visualize data insights effectively.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Data Analytics</h3>
+                <p>Proficient in analyzing complex datasets to derive actionable insights and support decision-making.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Model Deployment</h3>
+                <p>Knowledgeable in deploying machine learning models into production environments for real-time predictions.</p>
+            </div>
+            <div class="skill-card">
+                <h3>SQL</h3>
+                <p>Expertise in performing SQL queries to manipulate and analyze data.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="projects-header">
+            <h2>Projects</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Show All</button>
+                <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                <button class="filter-btn" data-filter="sql">SQL</button>
+                <button class="filter-btn" data-filter="data-viz">Data Visualization</button>
+                <button class="filter-btn" data-filter="powerbi">Power BI</button>
+            </div>
+        </div>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="machine-learning">
+                <img src="assets/images/projects/data-viz1.jpg" alt="Customer Segmentation" class="project-image">
+                <div class="project-preview">
+                    <h3>Customer Segmentation Analysis</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Customer Segmentation Analysis</h3>
+                    <p class="project-description">Advanced clustering algorithms for customer behavior analysis and market segmentation.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="powerbi">
+                <img src="assets/images/projects/data-viz2.jpg" alt="Sales Analysis" class="project-image">
+                <div class="project-preview">
+                    <h3>Sales Analytics Dashboard</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Sales Analytics Dashboard</h3>
+                    <p class="project-description">Interactive Power BI dashboard for sales performance analysis and forecasting.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">DAX</span>
+                        <span class="tech-tag">SQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="data-viz">
+                <img src="assets/images/projects/data-viz3.jpg" alt="Market Analysis" class="project-image">
+                <div class="project-preview">
+                    <h3>Market Trends Visualization</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Market Trends Visualization</h3>
+                    <p class="project-description">Dynamic visualization of market trends using interactive charts and graphs.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">SVG</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card" data-category="sql">
+                <img src="assets/images/projects/data-viz4.jpg" alt="Data Analysis" class="project-image">
+                <div class="project-preview">
+                    <h3>SQL Analysis</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">SQL Analysis</h3>
+                    <p class="project-description">In-depth analysis of dataset patterns and relationships using SQL queries.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card" data-category="machine-learning">
+                <img src="assets/images/projects/data-viz5.jpg" alt="Predictive Analysis" class="project-image">
+                <div class="project-preview">
+                    <h3>Predictive Analytics Model</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Predictive Analytics Model</h3>
+                    <p class="project-description">Machine learning model for predicting business metrics and outcomes.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">Keras</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card" data-category="powerbi">
+                <img src="assets/images/projects/data-viz6.jpg" alt="Financial Dashboard" class="project-image">
+                <div class="project-preview">
+                    <h3>Financial Metrics Dashboard</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Financial Metrics Dashboard</h3>
+                    <p class="project-description">Comprehensive financial analysis dashboard with KPI tracking.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Power BI</span>
+                        <span class="tech-tag">M</span>
+                        <span class="tech-tag">DAX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card" data-category="data-viz">
+                <img src="assets/images/projects/data-viz7.jpg" alt="Interactive Charts" class="project-image">
+                <div class="project-preview">
+                    <h3>Interactive Data Charts</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Interactive Data Charts</h3>
+                    <p class="project-description">Collection of interactive data visualizations for various metrics.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">HTML5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card" data-category="sql">
+                <img src="assets/images/projects/data-viz8.jpg" alt="Statistical Analysis" class="project-image">
+                <div class="project-preview">
+                    <h3>Statistical Data Analysis</h3>
+                </div>
+                <div class="project-overlay">
+                    <h3 class="project-title">Statistical Data Analysis</h3>
+                    <p class="project-description">Statistical analysis of large datasets with hypothesis testing.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">R</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SciPy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <a href="mailto:your.email@example.com" target="_blank" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        <p>your.email@example.com</p>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link">
+                        <i class="fab fa-linkedin"></i>
+                        <p>LinkedIn Profile</p>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://github.com/your-username" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i>
+                        <p>GitHub Profile</p>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://calendly.com/your-username" target="_blank" class="contact-link">
+                        <i class="far fa-calendar-alt"></i>
+                        <p>Schedule a Meeting</p>
+                    </a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://twitter.com/your-username" target="_blank" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://medium.com/@your-username" target="_blank" class="social-icon">
+                    <i class="fab fa-medium"></i>
+                </a>
+                <a href="https://kaggle.com/your-username" target="_blank" class="social-icon">
+                    <i class="fab fa-kaggle"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
+    </footer>
+    <script src="/assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS.load('particles-js', 'assets/js/particles-config.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      let loadingTimeout;
+      window.onload = function() {
+        clearTimeout(loadingTimeout);
+        document.querySelector('.container').style.display = 'none';
+      };
+      loadingTimeout = setTimeout(function() {
+        document.querySelector('.container').style.display = 'flex';
+      }, 500);
+    </script>
+</body>
+</html>
