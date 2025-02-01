@@ -27,21 +27,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Navigation scroll behavior
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Background color change
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-            navbar.style.backgroundColor = 'white';
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.classList.remove('scrolled');
-            navbar.style.backgroundColor = isHomePage ? 'transparent' : 'white';
-            navbar.style.boxShadow = 'none';
-        }
+    let lastScrollY = window.scrollY;
+    let isScrolling = false;
+    let scrollTimeout;
 
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = window.scrollY;
+                const direction = currentScrollY > lastScrollY ? 'down' : 'up';
+                
+                // Clear any existing timeout
+                clearTimeout(scrollTimeout);
+                
+                if (direction === 'down' && currentScrollY > 100) {
+                    // Add a slight delay before hiding
+                    scrollTimeout = setTimeout(() => {
+                        navbar.classList.add('nav-hidden');
+                    }, 150);
+                } else {
+                    // Show immediately when scrolling up
+                    navbar.classList.remove('nav-hidden');
+                }
+                
+                lastScrollY = currentScrollY;
+                isScrolling = false;
+            });
+        }
+        isScrolling = true;
     });
 
     // Mobile menu toggle
@@ -228,17 +241,17 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Hide menu on scroll down
+// Single scroll handler for navigation
 window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop) {
-        // Scroll down
-        navbar.style.top = '-80px'; // Adjust based on your navbar height
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (currentScroll > lastScrollTop && currentScroll > 100) {
+        navbar.style.top = '-80px';  // Hide navbar
     } else {
-        // Scroll up
-        navbar.style.top = '0';
+        navbar.style.top = '0';      // Show navbar
     }
-    lastScrollTop = scrollTop;
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 
 // Simple project filtering with debug logs
