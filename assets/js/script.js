@@ -1,3 +1,11 @@
+// Add this at the beginning of script.js
+const getBasePath = () => {
+    // Get the repository name from the URL
+    const pathArray = window.location.pathname.split('/');
+    const repoName = pathArray[1];
+    return repoName ? `/${repoName}` : '';
+};
+
 // Global variables
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelector('.nav-links');
@@ -9,7 +17,8 @@ const menuLinks = document.querySelectorAll('.nav-links a');
 
 // DOM Content Loaded Event Handler
 document.addEventListener('DOMContentLoaded', () => {
-    const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/');
+    const isHomePage = window.location.pathname === getBasePath() + '/' || 
+                      window.location.pathname === getBasePath() + '/index.html';
     
     // Initial navbar setup
     if (!isHomePage) {
@@ -99,36 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Handle mobile menu
-    const hamburger = document.querySelector('.hamburger');
+    const menuBtn = document.querySelector('.menu-btn');
     
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
+    menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        
-        const spans = hamburger.querySelectorAll('span');
-        if (hamburger.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-        } else {
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            });
-        }
     });
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-            hamburger.classList.remove('active');
+        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
-            
-            const spans = hamburger.querySelectorAll('span');
-            spans.forEach(span => {
-                span.style.transform = 'none';
-                span.style.opacity = '1';
-            });
         }
     });
 
@@ -158,7 +147,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Navigation behavior
 let scrollTimer = null;
-const isHomePage = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
+const isHomePage = window.location.pathname === getBasePath() + '/' || 
+                  window.location.pathname === getBasePath() + '/index.html';
 
 // Set initial state
 if (!isHomePage) {
@@ -267,8 +257,8 @@ document.querySelectorAll('.skill-card').forEach(card => {
 // Function to handle navigation background
 function handleNavigation() {
     const body = document.body;
-    const isHomePage = window.location.pathname === '/' || 
-                      window.location.pathname === '/index.html' ||
+    const isHomePage = window.location.pathname === getBasePath() + '/' || 
+                      window.location.pathname === getBasePath() + '/index.html' ||
                       window.location.href.includes('#home');
     
     if (isHomePage) {
@@ -294,7 +284,7 @@ window.addEventListener('hashchange', handleNavigation);
 
 // Function to handle scroll event
 window.addEventListener('scroll', function() {
-    const isHomePage = window.location.pathname === '/'; // Adjust this condition based on your home page URL
+    const isHomePage = window.location.pathname === getBasePath() + '/'; // Adjust this condition based on your home page URL
 
     if (!isHomePage && window.scrollY > 0) {
         navbar.classList.add('scrolled');
@@ -382,35 +372,16 @@ const observeProjectItems = () => {
 document.addEventListener('DOMContentLoaded', observeProjectItems);
 
 // Handle mobile menu
-const hamburger = document.querySelector('.hamburger');
+const menuBtn = document.querySelector('.menu-btn');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
+menuBtn.addEventListener('click', () => {
     navLinks.classList.toggle('active');
-    
-    // Animate hamburger
-    const spans = hamburger.querySelectorAll('span');
-    if (hamburger.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
-    } else {
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-    }
 });
 
 // Close mobile menu when clicking outside
 document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-        hamburger.classList.remove('active');
+    if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
         navLinks.classList.remove('active');
-        
-        const spans = hamburger.querySelectorAll('span');
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
     }
 });
 
@@ -493,3 +464,132 @@ function closeModal(modal) {
     modal.classList.remove('show');
     setTimeout(() => modal.remove(), 300);
 }
+
+// Initialize AOS
+document.addEventListener('DOMContentLoaded', function() {
+    AOS.init({
+        duration: 800,
+        offset: 100,
+        once: true
+    });
+
+    // Add hover effect for metric previews
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        const metricsPreview = card.querySelector('.metrics-preview');
+        
+        card.addEventListener('mouseenter', () => {
+            metricsPreview.style.transform = 'translateY(0)';
+            metricsPreview.style.opacity = '1';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            metricsPreview.style.transform = 'translateY(100%)';
+            metricsPreview.style.opacity = '0';
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize syntax highlighting for SQL code
+    document.querySelectorAll('pre code').forEach((block) => {
+        highlightSQL(block);
+    });
+
+    // Add copy button to code blocks
+    document.querySelectorAll('.query-preview').forEach(preview => {
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-btn';
+        copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+        preview.appendChild(copyBtn);
+
+        copyBtn.addEventListener('click', () => {
+            const code = preview.querySelector('code').textContent;
+            navigator.clipboard.writeText(code.trim());
+            copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+            }, 2000);
+        });
+    });
+});
+
+// Simple SQL syntax highlighting function
+function highlightSQL(block) {
+    let html = block.innerHTML;
+    
+    // Keywords
+    const keywords = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'ON', 'GROUP BY', 'ORDER BY', 'HAVING', 'AS', 'AND', 'OR', 'IN', 'COUNT', 'SUM', 'AVG'];
+    keywords.forEach(keyword => {
+        const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+        html = html.replace(regex, `<span class="keyword">${keyword}</span>`);
+    });
+
+    // Numbers
+    html = html.replace(/\b\d+\b/g, '<span class="number">$&</span>');
+
+    // Strings
+    html = html.replace(/'([^']+)'/g, '<span class="string">\'$1\'</span>');
+
+    block.innerHTML = html;
+}
+
+// Consolidate visualization initialization
+function initializeVisualizations() {
+    // Initialize visualization previews
+    const vizPreviews = document.querySelectorAll('.viz-preview-section');
+    
+    // Lazy load iframes
+    const observerOptions = {
+        root: null,
+        rootMargin: '50px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const iframe = entry.target.querySelector('iframe');
+                if (iframe && !iframe.src && iframe.dataset.src) {
+                    iframe.src = iframe.dataset.src;
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    vizPreviews.forEach(preview => {
+        observer.observe(preview);
+    });
+
+    // Tool icon hover effects
+    document.querySelectorAll('.tool-icon').forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'translateY(-5px) rotate(10deg)';
+        });
+
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'translateY(0) rotate(0)';
+        });
+    });
+
+    // Initialize tooltips
+    if (typeof tippy !== 'undefined') {
+        document.querySelectorAll('.viz-stat').forEach(stat => {
+            const label = stat.querySelector('.stat-label').textContent;
+            const value = stat.querySelector('.stat-value').textContent;
+            
+            tippy(stat, {
+                content: `${label}: ${value}`,
+                placement: 'top',
+                animation: 'scale',
+                theme: 'viz-tooltip'
+            });
+        });
+    }
+}
+
+// Call initialization on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeVisualizations();
+});

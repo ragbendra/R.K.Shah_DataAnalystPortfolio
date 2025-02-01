@@ -6,143 +6,106 @@
     <title>Data Visualization Projects</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-      .container {
-        --uib-size: 40px;
-        --uib-color: black;
-        --uib-speed: .9s;
-        --uib-center: calc(var(--uib-size) / 2 - var(--uib-size) / 5 / 2);
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: var(--uib-size);
-        width: var(--uib-size);
-        animation: rotate calc(var(--uib-speed) * 3) linear infinite;
-        z-index: 9999;
-      }
-
-      .dot {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: 100%;
-        width: 100%;
-      }
-
-      .dot::before {
-        content: '';
-        height: 20%;
-        width: 20%;
-        border-radius: 50%;
-        background-color: var(--uib-color);
-        animation: oscillate var(--uib-speed) ease-in-out infinite alternate;
-        transition: background-color 0.3s ease;
-      }
-
-      @keyframes rotate {
-        0% {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(360deg);
-        }
-      }
-
-      @keyframes oscillate {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(0.4);
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
 </head>
 <body>
-    <div class="container">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
-
     <nav class="navbar">
         <div class="nav-content">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="menu-btn">☰</button>
             <ul class="nav-links">
-                <li><a href="/index.html#home" class="nav-link">Home</a></li>
-                <li><a href="/index.html#about" class="nav-link">About</a></li>
-                <li><a href="/index.html#skills" class="nav-link">Area of Interest</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">Projects <i class="fas fa-caret-down"></i></a>
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li class="dropdown dropdown-1">
+                    <a href="#" class="nav-link">Area of Interest</a>
                     <div class="dropdown-content">
-                        <a href="/pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
-                        <a href="/pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
-                        <a href="/pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
-                        <a href="/pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
+                        <a href="#" class="dropdown-link">Machine Learning</a>
+                        <a href="#" class="dropdown-link">Data Analysis</a>
+                        <a href="#" class="dropdown-link">Data Visualization</a>
                     </div>
                 </li>
-                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+                <li class="dropdown dropdown-2">
+                    <a href="#" class="nav-link">Projects <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
+                        <a href="./sql-projects.html" class="dropdown-link">SQL Projects</a>
+                        <a href="./data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
+                        <a href="./powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
+                    </div>
+                </li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="projects-page">
-        <h1>Data Visualization Projects</h1>
+    <section class="projects-page viz-projects">
+        <div class="page-header">
+            <h1>Data Visualization Projects</h1>
+            <p class="header-description">Transforming complex data into compelling visual stories</p>
+        </div>
+
         <div class="projects-grid">
-            <div class="project-card">
+            <!-- Visualization Project Card 1 -->
+            <div class="project-card" data-aos="fade-up">
                 <div class="project-image">
-                    <img src="../assets/images/viz-project1.jpg" alt="Interactive Dashboard">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="demo-link">View Dashboard</a>
-                            <a href="#" class="github-link"><i class="fab fa-github"></i> Source Code</a>
+                    <img src="../assets/images/viz-project1.jpg" alt="Sales Dashboard" onerror="this.src='../assets/images/placeholder.jpg'">
+                    <div class="viz-preview">
+                        <div class="viz-stats">
+                            <div class="viz-stat">
+                                <span class="stat-label">Charts</span>
+                                <span class="stat-value">8</span>
+                            </div>
+                            <div class="viz-stat">
+                                <span class="stat-label">Data Points</span>
+                                <span class="stat-value">50K+</span>
+                            </div>
+                        </div>
+                        <div class="viz-tools">
+                            <span class="tool-icon"><i class="fab fa-python"></i></span>
+                            <span class="tool-icon"><i class="fas fa-chart-line"></i></span>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3>Global Sales Dashboard</h3>
-                    <p class="project-description">Interactive visualization of global sales data with dynamic filtering and drill-down capabilities.</p>
-                    <div class="project-tech-stack">
-                        <span>D3.js</span>
-                        <span>JavaScript</span>
-                        <span>SVG</span>
+                    <h3>Global Sales Performance Dashboard</h3>
+                    <div class="project-tags">
+                        <span class="tag tool">D3.js</span>
+                        <span class="tag viz-type">Interactive</span>
+                        <span class="tag data">Sales Data</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h4>Data & Problem</h4>
+                            <p>Visualizing sales trends across global regions with real-time filtering capabilities</p>
+                        </div>
+                        <div class="viz-approach">
+                            <h4>Design Approach</h4>
+                            <p>Combined heatmaps for geographical distribution with time-series charts for trend analysis</p>
+                        </div>
+                        <div class="viz-preview-section">
+                            <div class="viz-iframe">
+                                <!-- Embed your visualization here -->
+                                <iframe data-src="path/to/visualization.html" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                        <div class="insights">
+                            <h4>Key Insights</h4>
+                            <ul>
+                                <li>35% higher sales in Q4 across all regions</li>
+                                <li>Strong correlation between marketing spend and revenue</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="code-btn">
+                            <span>View Code</span>
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <img src="path/to/viz2.jpg" alt="Customer Analytics">
-                    <div class="project-overlay">
-                        <h3>Customer Analytics Visualization</h3>
-                        <p>Visual analysis of customer behavior patterns and engagement metrics.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <img src="path/to/viz3.jpg" alt="Market Analysis">
-                    <div class="project-overlay">
-                        <h3>Market Trend Analysis</h3>
-                        <p>Dynamic visualizations of market trends and competitive analysis.</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Add more visualization project cards -->
         </div>
     </section>
 
@@ -188,15 +151,13 @@
         navLinks.classList.toggle('active');
     });
     </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-      let loadingTimeout;
-      window.onload = function() {
-        clearTimeout(loadingTimeout);
-        document.querySelector('.container').style.display = 'none';
-      };
-      loadingTimeout = setTimeout(function() {
-        document.querySelector('.container').style.display = 'flex';
-      }, 500);
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
     </script>
 </body>
 </html>

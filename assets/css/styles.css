@@ -1546,3 +1546,687 @@ footer p {
     visibility: visible;
     transform: translateY(0);
 }
+
+/* Machine Learning Projects Specific Styles */
+.ml-projects {
+    background: #f8f9fa;
+    padding: 80px 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.header-description {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Project Card Styles */
+.ml-projects .project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ml-projects .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
+
+.project-image {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Metrics Preview */
+.metrics-preview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.8);
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.metric-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Project Content */
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+/* Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.tag.algorithm {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.tag.tool {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.tag.dataset {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+/* Project Details */
+.detail-section {
+    margin-bottom: 15px;
+}
+
+.detail-section h4 {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.detail-section p {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    line-height: 1.5;
+}
+
+/* Project Links */
+.project-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.code-btn {
+    background: #2d333b;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.code-btn:hover {
+    background: #444c56;
+    transform: translateY(-2px);
+}
+
+.code-btn i {
+    font-size: 1.1em;
+    margin-left: 4px;
+}
+
+/* SQL Projects Specific Styles */
+.sql-projects {
+    background: #f8f9fa;
+    padding: 80px 20px;
+}
+
+/* Database Stats Overlay */
+.db-stats {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .db-stats {
+    transform: translateY(0);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    color: #a8b2d1;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #64ffda;
+}
+
+/* Query Preview Section */
+.query-preview {
+    background: #1e1e1e;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+    position: relative;
+}
+
+.query-preview h4 {
+    color: #e6f1ff;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.query-preview pre {
+    margin: 0;
+    padding: 0;
+}
+
+.query-preview code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #a8b2d1;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+/* SQL-specific Tags */
+.tag.database {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.tag.technique {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.tag.analysis {
+    background: #fce4ec;
+    color: #c2185b;
+}
+
+/* Project Card Modifications for SQL */
+.sql-projects .project-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sql-projects .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+}
+
+/* Database Icon */
+.db-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.db-icon i {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sql-projects {
+        padding: 60px 15px;
+    }
+
+    .query-preview {
+        padding: 10px;
+    }
+
+    .query-preview code {
+        font-size: 0.75rem;
+    }
+
+    .db-stats {
+        position: relative;
+        transform: translateY(0);
+        background: #2c3e50;
+    }
+}
+
+/* Data Visualization Projects Specific Styles */
+.viz-projects {
+    background: #f8f9fa;
+    padding: 80px 20px;
+}
+
+/* Visualization Preview */
+.viz-preview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .viz-preview {
+    transform: translateY(0);
+}
+
+/* Visualization Stats */
+.viz-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.viz-stat {
+    text-align: center;
+}
+
+.viz-stat .stat-label {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+    color: #a8b2d1;
+}
+
+.viz-stat .stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #64ffda;
+}
+
+/* Visualization Tools */
+.viz-tools {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tool-icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tool-icon i {
+    font-size: 18px;
+    color: #64ffda;
+}
+
+.tool-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Visualization Tags */
+.tag.tool {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.tag.viz-type {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.tag.data {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Visualization Preview Section */
+.viz-preview-section {
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.viz-iframe {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.viz-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Insights Section */
+.insights {
+    margin-top: 20px;
+}
+
+.insights h4 {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.insights ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.insights li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.insights li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #64ffda;
+}
+
+/* Design Approach Section */
+.viz-approach {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.viz-approach h4 {
+    color: #2c3e50;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.viz-approach p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .viz-projects {
+        padding: 60px 15px;
+    }
+
+    .viz-preview {
+        position: relative;
+        transform: translateY(0);
+        background: #2c3e50;
+    }
+
+    .viz-iframe {
+        padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+}
+
+/* Animation for visualization loading */
+@keyframes vizFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.viz-preview-section {
+    animation: vizFadeIn 0.5s ease-out;
+}
+
+/* Power BI Projects Specific Styles */
+.powerbi-projects {
+    background: #f8f9fa;
+    padding: 80px 20px;
+}
+
+/* Power BI Preview */
+.powerbi-preview {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 15px;
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .powerbi-preview {
+    transform: translateY(0);
+}
+
+/* Power BI Stats */
+.powerbi-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.powerbi-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.feature-tag {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #64ffda;
+}
+
+/* Power BI Tags */
+.tag.powerbi {
+    background: #f2c811;
+    color: #000000;
+}
+
+.tag.dax {
+    background: #e6f3ff;
+    color: #0078d4;
+}
+
+.tag.data-source {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Embed Container */
+.powerbi-embed {
+    margin: 20px 0;
+}
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #f5f5f5;
+}
+
+.embed-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Code Preview */
+.code-preview {
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.code-preview h4 {
+    color: #e6f1ff;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.code-preview pre {
+    margin: 0;
+    padding: 0;
+}
+
+.code-preview code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #a8b2d1;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+/* Features Section */
+.features-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.features-section li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.features-section li:before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #f2c811;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .powerbi-projects {
+        padding: 60px 15px;
+    }
+
+    .powerbi-preview {
+        position: relative;
+        transform: translateY(0);
+        background: #2c3e50;
+    }
+
+    .embed-container {
+        padding-bottom: 75%;
+    }
+
+    .code-preview {
+        padding: 10px;
+    }
+
+    .code-preview code {
+        font-size: 0.75rem;
+    }
+}
+
+/* Animation for embed loading */
+@keyframes embedFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.powerbi-embed {
+    animation: embedFadeIn 0.5s ease-out;
+}

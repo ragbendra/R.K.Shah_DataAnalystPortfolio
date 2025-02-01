@@ -6,180 +6,137 @@
     <title>Power BI Projects</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-      .container {
-        --uib-size: 40px;
-        --uib-color: black;
-        --uib-speed: .9s;
-        --uib-center: calc(var(--uib-size) / 2 - var(--uib-size) / 5 / 2);
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: var(--uib-size);
-        width: var(--uib-size);
-        animation: rotate calc(var(--uib-speed) * 3) linear infinite;
-        z-index: 9999;
-      }
-
-      .dot {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: 100%;
-        width: 100%;
-      }
-
-      .dot::before {
-        content: '';
-        height: 20%;
-        width: 20%;
-        border-radius: 50%;
-        background-color: var(--uib-color);
-        animation: oscillate var(--uib-speed) ease-in-out infinite alternate;
-        transition: background-color 0.3s ease;
-      }
-
-      @keyframes rotate {
-        0% {
-          transform: translate(-50%, -50%) rotate(0deg);
-        }
-        100% {
-          transform: translate(-50%, -50%) rotate(360deg);
-        }
-      }
-
-      @keyframes oscillate {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(0.5);
-        }
-      }
-    </style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
-
     <nav class="navbar">
         <div class="nav-content">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button class="menu-btn">☰</button>
             <ul class="nav-links">
-                <li><a href="/index.html#home" class="nav-link">Home</a></li>
-                <li><a href="/index.html#about" class="nav-link">About</a></li>
-                <li><a href="/index.html#skills" class="nav-link">Area of Interest</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">Projects <i class="fas fa-caret-down"></i></a>
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li class="dropdown dropdown-1">
+                    <a href="#" class="nav-link">Area of Interest</a>
                     <div class="dropdown-content">
-                        <a href="/pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
-                        <a href="/pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
-                        <a href="/pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
-                        <a href="/pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
+                        <a href="#" class="dropdown-link">Machine Learning</a>
+                        <a href="#" class="dropdown-link">Data Analysis</a>
+                        <a href="#" class="dropdown-link">Data Visualization</a>
                     </div>
                 </li>
-                <li><a href="/index.html#contact" class="nav-link">Contact</a></li>
+                <li class="dropdown dropdown-2">
+                    <a href="#" class="nav-link">Projects <i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="./machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
+                        <a href="./sql-projects.html" class="dropdown-link">SQL Projects</a>
+                        <a href="./data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
+                        <a href="./powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
+                    </div>
+                </li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="projects-page">
-        <h1>Power BI Projects</h1>
+    <section class="projects-page powerbi-projects">
+        <div class="page-header">
+            <h1>Power BI Projects</h1>
+            <p class="header-description">Interactive business intelligence solutions for data-driven decision making</p>
+        </div>
+
         <div class="projects-grid">
-            <div class="project-card">
+            <!-- Power BI Project Card 1 -->
+            <div class="project-card" data-aos="fade-up">
                 <div class="project-image">
-                    <img src="../assets/images/powerbi-project1.jpg" alt="Sales Analytics">
-                    <div class="project-overlay">
-                        <div class="project-links">
-                            <a href="#" class="demo-link">View Report</a>
-                            <a href="#" class="download-link"><i class="fas fa-download"></i> Download PBIX</a>
+                    <img src="../assets/images/powerbi-project1.jpg" alt="Sales Analytics Dashboard" onerror="this.src='../assets/images/placeholder.jpg'">
+                    <div class="powerbi-preview">
+                        <div class="powerbi-stats">
+                            <div class="stat">
+                                <span class="stat-label">Pages</span>
+                                <span class="stat-value">5</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Measures</span>
+                                <span class="stat-value">25+</span>
+                            </div>
+                        </div>
+                        <div class="powerbi-features">
+                            <span class="feature-tag">Dynamic Filtering</span>
+                            <span class="feature-tag">Custom Visuals</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3>Sales Analytics Dashboard</h3>
-                    <p class="project-description">Comprehensive sales performance analysis with real-time metrics and forecasting.</p>
-                    <div class="project-tech-stack">
-                        <span>Power BI</span>
-                        <span>DAX</span>
-                        <span>Power Query</span>
+                    <h3>Sales Performance Analytics</h3>
+                    <div class="project-tags">
+                        <span class="tag powerbi">Power BI</span>
+                        <span class="tag dax">DAX</span>
+                        <span class="tag data-source">SQL Server</span>
+                    </div>
+                    <div class="project-details">
+                        <div class="detail-section">
+                            <h4>Objective</h4>
+                            <p>Created an end-to-end sales analytics solution for real-time performance tracking</p>
+                        </div>
+                        <div class="features-section">
+                            <h4>Key Features</h4>
+                            <ul>
+                                <li>Dynamic date range selection</li>
+                                <li>Product category drill-through</li>
+                                <li>Geographic sales mapping</li>
+                                <li>YoY comparison analysis</li>
+                            </ul>
+                        </div>
+                        <div class="powerbi-embed">
+                            <h4>Interactive Demo</h4>
+                            <div class="embed-container">
+                                <iframe 
+                                    data-src="https://app.powerbi.com/view?r=your-report-embed-code" 
+                                    frameborder="0" 
+                                    allowFullScreen="true">
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="code-preview">
+                            <h4>Sample DAX Measure</h4>
+                            <pre><code class="dax">
+YoY Growth = 
+VAR CurrentYearSales = CALCULATE(
+    SUM(Sales[Amount]),
+    DATEADD(Calendar[Date], -1, YEAR)
+)
+RETURN
+    DIVIDE(
+        SUM(Sales[Amount]) - CurrentYearSales,
+        CurrentYearSales,
+        0
+    )
+                            </code></pre>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/powerbi-projects" target="_blank" class="code-btn">
+                            <span>View Code</span>
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-            <!-- Add more Power BI cards -->
+            <!-- Add more Power BI project cards -->
         </div>
     </section>
 
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
+
     <script src="../assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    // Navigation behavior
-    let lastScrollTop = 0;
-    let scrollTimer = null;
-    const navbar = document.querySelector('.navbar');
-
-    // Set initial state for non-home pages
-    navbar.classList.add('not-home');
-
-    // Single scroll handler for navigation
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Clear the existing timer
-        clearTimeout(scrollTimer);
-
-        // Handle hide/show with delay
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scrolling down - hide navbar after delay
-            scrollTimer = setTimeout(() => {
-                navbar.style.transform = 'translateY(-100%)';
-            }, 300);
-        } else {
-            // Scrolling up - show navbar immediately
-            navbar.style.transform = 'translateY(0)';
-        }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-    </script>
-    <script>
-      let loadingTimeout;
-      window.onload = function() {
-        clearTimeout(loadingTimeout);
-        document.querySelector('.container').style.display = 'none';
-      };
-      loadingTimeout = setTimeout(function() {
-        document.querySelector('.container').style.display = 'flex';
-      }, 500);
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
     </script>
 </body>
 </html>
