@@ -31,7 +31,7 @@ body {
 }
 
 .nav-content {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
 }
 
 body, .nav-content, .dropdown-content {
@@ -45,9 +45,11 @@ body, .nav-content, .dropdown-content {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: transparent;
-    transition: all 0.3s ease, transform 0.4s ease-in-out;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
     padding: 0.6rem 0;
+    transform: translateY(0) !important;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 /* White background for non-home pages and when scrolled */
@@ -68,7 +70,7 @@ body, .nav-content, .dropdown-content {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: transparent;
+    background-color: #ffffff;
 }
 
 .nav-links {
@@ -134,11 +136,10 @@ body, .nav-content, .dropdown-content {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
     padding: 0.4rem 0;
     margin-top: 0.5rem;
     z-index: 1001;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
 
@@ -147,6 +148,7 @@ body, .nav-content, .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
 }
 
 /* Dropdown links */
@@ -189,7 +191,6 @@ section .dropdown-content {
 @media (max-width: 768px) {
     .dropdown-content {
         position: static;
-        box-shadow: none;
         padding-left: 1rem;
         min-width: 100%;
         margin-top: 0;
@@ -223,6 +224,7 @@ section .dropdown-content {
     font-size: 24px;
     cursor: pointer;
     padding: 5px;
+    font-family: 'Montserrat', Arial, sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -232,7 +234,7 @@ section .dropdown-content {
 
     .nav-links {
         position: fixed;
-        top: 48px; /* Reduced top position */
+        top: 48px;
         right: -100%;
         width: 80%;
         max-width: 300px;
@@ -241,8 +243,7 @@ section .dropdown-content {
         flex-direction: column;
         padding: 0.5rem 0;
         gap: 20px;
-        transition: right 0.3s ease;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease-in-out;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -256,6 +257,8 @@ section .dropdown-content {
     .dropdown-link {
         color: #333333;
         font-size: 13px;
+        font-family: 'Montserrat', Arial, sans-serif;
+        letter-spacing: 0.5px;
     }
 
     .nav-content {
@@ -531,25 +534,40 @@ section .dropdown-content {
 }
 
 .filter-btn {
-    padding: 8px 20px;
-    border: none;
-    background: #f5f5f5;
-    color: #333;
-    border-radius: 25px;
+    padding: 15px 40px;
+    font-size: 18px;
+    color: #000000;
+    background-color: transparent;
+    border: 2px solid #000000;
+    border-radius: 30px;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.filter-btn:hover {
-    background: #e0e0e0;
 }
 
 .filter-btn.active {
-    background: #333;
-    color: #fff;
-    border-color: #333;
+    background-color: #000000;
+    color: #ffffff !important;
+}
+
+/* Remove any possible inherited underlines */
+.filter-btn::after,
+.filter-btn::before {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .filter-buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
+    }
 }
 
 .projects-grid {
@@ -567,6 +585,7 @@ section .dropdown-content {
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.5s ease, transform 0.5s ease;
+    cursor: pointer;
 }
 
 .project-card.hide {
@@ -608,10 +627,10 @@ section .dropdown-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 30px;
     opacity: 0;
     transition: all 0.3s ease;
     pointer-events: none;
+    padding: 30px;
 }
 
 .project-card:hover .project-overlay {
@@ -674,8 +693,9 @@ section .dropdown-content {
     }
 
     .filter-btn {
-        padding: 6px 15px;
-        font-size: 0.9rem;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
     }
 }
 
@@ -1003,20 +1023,40 @@ section .dropdown-content {
 }
 
 .filter-btn {
-    padding: 8px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
-    color: #ffffff;
-    border-radius: 25px;
+    padding: 15px 40px;
+    font-size: 18px;
+    color: #000000;
+    background-color: transparent;
+    border: 2px solid #000000;
+    border-radius: 30px;
     cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
-    font-size: 0.9rem;
 }
 
-.filter-btn:hover,
 .filter-btn.active {
-    background-color: #ffffff;
-    color: #1a1a1a;
+    background-color: #000000;
+    color: #ffffff !important;
+}
+
+/* Remove any possible inherited underlines */
+.filter-btn::after,
+.filter-btn::before {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .filter-buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .filter-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
+    }
 }
 
 .portfolio-grid {
@@ -2229,4 +2269,14 @@ footer p {
 
 .powerbi-embed {
     animation: embedFadeIn 0.5s ease-out;
+}
+
+/* Only make navbar transparent on home page */
+.home-page .navbar:not(.scrolled) {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.home-page .nav-content:not(.scrolled) {
+    background-color: transparent;
 }

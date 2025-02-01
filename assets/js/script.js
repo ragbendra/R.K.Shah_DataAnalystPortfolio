@@ -146,64 +146,60 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Navigation behavior
-let scrollTimer = null;
-const isHomePage = window.location.pathname === getBasePath() + '/' || 
-                  window.location.pathname === getBasePath() + '/index.html';
+const navbar = document.querySelector('.navbar');
+let lastScrollTop = 0;
 
-// Set initial state
-if (!isHomePage) {
-    navbar.classList.add('not-home');
-}
-
-// Single scroll handler for all navigation behavior
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Clear the existing timer
-    clearTimeout(scrollTimer);
-
-    // Handle background color change on home page
-    if (isHomePage) {
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    }
-
-    // Handle hide/show with delay
-    if (currentScroll > lastScrollTop && currentScroll > 100) {
-        // Scrolling down - hide navbar after delay
-        scrollTimer = setTimeout(() => {
-            navbar.style.transform = 'translateY(-100%)';
-        }, 300);
+    // Handle background color change
+    if (currentScroll > 50) {
+        navbar.classList.add('scrolled');
+        navbar.style.backgroundColor = 'white';
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     } else {
-        // Scrolling up - show navbar immediately
-        navbar.style.transform = 'translateY(0)';
+        navbar.classList.remove('scrolled');
+        navbar.style.backgroundColor = 'transparent';
+        navbar.style.boxShadow = 'none';
     }
+
+    // Keep navbar visible at all times
+    navbar.style.transform = 'translateY(0)';
+    navbar.style.transition = 'background-color 0.3s ease, box-shadow 0.3s ease';
 
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 
-// Hide Navigation on Scroll with Delay
-const nav = document.querySelector('nav');
+// Add hover effect to keep navbar visible
+navbar.addEventListener('mouseenter', () => {
+    navbar.style.transform = 'translateY(0)';
+});
 
-window.addEventListener('scroll', () => {
-    clearTimeout(hideTimeout);
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// Ensure dropdown menus are easily accessible
+document.querySelectorAll('.dropdown').forEach(dropdown => {
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    
+    // Add delay before hiding dropdown
+    let hideTimeout;
+    
+    dropdown.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimeout);
+        if (dropdownContent) {
+            dropdownContent.style.display = 'block';
+            dropdownContent.style.opacity = '1';
+        }
+    });
 
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
+    dropdown.addEventListener('mouseleave', () => {
         hideTimeout = setTimeout(() => {
-            navLinks.classList.remove('nav-visible');
-            navLinks.classList.add('nav-hidden'); // Add class to hide
-        }, 500); // Delay of 500ms
-    } else {
-        // Scrolling up
-        navLinks.classList.remove('nav-hidden'); // Remove hide class
-        navLinks.classList.add('nav-visible'); // Add class to show
-    }
-    lastScrollTop = scrollTop;
+            if (dropdownContent) {
+                dropdownContent.style.opacity = '0';
+                setTimeout(() => {
+                    dropdownContent.style.display = 'none';
+                }, 200);
+            }
+        }, 200); // 200ms delay before hiding
+    });
 });
 
 // Ensure the nav is visible on page load
