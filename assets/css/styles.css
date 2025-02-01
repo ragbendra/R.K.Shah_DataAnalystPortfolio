@@ -48,17 +48,19 @@ body, .nav-content, .dropdown-content {
     background-color: #ffffff;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
                 background-color 0.3s ease, 
-                box-shadow 0.3s ease;
+                box-shadow 0.3s ease, opacity 0.5s ease, transform 0.5s ease;
     padding: 0.6rem 0;
     transform: translateY(0);
     font-family: 'Montserrat', Arial, sans-serif;
     will-change: transform;
+    opacity: 1; /* Fully visible */
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .navbar.nav-hidden {
-    transform: translateY(-100%);
-    box-shadow: none;
-    transition-delay: 0.2s;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0; /* Invisible */
+    transform: translateY(-100%); /* Move up to hide */
 }
 
 /* White background for non-home pages and when scrolled */

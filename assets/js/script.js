@@ -527,3 +527,39 @@ function initializeVisualizations() {
 document.addEventListener('DOMContentLoaded', function() {
     initializeVisualizations();
 });
+
+// Toggle navigation panel with smooth transition
+let navVisible = true;
+let scrollTimeout;
+let lastScrollTop = 0;
+
+window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    console.log('Scrolling:', window.scrollY);
+    console.log('Nav Visible:', navVisible);
+    if (navVisible) {
+        scrollTimeout = setTimeout(function() {
+            document.querySelector('.navbar').classList.add('hidden');
+            navVisible = false;
+        }, 500); // Delay before hiding
+    }
+    if (!navVisible && window.scrollY < lastScrollTop) {
+        clearTimeout(scrollTimeout);
+        document.querySelector('.navbar').classList.remove('hidden');
+        navVisible = true;
+    }
+    lastScrollTop = window.scrollY; // Update last scroll position
+});
+
+function toggleNav() {
+    const navbar = document.querySelector('.navbar');
+    if (navVisible) {
+        navbar.classList.add('hidden');
+        navVisible = false;
+    } else {
+        navbar.classList.remove('hidden');
+        navVisible = true;
+    }
+}
+
+document.querySelector('.toggle-button').addEventListener('click', toggleNav);
