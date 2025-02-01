@@ -47,86 +47,41 @@
             <!-- Project Card 1 -->
             <div class="project-card" data-aos="fade-up">
                 <div class="project-image">
-                    <img src="../assets/images/ml-project1.jpg" alt="Customer Churn Prediction" onerror="this.src='../assets/images/placeholder.jpg'">
+                    <img src="" alt="Time Series Analysis">
                     <div class="metrics-preview">
                         <div class="metric">
                             <span class="metric-label">Accuracy</span>
-                            <span class="metric-value">92.5%</span>
+                            <span class="metric-value">94.5%</span>
                         </div>
                         <div class="metric">
                             <span class="metric-label">F1 Score</span>
-                            <span class="metric-value">0.89</span>
+                            <span class="metric-value">0.92</span>
                         </div>
                     </div>
                 </div>
                 <div class="project-content">
-                    <h3>Customer Churn Prediction</h3>
+                    <h3>Time Series Analysis</h3>
                     <div class="project-tags">
-                        <span class="tag algorithm">Random Forest</span>
-                        <span class="tag tool">Scikit-learn</span>
-                        <span class="tag dataset">Telecom Data</span>
+                        <span class="tag algorithm">LSTM</span>
+                        <span class="tag tool">TensorFlow</span>
+                        <span class="tag dataset">Financial Data</span>
                     </div>
                     <div class="project-details">
                         <div class="detail-section">
                             <h4>Objective</h4>
-                            <p>Predict customer churn in telecom industry using machine learning</p>
+                            <p>Predict stock market trends using deep learning</p>
                         </div>
                         <div class="detail-section">
                             <h4>Approach</h4>
-                            <p>Implemented ensemble learning with feature importance analysis</p>
+                            <p>Implemented LSTM neural networks with attention mechanism</p>
                         </div>
                         <div class="detail-section">
                             <h4>Results</h4>
-                            <p>Achieved 92.5% accuracy in predicting customer churn</p>
+                            <p>Achieved 94.5% accuracy in 5-day price movement prediction</p>
                         </div>
                     </div>
-                    <div class="project-links">
-                        <a href="https://github.com/yourusername/churn-prediction" target="_blank" class="code-btn">
-                            <span>View Code</span>
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project Card 2 -->
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <img src="../assets/images/ml-project2.jpg" alt="Sentiment Analysis" onerror="this.src='../assets/images/placeholder.jpg'">
-                    <div class="metrics-preview">
-                        <div class="metric">
-                            <span class="metric-label">Accuracy</span>
-                            <span class="metric-value">88.7%</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">ROC AUC</span>
-                            <span class="metric-value">0.91</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3>Social Media Sentiment Analysis</h3>
-                    <div class="project-tags">
-                        <span class="tag algorithm">BERT</span>
-                        <span class="tag tool">PyTorch</span>
-                        <span class="tag dataset">Twitter Data</span>
-                    </div>
-                    <div class="project-details">
-                        <div class="detail-section">
-                            <h4>Objective</h4>
-                            <p>Analyze sentiment from social media posts using deep learning</p>
-                        </div>
-                        <div class="detail-section">
-                            <h4>Approach</h4>
-                            <p>Fine-tuned BERT model for sentiment classification</p>
-                        </div>
-                        <div class="detail-section">
-                            <h4>Results</h4>
-                            <p>88.7% accuracy across three sentiment categories</p>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="code-btn">
+                    <div class="project-links fixed-corner">
+                        <a href="https://github.com/yourusername/ml-projects" target="_blank" class="code-btn">
                             <span>View Code</span>
                             <i class="fab fa-github"></i>
                         </a>
@@ -179,5 +134,12 @@
     });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
 </body>
 </html>

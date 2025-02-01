@@ -83,12 +83,6 @@
                             <h4>Design Approach</h4>
                             <p>Combined heatmaps for geographical distribution with time-series charts for trend analysis</p>
                         </div>
-                        <div class="viz-preview-section">
-                            <div class="viz-iframe">
-                                <!-- Embed your visualization here -->
-                                <iframe data-src="path/to/visualization.html" frameborder="0"></iframe>
-                            </div>
-                        </div>
                         <div class="insights">
                             <h4>Key Insights</h4>
                             <ul>
@@ -97,8 +91,8 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="project-links">
-                        <a href="#" class="code-btn">
+                    <div class="project-links fixed-corner">
+                        <a href="https://github.com/yourusername/dataviz-projects" target="_blank" class="code-btn">
                             <span>View Code</span>
                             <i class="fab fa-github"></i>
                         </a>
@@ -113,6 +107,14 @@
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
     <script src="../assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
     <script>
     // Navigation behavior
     let lastScrollTop = 0;
@@ -150,14 +152,6 @@
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
-    </script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
     </script>
 </body>
 </html>

@@ -136,11 +136,13 @@ body, .nav-content, .dropdown-content {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
     padding: 0.4rem 0;
     margin-top: 0.5rem;
     z-index: 1001;
     border-radius: 4px;
+    pointer-events: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Show dropdown */
@@ -148,7 +150,19 @@ body, .nav-content, .dropdown-content {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s;
+    pointer-events: auto;
+    transition-delay: 0s;
+}
+
+/* Add hover area to prevent flickering */
+.dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: transparent;
 }
 
 /* Dropdown links */
@@ -1202,6 +1216,7 @@ section .dropdown-content {
 }
 
 .project-content {
+    position: relative;
     display: grid;
     gap: 40px;
 }
@@ -1635,6 +1650,13 @@ footer p {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    background-color: #f5f5f5; /* Light gray background while loading */
+}
+
+.project-image img[src$="placeholder.jpg"] {
+    object-fit: contain;
+    padding: 20px;
+    background-color: #f5f5f5;
 }
 
 /* Metrics Preview */
@@ -1667,6 +1689,7 @@ footer p {
 
 /* Project Content */
 .project-content {
+    position: relative;
     padding: 25px;
 }
 
@@ -1722,18 +1745,19 @@ footer p {
     line-height: 1.5;
 }
 
-/* Project Links */
-.project-links {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 15px;
+/* Project Links - Updated for fixed positioning */
+.project-links.fixed-corner {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    margin: 0;
 }
 
 .code-btn {
     background: #2d333b;
     color: white;
-    padding: 8px 20px;
+    padding: 8px 16px;
     border-radius: 5px;
     text-decoration: none;
     display: flex;
@@ -1741,7 +1765,8 @@ footer p {
     gap: 8px;
     transition: all 0.3s ease;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .code-btn:hover {
@@ -1751,7 +1776,11 @@ footer p {
 
 .code-btn i {
     font-size: 1.1em;
-    margin-left: 4px;
+}
+
+.code-btn span {
+    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 /* SQL Projects Specific Styles */
@@ -2279,4 +2308,59 @@ footer p {
 
 .home-page .nav-content:not(.scrolled) {
     background-color: transparent;
+}
+
+/* Area of Interest Section */
+.area-of-interest {
+    background: #f8f9fa;
+    padding: 160px 40px;
+    min-height: 100vh;
+}
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px 0;
+}
+
+.interest-card {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.interest-card h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.interest-card p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .area-of-interest {
+        padding: 100px 20px;
+    }
+    
+    .interest-card {
+        padding: 40px 30px;
+        min-height: 400px;
+    }
 }

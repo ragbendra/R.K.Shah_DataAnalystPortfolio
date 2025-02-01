@@ -9,60 +9,78 @@ const getBasePath = () => {
 // Global variables
 const navbar = document.querySelector('.navbar');
 const navLinks = document.querySelector('.nav-links');
+const menuBtn = document.querySelector('.menu-btn');
 let lastScrollTop = 0;
-let hideTimeout;
 
 // Ensure menuLinks is declared only once
 const menuLinks = document.querySelectorAll('.nav-links a');
 
-// DOM Content Loaded Event Handler
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if on home page
     const isHomePage = window.location.pathname === getBasePath() + '/' || 
                       window.location.pathname === getBasePath() + '/index.html';
     
     // Initial navbar setup
     if (!isHomePage) {
+        navbar.classList.add('not-home');
         navbar.classList.add('white-bg');
     }
 
-    // Scroll event handler
+    // Navigation scroll behavior
     window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Background Transition
-        if (scrollTop > 50) {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Background color change
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
             navbar.style.backgroundColor = 'white';
             navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         } else {
-            navbar.style.backgroundColor = 'transparent';
+            navbar.classList.remove('scrolled');
+            navbar.style.backgroundColor = isHomePage ? 'transparent' : 'white';
             navbar.style.boxShadow = 'none';
         }
 
-        // Auto-Hide on Scroll
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
 
-        // Update scroll position
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    // Mobile menu toggle
+    menuBtn?.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
 
-        // Handle active section highlighting
-        let current = '';
-        document.querySelectorAll('section').forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollTop >= sectionTop - sectionHeight / 3) {
-                current = section.getAttribute('id');
+    // Dropdown behavior
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        const dropdownContent = dropdown.querySelector('.dropdown-content');
+        let hideTimeout;
+        
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+            if (dropdownContent) {
+                dropdownContent.style.display = 'block';
+                requestAnimationFrame(() => {
+                    dropdownContent.style.opacity = '1';
+                    dropdownContent.style.visibility = 'visible';
+                    dropdownContent.style.transform = 'translateY(0)';
+                    dropdownContent.style.pointerEvents = 'auto';
+                });
             }
         });
 
-        menuLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
+        dropdown.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                if (dropdownContent) {
+                    dropdownContent.style.opacity = '0';
+                    dropdownContent.style.visibility = 'hidden';
+                    dropdownContent.style.transform = 'translateY(10px)';
+                    dropdownContent.style.pointerEvents = 'none';
+                    setTimeout(() => {
+                        if (dropdownContent.style.opacity === '0') {
+                            dropdownContent.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }, 200);
         });
     });
 
@@ -107,13 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle mobile menu
-    const menuBtn = document.querySelector('.menu-btn');
-    
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
-
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
@@ -121,18 +132,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Dropdown menu handlers
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', () => {
-            const dropdownContent = dropdown.querySelector('.dropdown-content');
-            if (dropdownContent) dropdownContent.style.display = 'block';
+    // Highlight Active Menu Item on Scroll
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute('id');
+            }
         });
 
-        dropdown.addEventListener('mouseleave', () => {
-            const dropdownContent = dropdown.querySelector('.dropdown-content');
-            if (dropdownContent) dropdownContent.style.display = 'none';
+        menuLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
         });
     });
+
+    // Add animation to skill cards when they come into view
+    const observerOptions = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.skill-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'all 0.5s ease-out';
+        observer.observe(card);
+    });
+
+    // Function to handle navigation background
+    handleNavigation();
 });
 
 // Smooth scrolling
@@ -143,111 +187,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
-});
-
-// Navigation behavior
-const navbar = document.querySelector('.navbar');
-let lastScrollTop = 0;
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Handle background color change
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-        navbar.style.backgroundColor = 'white';
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.classList.remove('scrolled');
-        navbar.style.backgroundColor = 'transparent';
-        navbar.style.boxShadow = 'none';
-    }
-
-    // Keep navbar visible at all times
-    navbar.style.transform = 'translateY(0)';
-    navbar.style.transition = 'background-color 0.3s ease, box-shadow 0.3s ease';
-
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-
-// Add hover effect to keep navbar visible
-navbar.addEventListener('mouseenter', () => {
-    navbar.style.transform = 'translateY(0)';
-});
-
-// Ensure dropdown menus are easily accessible
-document.querySelectorAll('.dropdown').forEach(dropdown => {
-    const dropdownContent = dropdown.querySelector('.dropdown-content');
-    
-    // Add delay before hiding dropdown
-    let hideTimeout;
-    
-    dropdown.addEventListener('mouseenter', () => {
-        clearTimeout(hideTimeout);
-        if (dropdownContent) {
-            dropdownContent.style.display = 'block';
-            dropdownContent.style.opacity = '1';
-        }
-    });
-
-    dropdown.addEventListener('mouseleave', () => {
-        hideTimeout = setTimeout(() => {
-            if (dropdownContent) {
-                dropdownContent.style.opacity = '0';
-                setTimeout(() => {
-                    dropdownContent.style.display = 'none';
-                }, 200);
-            }
-        }, 200); // 200ms delay before hiding
-    });
-});
-
-// Ensure the nav is visible on page load
-window.addEventListener('load', () => {
-    navLinks.classList.add('nav-visible'); // Show nav on load
-});
-
-// Highlight Active Menu Item on Scroll
-const sections = document.querySelectorAll('section');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - sectionHeight / 3) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    menuLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Add animation to skill cards when they come into view
-const observerOptions = {
-    threshold: 0.5
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.skill-card').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'all 0.5s ease-out';
-    observer.observe(card);
 });
 
 // Function to handle navigation background
@@ -366,20 +305,6 @@ const observeProjectItems = () => {
 
 // Call the function when DOM is loaded
 document.addEventListener('DOMContentLoaded', observeProjectItems);
-
-// Handle mobile menu
-const menuBtn = document.querySelector('.menu-btn');
-
-menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
-        navLinks.classList.remove('active');
-    }
-});
 
 // Ensure dropdown menus work properly
 document.querySelectorAll('.dropdown').forEach(dropdown => {

@@ -45,10 +45,10 @@
         </div>
 
         <div class="projects-grid">
-            <!-- SQL Project Card 1 -->
+            <!-- SQL Project Card -->
             <div class="project-card" data-aos="fade-up">
                 <div class="project-image">
-                    <img src="../assets/images/sql-project1.jpg" alt="Database Analysis" onerror="this.src='../assets/images/placeholder.jpg'">
+                    <img src="" alt="Database Analysis">
                     <div class="db-stats">
                         <div class="stat">
                             <span class="stat-label">Tables</span>
@@ -75,32 +75,25 @@
                         <div class="query-preview">
                             <h4>Key Query</h4>
                             <pre><code class="sql">
-SELECT 
-    c.category_name,
-    COUNT(o.order_id) as total_orders,
-    SUM(oi.quantity * p.price) as revenue
-FROM categories c
-JOIN products p ON c.category_id = p.category_id
-JOIN order_items oi ON p.product_id = oi.product_id
-JOIN orders o ON oi.order_id = o.order_id
-GROUP BY c.category_name
-ORDER BY revenue DESC;
+SELECT c.category_name, COUNT(o.order_id) as total_orders
+FROM categories c JOIN orders o ON c.category_id = o.category_id;
                             </code></pre>
                         </div>
-                        <div class="detail-section">
-                            <h4>Outcome</h4>
-                            <p>Reduced query execution time by 60% through optimization</p>
+                        <div class="detail-section" style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h4>Outcome</h4>
+                                <p>Reduced query execution time by 60% through optimization</p>
+                            </div>
+                            <div class="project-links" style="margin: 0;">
+                                <a href="https://github.com/yourusername/sql-projects" target="_blank" class="code-btn">
+                                    <span>View Code</span>
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/yourusername/sql-projects" target="_blank" class="code-btn">
-                            <span>View Code</span>
-                            <i class="fab fa-github"></i>
-                        </a>
                     </div>
                 </div>
             </div>
-            <!-- Add more SQL project cards -->
         </div>
     </section>
 
@@ -108,43 +101,13 @@ ORDER BY revenue DESC;
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
     <script src="../assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    // Navigation behavior
-    let lastScrollTop = 0;
-    let scrollTimer = null;
-    const navbar = document.querySelector('.navbar');
-
-    // Set initial state for non-home pages
-    navbar.classList.add('not-home');
-
-    // Single scroll handler for navigation
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Clear the existing timer
-        clearTimeout(scrollTimer);
-
-        // Handle hide/show with delay
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scrolling down - hide navbar after delay
-            scrollTimer = setTimeout(() => {
-                navbar.style.transform = 'translateY(-100%)';
-            }, 300);
-        } else {
-            // Scrolling up - show navbar immediately
-            navbar.style.transform = 'translateY(0)';
-        }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
     </script>
 </body>
 </html>

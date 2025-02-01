@@ -75,10 +75,10 @@
                     </div>
                     <div class="project-details">
                         <div class="detail-section">
-                            <h4>Objective</h4>
-                            <p>Created an end-to-end sales analytics solution for real-time performance tracking</p>
+                            <h4>Results</h4>
+                            <p>Enabled real-time sales monitoring across 50+ stores</p>
                         </div>
-                        <div class="features-section">
+                        <div class="detail-section">
                             <h4>Key Features</h4>
                             <ul>
                                 <li>Dynamic date range selection</li>
@@ -87,34 +87,8 @@
                                 <li>YoY comparison analysis</li>
                             </ul>
                         </div>
-                        <div class="powerbi-embed">
-                            <h4>Interactive Demo</h4>
-                            <div class="embed-container">
-                                <iframe 
-                                    data-src="https://app.powerbi.com/view?r=your-report-embed-code" 
-                                    frameborder="0" 
-                                    allowFullScreen="true">
-                                </iframe>
-                            </div>
-                        </div>
-                        <div class="code-preview">
-                            <h4>Sample DAX Measure</h4>
-                            <pre><code class="dax">
-YoY Growth = 
-VAR CurrentYearSales = CALCULATE(
-    SUM(Sales[Amount]),
-    DATEADD(Calendar[Date], -1, YEAR)
-)
-RETURN
-    DIVIDE(
-        SUM(Sales[Amount]) - CurrentYearSales,
-        CurrentYearSales,
-        0
-    )
-                            </code></pre>
-                        </div>
                     </div>
-                    <div class="project-links">
+                    <div class="project-links fixed-corner">
                         <a href="https://github.com/yourusername/powerbi-projects" target="_blank" class="code-btn">
                             <span>View Code</span>
                             <i class="fab fa-github"></i>
