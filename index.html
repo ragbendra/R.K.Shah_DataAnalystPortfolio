@@ -8,18 +8,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noah+Regular&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="particles-js"></div>
+    <div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: calc(100vh + 60px);"></div>
     <nav class="navbar">
         <div class="nav-content">
             <button class="menu-btn">☰</button>
             <ul class="nav-links">
                 <li><a href="./index.html#home" class="nav-link">Home</a></li>
                 <li><a href="./index.html#about" class="nav-link">About</a></li>
-                <li><a href="./index.html#skills" class="nav-link">Area of Interest</a></li>
-                <li class="dropdown">
-                    <a href="#" class="nav-link">Projects <i class="fas fa-caret-down"></i></a>
+                <li><a href="./index.html#skills" class="nav-link">Skills</a></li>
+                <li class="dropdown dropdown-2">
+                    <a href="#" class="nav-link">Portfolio <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="./pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
                         <a href="./pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
@@ -53,34 +55,34 @@
         <div class="about-content">
             <div class="about-image">
                 <img src="./images/profile.jpg" alt="Your Name - Data Scientist" class="profile-pic">
-            </div>
-            <div class="about-text">
-                <h3>Hello, I'm <span class="highlight">Your Name</span></h3>
-                <p class="about-description">
-                    I am a passionate Data Scientist with X years of experience in turning complex data into actionable insights. 
-                    My journey in data science began at [University/Company], where I developed a strong foundation in statistical analysis and machine learning.
-                </p>
-                <p class="about-description">
-                    Currently, I specialize in [Your Specializations, e.g., "predictive modeling, natural language processing, and computer vision"]. 
-                    I've successfully led projects that have [Brief Achievement, e.g., "reduced operational costs by 25% through predictive maintenance solutions"].
-                </p>
-                <p class="about-description">
-                    When I'm not working with data, you can find me [Your Interests/Hobbies, e.g., "contributing to open-source projects, writing technical blogs, or mentoring aspiring data scientists"].
-                </p>
                 <div class="about-details">
                     <div class="detail-item">
                         <i class="fas fa-graduation-cap"></i>
-                        <span>MSc in Data Science</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-briefcase"></i>
-                        <span>X Years Experience</span>
+                        <span>B.Tech CSE</span>
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Your Location</span>
+                        <span><a href="https://www.google.com/maps/search/?api=1&query=Andhra+Pradesh,+India" target="_blank">Andhra Pradesh, India</a></span>
                     </div>
                 </div>
+            </div>
+            <div class="about-text">
+                <p>Hello, I'm <span>Raghabendra</span></p><br><br>
+                <p class="about-description">
+                    Welcome to my Portfolio profile! I'm a passionate Data Enthusiast with a keen
+                    interest in Data Science, Machine Learning, Python Programming, and Analytics.
+                    Currently, I'm a 3rd-year college student working towards building my career in
+                    the field of data science. I'm always exploring new technologies and working on
+                    exciting projects to expand my skillset.
+                </p>
+                <p class="about-description">
+                    Currently, I specialize in Python (Pandas, NumPy, Matplotlib, Scikit-learn, TensorFlow),
+                    SQL (for data management), Power BI (for data visualization), and GitHub & Git (for version control)
+                </p>
+                <p class="about-description">
+                    Feel free to browse through my portfolio. If you're interested in collaborating or have any questions, don't
+                    hesitate to reach out!
+                </p>
                 <div class="about-cta">
                     <a href="index.html#contact" class="cta-button">Get in Touch</a>
                     <a href="./path/to/your/resume.pdf" class="cta-button secondary" target="_blank">
@@ -92,26 +94,26 @@
     </section>
 
     <section id="skills" class="skills">
-        <h2>Areas of Interest</h2>
+        <h2 style="font-family: 'Noah Regular', sans-serif; font-size: 28px;">SKILLS</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <h3>Machine Learning</h3>
+                <h3 style="font-family: 'Roboto Slab', serif;">Machine Learning</h3>
                 <p>Experience in developing and implementing machine learning algorithms for predictive analytics.</p>
             </div>
             <div class="skill-card">
-                <h3>Power BI</h3>
+                <h3 style="font-family: 'Roboto Slab', serif;">Power BI</h3>
                 <p>Skilled in creating interactive dashboards and reports to visualize data insights effectively.</p>
             </div>
             <div class="skill-card">
-                <h3>Data Analytics</h3>
+                <h3 style="font-family: 'Roboto Slab', serif;">Data Analytics</h3>
                 <p>Proficient in analyzing complex datasets to derive actionable insights and support decision-making.</p>
             </div>
             <div class="skill-card">
-                <h3>Model Deployment</h3>
+                <h3 style="font-family: 'Roboto Slab', serif;">Model Deployment</h3>
                 <p>Knowledgeable in deploying machine learning models into production environments for real-time predictions.</p>
             </div>
             <div class="skill-card">
-                <h3>SQL</h3>
+                <h3 style="font-family: 'Roboto Slab', serif;">SQL</h3>
                 <p>Expertise in performing SQL queries to manipulate and analyze data.</p>
             </div>
         </div>
@@ -119,7 +121,7 @@
 
     <section id="projects" class="projects">
         <div class="projects-header">
-            <h2>Projects</h2>
+            <h2 style="font-family: 'Noah Regular', sans-serif; font-size: 28px;">PORTFOLIO</h2>
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">Show All</button>
                 <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
@@ -200,42 +202,42 @@
     </section>
 
     <section id="contact" class="contact">
-        <h2>Contact Me</h2>
+        <h2 style="font-family: 'Noah Regular', sans-serif; font-size: 28px;">CONTACT</h2>
         <div class="contact-content">
             <div class="contact-info">
                 <div class="contact-item">
-                    <a href="mailto:your.email@example.com" target="_blank" class="contact-link">
+                    <a href="mailto:raghabendrashah.1234@gmail.com" target="_blank" class="contact-link">
                         <i class="fas fa-envelope"></i>
-                        <p>your.email@example.com</p>
+                        <p>raghabendrashah.1234@gmail.com</p>
                     </a>
                 </div>
                 <div class="contact-item">
-                    <a href="https://linkedin.com/in/your-profile" target="_blank" class="contact-link">
+                    <a href="https://linkedin.com/in/raghabendrakumarshah" target="_blank" class="contact-link">
                         <i class="fab fa-linkedin"></i>
                         <p>LinkedIn Profile</p>
                     </a>
                 </div>
                 <div class="contact-item">
-                    <a href="https://github.com/your-username" target="_blank" class="contact-link">
+                    <a href="https://github.com/ragbendra" target="_blank" class="contact-link">
                         <i class="fab fa-github"></i>
                         <p>GitHub Profile</p>
                     </a>
                 </div>
                 <div class="contact-item">
-                    <a href="https://calendly.com/your-username" target="_blank" class="contact-link">
+                    <a href="https://calendly.com/raghabendrashah-1234" target="_blank" class="contact-link">
                         <i class="far fa-calendar-alt"></i>
                         <p>Schedule a Meeting</p>
                     </a>
                 </div>
             </div>
             <div class="social-links">
-                <a href="https://twitter.com/your-username" target="_blank" class="social-icon">
-                    <i class="fab fa-twitter"></i>
+                <a href="https://leetcode.com/u/raghabendra" target="_blank" class="social-icon">
+                    <i class="fab fa-leetcode"></i>
                 </a>
                 <a href="https://medium.com/@your-username" target="_blank" class="social-icon">
                     <i class="fab fa-medium"></i>
                 </a>
-                <a href="https://kaggle.com/your-username" target="_blank" class="social-icon">
+                <a href="https://kaggle.com/raghabendra" target="_blank" class="social-icon">
                     <i class="fab fa-kaggle"></i>
                 </a>
             </div>
