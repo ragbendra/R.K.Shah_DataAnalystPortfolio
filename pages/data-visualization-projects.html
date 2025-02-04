@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
+    <link rel="stylesheet" href="../assets/css/project-cards.css">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
 <script>
@@ -46,60 +47,76 @@
             <p class="header-description">Transforming complex data into compelling visual stories</p>
         </div>
 
-        <div class="projects-grid">
-            <!-- Visualization Project Card 1 -->
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <div class="viz-preview">
-                        <div class="viz-stats">
-                            <div class="viz-stat">
-                                <span class="stat-label">Charts</span>
-                                <span class="stat-value">8</span>
-                            </div>
-                            <div class="viz-stat">
-                                <span class="stat-label">Data Points</span>
-                                <span class="stat-value">50K+</span>
-                            </div>
-                        </div>
-                        <div class="viz-tools">
-                            <span class="tool-icon"><i class="fab fa-python"></i></span>
-                            <span class="tool-icon"><i class="fas fa-chart-line"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 style="font-family: 'Noah Regular', sans-serif;">Global Sales Performance Dashboard</h3>
-                    <div class="project-tags">
-                        <span class="tag tool">D3.js</span>
-                        <span class="tag viz-type">Interactive</span>
-                        <span class="tag data">Sales Data</span>
-                    </div>
-                    <div class="project-details">
-                        <div class="detail-section">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Data & Problem</h4>
-                            <p>Visualizing sales trends across global regions with real-time filtering capabilities</p>
-                        </div>
-                        <div class="viz-approach">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Design Approach</h4>
-                            <p>Combined heatmaps for geographical distribution with time-series charts for trend analysis</p>
-                        </div>
-                        <div class="insights">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Key Insights</h4>
-                            <ul>
-                                <li>35% higher sales in Q4 across all regions</li>
-                                <li>Strong correlation between marketing spend and revenue</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="project-links fixed-corner">
-                        <a href="https://github.com/yourusername/dataviz-projects" target="_blank" class="code-btn">
-                            <span>View Code</span>
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
+        <div class="project-grid">
+            <!-- Data Viz Project Card 1 -->
+            <div class="project-card" data-modal="vizModal1">
+              <img src="../assets/images/viz-project1.jpg" alt="Data Viz Project 1" class="project-image">
+              <h3 class="project-title">Interactive Sales Dashboard</h3>
+              <p class="project-description">Dynamic sales analytics visualization using D3.js</p>
+              <a href="https://github.com/yourusername/sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
             </div>
-            <!-- Add more visualization project cards -->
+
+            <!-- Data Viz Project Card 2 -->
+            <div class="project-card" data-modal="vizModal2">
+              <img src="../assets/images/viz-project2.jpg" alt="Data Viz Project 2" class="project-image">
+              <h3 class="project-title">COVID-19 Data Tracker</h3>
+              <p class="project-description">Real-time visualization of COVID-19 statistics</p>
+              <a href="https://github.com/yourusername/covid-tracker" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+
+            <!-- Data Viz Project Card 3 -->
+            <div class="project-card" data-modal="vizModal3">
+              <img src="../assets/images/viz-project3.jpg" alt="Data Viz Project 3" class="project-image">
+              <h3 class="project-title">Stock Market Trends</h3>
+              <p class="project-description">Interactive tool for visualizing stock market trends with technical indicators and pattern recognition.</p>
+              <a href="https://github.com/yourusername/stock-viz" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+        </div>
+
+        <!-- Data Viz Project Modals -->
+        <div id="vizModal1" class="project-modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/viz-project1.jpg" alt="Data Viz Project 1" class="modal-image">
+            <h3 class="modal-title">Interactive Sales Dashboard</h3>
+            <p class="modal-description">A comprehensive sales analytics dashboard with interactive charts, filters, and real-time updates using D3.js and React.</p>
+            <div class="tech-tags">
+              <span class="tag">D3.js</span>
+              <span class="tag">React</span>
+              <span class="tag">SVG</span>
+            </div>
+            <a href="https://github.com/yourusername/sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
+          </div>
+        </div>
+
+        <div id="vizModal2" class="project-modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/viz-project2.jpg" alt="Data Viz Project 2" class="modal-image">
+            <h3 class="modal-title">COVID-19 Data Tracker</h3>
+            <p class="modal-description">Real-time visualization of COVID-19 statistics with interactive maps and trend analysis.</p>
+            <div class="tech-tags">
+              <span class="tag">Plotly</span>
+              <span class="tag">Python</span>
+              <span class="tag">GeoJSON</span>
+            </div>
+            <a href="https://github.com/yourusername/covid-tracker" target="_blank" class="view-code-btn">View Code</a>
+          </div>
+        </div>
+
+        <div id="vizModal3" class="project-modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/viz-project3.jpg" alt="Data Viz Project 3" class="modal-image">
+            <h3 class="modal-title">Stock Market Trends</h3>
+            <p class="modal-description">Interactive tool for visualizing stock market trends with technical indicators and pattern recognition.</p>
+            <div class="tech-tags">
+              <span class="tag">Chart.js</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">API Integration</span>
+            </div>
+            <a href="https://github.com/yourusername/stock-viz" target="_blank" class="view-code-btn">View Code</a>
+          </div>
         </div>
     </section>
 
@@ -153,5 +170,6 @@
         navLinks.classList.toggle('active');
     });
     </script>
+    <script src="../assets/js/project-cards.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/project-cards.css">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
 <script>
@@ -45,54 +46,75 @@
             <p class="header-description">Complex database solutions and analytical queries for data-driven insights</p>
         </div>
 
-        <div class="projects-grid">
-            <!-- SQL Project Card -->
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <div class="db-stats">
-                        <div class="stat">
-                            <span class="stat-label">Tables</span>
-                            <span class="stat-value">15</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-label">Records</span>
-                            <span class="stat-value">1M+</span>
-                        </div>
-                    </div>
+        <div class="project-grid">
+            <!-- SQL Project Card 1 -->
+            <div class="project-card" data-modal="sqlModal1">
+                <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="project-image">
+                <h3 class="project-title">E-commerce Database Analysis</h3>
+                <p class="project-description">Complex SQL queries for e-commerce data analysis</p>
+                <a href="https://github.com/yourusername/ecommerce-sql-analysis" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+
+            <!-- SQL Project Card 2 -->
+            <div class="project-card" data-modal="sqlModal2">
+                <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="project-image">
+                <h3 class="project-title">Healthcare Data Modeling</h3>
+                <p class="project-description">Database design for healthcare management system</p>
+                <a href="https://github.com/yourusername/healthcare-db" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+
+            <!-- SQL Project Card 3 -->
+            <div class="project-card" data-modal="sqlModal3">
+                <img src="../assets/images/sql-project3.jpg" alt="SQL Project 3" class="project-image">
+                <h3 class="project-title">Financial Data ETL</h3>
+                <p class="project-description">ETL pipeline for financial data processing</p>
+                <a href="https://github.com/yourusername/financial-etl" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+        </div>
+
+        <!-- SQL Project Modals -->
+        <div id="sqlModal1" class="project-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="modal-image">
+                <h3 class="modal-title">E-commerce Database Analysis</h3>
+                <p class="modal-description">Advanced SQL analysis of e-commerce data including customer behavior, sales patterns, and inventory management. Features complex joins, window functions, and CTEs.</p>
+                <div class="tech-tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">E-commerce</span>
                 </div>
-                <div class="project-content">
-                    <h3 style="font-family: 'Noah Regular', sans-serif;">E-Commerce Database Analysis</h3>
-                    <div class="project-tags">
-                        <span class="tag database">PostgreSQL</span>
-                        <span class="tag technique">Complex Joins</span>
-                        <span class="tag analysis">Sales Analytics</span>
-                    </div>
-                    <div class="project-details">
-                        <div class="detail-section">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Problem Statement</h4>
-                            <p>Optimize database queries for large-scale e-commerce platform</p>
-                        </div>
-                        <div class="query-preview">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Key Query</h4>
-                            <pre><code class="sql">
-SELECT c.category_name, COUNT(o.order_id) as total_orders
-FROM categories c JOIN orders o ON c.category_id = o.category_id;
-                            </code></pre>
-                        </div>
-                        <div class="detail-section" style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h4 style="font-family: 'Noah Regular', sans-serif;">Outcome</h4>
-                                <p>Reduced query execution time by 60% through optimization</p>
-                            </div>
-                            <div class="project-links" style="margin: 0;">
-                                <a href="https://github.com/yourusername/sql-projects" target="_blank" class="code-btn">
-                                    <span>View Code</span>
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                <a href="https://github.com/yourusername/ecommerce-sql-analysis" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+        </div>
+
+        <div id="sqlModal2" class="project-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="modal-image">
+                <h3 class="modal-title">Healthcare Data Modeling</h3>
+                <p class="modal-description">Comprehensive database design for healthcare management system including patient records, appointments, and medical history tracking.</p>
+                <div class="tech-tags">
+                    <span class="tag">MySQL</span>
+                    <span class="tag">Database Design</span>
+                    <span class="tag">Healthcare</span>
                 </div>
+                <a href="https://github.com/yourusername/healthcare-db" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+        </div>
+
+        <div id="sqlModal3" class="project-modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <img src="../assets/images/sql-project3.jpg" alt="SQL Project 3" class="modal-image">
+                <h3 class="modal-title">Financial Data ETL</h3>
+                <p class="modal-description">ETL pipeline for processing financial data, including data cleaning, transformation, and loading into a data warehouse.</p>
+                <div class="tech-tags">
+                    <span class="tag">SQL Server</span>
+                    <span class="tag">ETL</span>
+                    <span class="tag">Finance</span>
+                </div>
+                <a href="https://github.com/yourusername/financial-etl" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
     </section>
@@ -109,5 +131,6 @@ FROM categories c JOIN orders o ON c.category_id = o.category_id;
             once: true
         });
     </script>
+    <script src="../assets/js/project-cards.js"></script>
 </body>
 </html>

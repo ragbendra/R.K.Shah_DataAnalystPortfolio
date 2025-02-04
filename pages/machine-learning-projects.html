@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/project-cards.css">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
 <script>
@@ -44,50 +45,55 @@
             <p class="header-description">Exploring data patterns through advanced algorithms and predictive modeling</p>
         </div>
 
-        <div class="projects-grid">
-            <!-- Project Card 1 -->
-            <div class="project-card" data-aos="fade-up">
-                <div class="project-image">
-                    <div class="metrics-preview">
-                        <div class="metric">
-                            <span class="metric-label">Accuracy</span>
-                            <span class="metric-value">94.5%</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-label">F1 Score</span>
-                            <span class="metric-value">0.92</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-content">
-                    <h3 style="font-family: 'Noah Regular', sans-serif;">Time Series Analysis</h3>
-                    <div class="project-tags">
-                        <span class="tag algorithm">LSTM</span>
-                        <span class="tag tool">TensorFlow</span>
-                        <span class="tag dataset">Financial Data</span>
-                    </div>
-                    <div class="project-details">
-                        <div class="detail-section">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Objective</h4>
-                            <p>Predict stock market trends using deep learning</p>
-                        </div>
-                        <div class="detail-section">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Approach</h4>
-                            <p>Implemented LSTM neural networks with attention mechanism</p>
-                        </div>
-                        <div class="detail-section">
-                            <h4 style="font-family: 'Noah Regular', sans-serif;">Results</h4>
-                            <p>Achieved 94.5% accuracy in 5-day price movement prediction</p>
-                        </div>
-                    </div>
-                    <div class="project-links fixed-corner">
-                        <a href="https://github.com/yourusername/ml-projects" target="_blank" class="code-btn">
-                            <span>View Code</span>
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
+        <div class="project-grid">
+            <!-- ML Project Card 1 -->
+            <div class="project-card" data-modal="mlModal1">
+              <img src="../assets/images/ml-project1.jpg" alt="ML Project 1" class="project-image">
+              <h3 class="project-title">Sentiment Analysis Model</h3>
+              <p class="project-description">NLP model for sentiment analysis using BERT.</p>
+              <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
+
+            <!-- ML Project Card 2 -->
+            <div class="project-card" data-modal="mlModal2">
+              <img src="../assets/images/ml-project2.jpg" alt="ML Project 2" class="project-image">
+              <h3 class="project-title">Image Classification CNN</h3>
+              <p class="project-description">Deep learning model for image classification.</p>
+              <a href="https://github.com/yourusername/image-classification" target="_blank" class="view-code-btn">View Code</a>
+            </div>
+        </div>
+
+        <!-- ML Project Modals -->
+        <div id="mlModal1" class="project-modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/ml-project1.jpg" alt="ML Project 1" class="modal-image">
+            <h3 class="modal-title">Sentiment Analysis Model</h3>
+            <p class="modal-description">A comprehensive sentiment analysis model built using BERT. This project analyzes customer feedback and social media comments to determine sentiment polarity.</p>
+            <div class="tech-tags">
+              <span class="tag">Python</span>
+              <span class="tag">BERT</span>
+              <span class="tag">NLP</span>
+              <span class="tag">PyTorch</span>
+            </div>
+            <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
+          </div>
+        </div>
+
+        <div id="mlModal2" class="project-modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/ml-project2.jpg" alt="ML Project 2" class="modal-image">
+            <h3 class="modal-title">Image Classification CNN</h3>
+            <p class="modal-description">A convolutional neural network for image classification trained on custom dataset. Achieves high accuracy in categorizing different object classes.</p>
+            <div class="tech-tags">
+              <span class="tag">Python</span>
+              <span class="tag">CNN</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">Deep Learning</span>
+            </div>
+            <a href="https://github.com/yourusername/image-classification" target="_blank" class="view-code-btn">View Code</a>
+          </div>
         </div>
     </section>
 
@@ -95,6 +101,7 @@
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/project-cards.js"></script>
     <script>
     // Navigation behavior
     let lastScrollTop = 0;
