@@ -1,4 +1,15 @@
 // Add this at the beginning of script.js
+import './navbar.js';
+import './dropdown.js';
+import './projectFilter.js';
+import './smoothScroll.js';
+import './intersectionObserver.js';
+import './modal.js';
+import './highlightSQL.js';
+import './visualizations.js';
+import './aos.js';
+import './tippy.js';
+
 const getBasePath = () => {
     // Get the repository name from the URL
     const pathArray = window.location.pathname.split('/');
@@ -258,24 +269,17 @@ window.addEventListener('scroll', () => {
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projects = document.querySelectorAll('.project-item');
 
-console.log('Filter Buttons:', filterButtons);
-console.log('Projects:', projects);
-
 filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-        console.log('Clicked Button:', button);
-
         // Update active button
         filterButtons.forEach(btn => btn.classList.remove('active'));
         button.classList.add('active');
 
         // Get filter value
         const filter = button.getAttribute('data-filter');
-        console.log('Filter Value:', filter);
 
         // Filter projects
         projects.forEach(project => {
-            console.log('Project Category:', project.getAttribute('data-category'));
             if (filter === 'all' || project.getAttribute('data-category') === filter) {
                 project.style.display = 'block';
             } else {
@@ -289,7 +293,6 @@ filterButtons.forEach(button => {
 const allButton = document.querySelector('[data-filter="all"]');
 if (allButton) {
     allButton.classList.add('active');
-    console.log('Initial Active Button:', allButton);
 }
 
 // Add fade-in class when the item comes into view
@@ -336,69 +339,6 @@ document.querySelectorAll('.dropdown').forEach(dropdown => {
     });
 });
 
-// Single scroll handler for navigation
-document.addEventListener('DOMContentLoaded', () => {
-    const navbarId = document.getElementById('navbar');
-    let lastScrollTop = 0;
-
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-        // Background Transition
-        if (scrollTop > 50) {
-            navbar.style.backgroundColor = 'white';
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else {
-            navbar.style.backgroundColor = 'transparent';
-            navbar.style.boxShadow = 'none';
-        }
-
-        // Auto-Hide on Scroll
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-});
-
-function openProjectModal(title, description) {
-    // Create modal HTML
-    const modalHTML = `
-        <div class="project-modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2>${title}</h2>
-                <p>${description}</p>
-                <!-- Add more project details here -->
-            </div>
-        </div>
-    `;
-
-    // Add modal to body
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-    // Get modal elements
-    const modal = document.querySelector('.project-modal');
-    const closeBtn = modal.querySelector('.close-modal');
-
-    // Show modal
-    setTimeout(() => modal.classList.add('show'), 10);
-
-    // Close modal events
-    closeBtn.onclick = () => closeModal(modal);
-    modal.onclick = (e) => {
-        if (e.target === modal) closeModal(modal);
-    };
-}
-
-function closeModal(modal) {
-    modal.classList.remove('show');
-    setTimeout(() => modal.remove(), 300);
-}
-
 // Initialize AOS
 document.addEventListener('DOMContentLoaded', function() {
     AOS.init({
@@ -406,26 +346,10 @@ document.addEventListener('DOMContentLoaded', function() {
         offset: 100,
         once: true
     });
-
-    // Add hover effect for metric previews
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach(card => {
-        const metricsPreview = card.querySelector('.metrics-preview');
-        
-        card.addEventListener('mouseenter', () => {
-            metricsPreview.style.transform = 'translateY(0)';
-            metricsPreview.style.opacity = '1';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            metricsPreview.style.transform = 'translateY(100%)';
-            metricsPreview.style.opacity = '0';
-        });
-    });
 });
 
+// Initialize syntax highlighting for SQL code
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize syntax highlighting for SQL code
     document.querySelectorAll('pre code').forEach((block) => {
         highlightSQL(block);
     });
@@ -531,12 +455,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Toggle navigation panel with smooth transition
 let navVisible = true;
 let scrollTimeout;
-let lastScrollTop = 0;
 
 window.addEventListener('scroll', function() {
     clearTimeout(scrollTimeout);
-    console.log('Scrolling:', window.scrollY);
-    console.log('Nav Visible:', navVisible);
     if (navVisible) {
         scrollTimeout = setTimeout(function() {
             document.querySelector('.navbar').classList.add('hidden');
@@ -563,3 +484,40 @@ function toggleNav() {
 }
 
 document.querySelector('.toggle-button').addEventListener('click', toggleNav);
+
+// Function to open project modal
+function openProjectModal(title, description) {
+    // Create modal HTML
+    const modalHTML = `
+        <div class="project-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>${title}</h2>
+                <p>${description}</p>
+                <!-- Add more project details here -->
+            </div>
+        </div>
+    `;
+
+    // Add modal to body
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+    // Get modal elements
+    const modal = document.querySelector('.project-modal');
+    const closeBtn = modal.querySelector('.close-modal');
+
+    // Show modal
+    setTimeout(() => modal.classList.add('show'), 10);
+
+    // Close modal events
+    closeBtn.onclick = () => closeModal(modal);
+    modal.onclick = (e) => {
+        if (e.target === modal) closeModal(modal);
+    };
+}
+
+// Function to close project modal
+function closeModal(modal) {
+    modal.classList.remove('show');
+    setTimeout(() => modal.remove(), 300);
+}

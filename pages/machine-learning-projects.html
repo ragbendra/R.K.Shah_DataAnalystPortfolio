@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Machine Learning Projects</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=1.0.1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/project-cards.css">
+    <link rel="stylesheet" href="../assets/css/project-cards.css?v=1.0.1">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-9VC1JJG0L4');
 </script>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-content">
             <button class="menu-btn">☰</button>
@@ -26,12 +26,12 @@
                 <li><a href="../index.html#about" class="nav-link">About</a></li>
                 <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
                 <li class="dropdown dropdown-2">
-                    <a href="#" class="nav-link" style="font-family: 'Noah Regular', sans-serif;">Portfolio <i class="fas fa-caret-down"></i></a>
+                    <a href="#" class="nav-link">Portfolio <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="./machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
-                        <a href="./sql-projects.html" class="dropdown-link">SQL Projects</a>
-                        <a href="./data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
-                        <a href="./powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
+                        <a href="../pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
+                        <a href="../pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
+                        <a href="../pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
+                        <a href="../pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
                     </div>
                 </li>
                 <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
@@ -39,12 +39,12 @@
         </div>
     </nav>
 
+    <!-- Main Content -->
     <section class="projects-page ml-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">Machine Learning Projects</h1>
             <p class="header-description">Exploring data patterns through advanced algorithms and predictive modeling</p>
         </div>
-
         <div class="project-grid">
             <!-- ML Project Card 1 -->
             <div class="project-card" data-modal="mlModal1">
@@ -53,7 +53,6 @@
               <p class="project-description">NLP model for sentiment analysis using BERT.</p>
               <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
-
             <!-- ML Project Card 2 -->
             <div class="project-card" data-modal="mlModal2">
               <img src="../assets/images/ml-project2.jpg" alt="ML Project 2" class="project-image">
@@ -62,7 +61,6 @@
               <a href="https://github.com/yourusername/image-classification" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
-
         <!-- ML Project Modals -->
         <div id="mlModal1" class="project-modal">
           <div class="modal-content">
@@ -79,7 +77,6 @@
             <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
           </div>
         </div>
-
         <div id="mlModal2" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -97,56 +94,67 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-    <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/project-cards.js"></script>
+
+    <!-- External Scripts -->
+    <script type="module" src="../assets/js/script.js?v=1.0.1"></script>
+    <script src="../assets/js/project-cards.js?v=1.0.1"></script>
+
+    <!-- Main JavaScript -->
     <script>
-    // Navigation behavior
-    let lastScrollTop = 0;
-    let scrollTimer = null;
-    const navbar = document.querySelector('.navbar');
+    document.addEventListener('DOMContentLoaded', () => {
+        // Navigation behavior
+        let lastScrollTop = 0;
+        let scrollTimer = null;
+        const navbar = document.querySelector('.navbar');
 
-    // Set initial state for non-home pages
-    navbar.classList.add('not-home');
+        // Set initial state for non-home pages
+        navbar.classList.add('not-home');
 
-    // Single scroll handler for navigation
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Clear the existing timer
-        clearTimeout(scrollTimer);
+        // Single scroll handler for navigation
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Handle hide/show with delay
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scrolling down - hide navbar after delay
-            scrollTimer = setTimeout(() => {
-                navbar.style.transform = 'translateY(-100%)';
-            }, 300);
-        } else {
-            // Scrolling up - show navbar immediately
-            navbar.style.transform = 'translateY(0)';
-        }
+            // Clear the existing timer
+            clearTimeout(scrollTimer);
 
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
+            // Handle hide/show with delay
+            if (currentScroll > lastScrollTop && currentScroll > 100) {
+                // Scrolling down - hide navbar after delay
+                scrollTimer = setTimeout(() => {
+                    navbar.style.transform = 'translateY(-100%)';
+                }, 300);
+            } else {
+                // Scrolling up - show navbar immediately
+                navbar.style.transform = 'translateY(0)';
+            }
 
-    // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
 
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+        // Mobile menu toggle using event delegation
+        document.addEventListener('click', (event) => {
+            if (event.target.matches('.menu-btn')) {
+                console.log('Menu button clicked!');
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks) {
+                    navLinks.classList.toggle('active'); // Toggle the active class
+                    console.log('Nav links toggled:', navLinks.classList.contains('active'));
+                } else {
+                    console.error('Navigation links not found!');
+                }
+            }
+        });
     });
     </script>
+
+    <!-- AOS Initialization -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
+        AOS.init();
     </script>
 </body>
 </html>

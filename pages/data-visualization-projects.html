@@ -16,7 +16,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-9VC1JJG0L4');
 </script>
 <body>
@@ -40,13 +39,11 @@
             </ul>
         </div>
     </nav>
-
     <section class="projects-page viz-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">Data Visualization Projects</h1>
             <p class="header-description">Transforming complex data into compelling visual stories</p>
         </div>
-
         <div class="project-grid">
             <!-- Data Viz Project Card 1 -->
             <div class="project-card" data-modal="vizModal1">
@@ -55,7 +52,6 @@
               <p class="project-description">Dynamic sales analytics visualization using D3.js</p>
               <a href="https://github.com/yourusername/sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
             </div>
-
             <!-- Data Viz Project Card 2 -->
             <div class="project-card" data-modal="vizModal2">
               <img src="../assets/images/viz-project2.jpg" alt="Data Viz Project 2" class="project-image">
@@ -63,7 +59,6 @@
               <p class="project-description">Real-time visualization of COVID-19 statistics</p>
               <a href="https://github.com/yourusername/covid-tracker" target="_blank" class="view-code-btn">View Code</a>
             </div>
-
             <!-- Data Viz Project Card 3 -->
             <div class="project-card" data-modal="vizModal3">
               <img src="../assets/images/viz-project3.jpg" alt="Data Viz Project 3" class="project-image">
@@ -72,7 +67,6 @@
               <a href="https://github.com/yourusername/stock-viz" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
-
         <!-- Data Viz Project Modals -->
         <div id="vizModal1" class="project-modal">
           <div class="modal-content">
@@ -88,7 +82,6 @@
             <a href="https://github.com/yourusername/sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
           </div>
         </div>
-
         <div id="vizModal2" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -103,7 +96,6 @@
             <a href="https://github.com/yourusername/covid-tracker" target="_blank" class="view-code-btn">View Code</a>
           </div>
         </div>
-
         <div id="vizModal3" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -119,35 +111,27 @@
           </div>
         </div>
     </section>
-
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-    <script src="../assets/js/script.js"></script>
+    <script type="module" src="../assets/js/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
+        AOS.init();
     </script>
     <script>
     // Navigation behavior
     let lastScrollTop = 0;
     let scrollTimer = null;
     const navbar = document.querySelector('.navbar');
-
     // Set initial state for non-home pages
     navbar.classList.add('not-home');
-
     // Single scroll handler for navigation
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         
         // Clear the existing timer
         clearTimeout(scrollTimer);
-
         // Handle hide/show with delay
         if (currentScroll > lastScrollTop && currentScroll > 100) {
             // Scrolling down - hide navbar after delay
@@ -158,16 +142,13 @@
             // Scrolling up - show navbar immediately
             navbar.style.transform = 'translateY(0)';
         }
-
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     });
-
     // Mobile menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
+    const menuBtn = document.querySelector('.menu-btn'); // Corrected selector
+    const navLinks = document.querySelector('.nav-links'); // Corrected selector
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active'); // Toggle the active class
     });
     </script>
     <script src="../assets/js/project-cards.js"></script>

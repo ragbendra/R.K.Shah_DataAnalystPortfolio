@@ -15,7 +15,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-9VC1JJG0L4');
 </script>
 <body>
@@ -39,13 +38,11 @@
             </ul>
         </div>
     </nav>
-
     <section class="projects-page powerbi-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">Power BI Projects</h1>
             <p class="header-description">Interactive business intelligence solutions for data-driven decision making</p>
         </div>
-
         <div class="project-grid">
             <!-- Power BI Project Card 1 -->
             <div class="project-card" data-modal="pbiModal1">
@@ -54,7 +51,6 @@
               <p class="project-description">Comprehensive sales analytics dashboard</p>
               <a href="https://github.com/yourusername/sales-powerbi" target="_blank" class="view-code-btn">View Report</a>
             </div>
-
             <!-- Power BI Project Card 2 -->
             <div class="project-card" data-modal="pbiModal2">
               <img src="../assets/images/powerbi-project2.jpg" alt="Power BI Project 2" class="project-image">
@@ -62,7 +58,6 @@
               <p class="project-description">Employee performance and retention analysis</p>
               <a href="https://github.com/yourusername/hr-analytics" target="_blank" class="view-code-btn">View Report</a>
             </div>
-
             <!-- Power BI Project Card 3 -->
             <div class="project-card" data-modal="pbiModal3">
               <img src="../assets/images/powerbi-project3.jpg" alt="Power BI Project 3" class="project-image">
@@ -71,7 +66,6 @@
               <a href="https://github.com/yourusername/supply-chain" target="_blank" class="view-code-btn">View Report</a>
             </div>
         </div>
-
         <!-- Power BI Project Modals -->
         <div id="pbiModal1" class="project-modal">
           <div class="modal-content">
@@ -87,7 +81,6 @@
             <a href="https://github.com/yourusername/sales-powerbi" target="_blank" class="view-code-btn">View Report</a>
           </div>
         </div>
-
         <div id="pbiModal2" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -102,7 +95,6 @@
             <a href="https://github.com/yourusername/hr-analytics" target="_blank" class="view-code-btn">View Report</a>
           </div>
         </div>
-
         <div id="pbiModal3" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -118,19 +110,45 @@
           </div>
         </div>
     </section>
-
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-
-    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/script.js" type="module"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
+        AOS.init();
+    </script>
+    <script>
+    // Navigation behavior
+    let lastScrollTop = 0;
+    let scrollTimer = null;
+    const navbar = document.querySelector('.navbar');
+    // Set initial state for non-home pages
+    navbar.classList.add('not-home');
+    // Single scroll handler for navigation
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Clear the existing timer
+        clearTimeout(scrollTimer);
+        // Handle hide/show with delay
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scrolling down - hide navbar after delay
+            scrollTimer = setTimeout(() => {
+                navbar.style.transform = 'translateY(-100%)';
+            }, 300);
+        } else {
+            // Scrolling up - show navbar immediately
+            navbar.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn'); // Corrected selector
+    const navLinks = document.querySelector('.nav-links'); // Corrected selector
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active'); // Toggle the active class
+    });
     </script>
     <script src="../assets/js/project-cards.js"></script>
 </body>

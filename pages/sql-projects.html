@@ -14,7 +14,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-9VC1JJG0L4');
 </script>
 <body>
@@ -38,14 +37,12 @@
             </ul>
         </div>
     </nav>
-
-    <!-- Your EDA projects content -->
+    <!-- SQL Projects Content -->
     <section class="projects-page sql-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">SQL Projects</h1>
             <p class="header-description">Complex database solutions and analytical queries for data-driven insights</p>
         </div>
-
         <div class="project-grid">
             <!-- SQL Project Card 1 -->
             <div class="project-card" data-modal="sqlModal1">
@@ -54,7 +51,6 @@
                 <p class="project-description">Complex SQL queries for e-commerce data analysis</p>
                 <a href="https://github.com/yourusername/ecommerce-sql-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
-
             <!-- SQL Project Card 2 -->
             <div class="project-card" data-modal="sqlModal2">
                 <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="project-image">
@@ -62,7 +58,6 @@
                 <p class="project-description">Database design for healthcare management system</p>
                 <a href="https://github.com/yourusername/healthcare-db" target="_blank" class="view-code-btn">View Code</a>
             </div>
-
             <!-- SQL Project Card 3 -->
             <div class="project-card" data-modal="sqlModal3">
                 <img src="../assets/images/sql-project3.jpg" alt="SQL Project 3" class="project-image">
@@ -71,7 +66,6 @@
                 <a href="https://github.com/yourusername/financial-etl" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
-
         <!-- SQL Project Modals -->
         <div id="sqlModal1" class="project-modal">
             <div class="modal-content">
@@ -87,7 +81,6 @@
                 <a href="https://github.com/yourusername/ecommerce-sql-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
-
         <div id="sqlModal2" class="project-modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
@@ -102,7 +95,6 @@
                 <a href="https://github.com/yourusername/healthcare-db" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
-
         <div id="sqlModal3" class="project-modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
@@ -118,18 +110,45 @@
             </div>
         </div>
     </section>
-
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-    <script src="../assets/js/script.js"></script>
+    <script type="module" src="../assets/js/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            offset: 100,
-            once: true
-        });
+        AOS.init();
+    </script>
+    <script>
+    // Navigation behavior
+    let lastScrollTop = 0;
+    let scrollTimer = null;
+    const navbar = document.querySelector('.navbar');
+    // Set initial state for non-home pages
+    navbar.classList.add('not-home');
+    // Single scroll handler for navigation
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Clear the existing timer
+        clearTimeout(scrollTimer);
+        // Handle hide/show with delay
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scrolling down - hide navbar after delay
+            scrollTimer = setTimeout(() => {
+                navbar.style.transform = 'translateY(-100%)';
+            }, 300);
+        } else {
+            // Scrolling up - show navbar immediately
+            navbar.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.menu-btn'); // Corrected selector
+    const navLinks = document.querySelector('.nav-links'); // Corrected selector
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active'); // Toggle the active class
+    });
     </script>
     <script src="../assets/js/project-cards.js"></script>
 </body>
