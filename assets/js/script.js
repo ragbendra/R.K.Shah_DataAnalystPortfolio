@@ -29,7 +29,7 @@ const menuLinks = document.querySelectorAll('.nav-links a');
 document.addEventListener('DOMContentLoaded', () => {
     // Check if on home page
     const isHomePage = window.location.pathname === getBasePath() + '/' || 
-                      window.location.pathname === getBasePath() + '/index.html';
+            window.location.pathname === getBasePath() + '/index.html';
     
     // Initial navbar setup
     if (!isHomePage) {

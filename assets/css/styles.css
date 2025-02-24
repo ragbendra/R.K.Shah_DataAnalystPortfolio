@@ -484,7 +484,7 @@ section .dropdown-content {
 
 .detail-item i {
     font-size: 20px;
-    color: #3498db;
+    color: #001f3f;
 }
 
 .detail-item a {
@@ -500,12 +500,12 @@ section .dropdown-content {
 
 .cta-button.secondary {
     background: transparent;
-    border: 2px solid #3498db;
-    color: #3498db;
+    border: 2px solid #152238;
+    color: #152238;
 }
 
 .cta-button.secondary:hover {
-    background: #3498db;
+    background: #152238;
     color: white;
 }
 
@@ -842,9 +842,10 @@ section .dropdown-content {
 
 /* Contact Section Adjustments */
 .contact-content {
-    max-width: 800px;
+    text-align: center;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px 40px; /* Increased left padding */
+    padding: 40px 60px; /* Increased left padding */
 }
 
 .contact-info {
@@ -881,6 +882,7 @@ section .dropdown-content {
     color: #000000;
     transition: background-color 0.3s ease;
     border-radius: 5px;
+    justify-content: center;
 }
 
 /* Change hover effect to background color instead of transform */
@@ -890,14 +892,14 @@ section .dropdown-content {
 
 .contact-link i {
     font-size: 24px;
-    color: #3498db;
+    color: #152238;
     /* Remove transform transition */
     transition: color 0.3s ease;
 }
 
 /* Modify icon hover effect */
 .contact-link:hover i {
-    color: #2980b9;
+    color: #152238;
     transform: none;
 }
 
@@ -928,13 +930,13 @@ section .dropdown-content {
 
 .social-icon i {
     font-size: 24px;
-    color: #3498db;
+    color: #001f3f;
     transition: color 0.3s ease;
 }
 
 .social-icon:hover {
     transform: translateY(-5px);
-    background-color: #3498db;
+    background-color: #001f3f;
 }
 
 .social-icon:hover i {
