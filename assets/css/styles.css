@@ -842,10 +842,9 @@ section .dropdown-content {
 
 /* Contact Section Adjustments */
 .contact-content {
-    text-align: center;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 60px; /* Increased left padding */
+    padding: 20px 40px; /* Increased left padding */
 }
 
 .contact-info {
