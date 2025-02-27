@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raghabendra Kumar Shah - Portfolio</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
@@ -435,7 +435,7 @@
       </div>
     </section>
 
-    <section id="contact" class="contact">
+    <!-- <section id="contact" class="contact">
       <h2 style="font-family: 'Noah Regular', sans-serif; font-size: 28px">
         CONTACT
       </h2>
@@ -506,7 +506,239 @@
           </a>
         </div>
       </div>
+    </section> -->
+    
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <section id="contact" class="contact">
+    <title>Contact Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8e8e8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .contact-heading {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            padding: 8px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .contact-card:hover .icon {
+            transform: rotate(360deg);
+            background-color: #e6f7ff;
+        }
+
+        .contact-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .social-icon {
+            background-color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+            background-color: #0a2342; /* Dark blue background on hover */
+        }
+
+        .social-icon:hover svg {
+            fill: white; /* Change icon color to white on hover */
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .contact-container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+
+            .contact-heading {
+                font-size: 24px;
+            }
+
+            .social-icons {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .contact-card {
+                padding: 15px;
+            }
+
+            .icon {
+                width: 30px;
+                height: 30px;
+                padding: 5px;
+            }
+
+            .contact-text {
+                font-size: 14px;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .social-icons {
+                gap: 10px;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1 class="contact-heading">CONTACT ME</h1>
+        
+        <div class="contact-grid">
+            <a href="mailto:raghabendrashah.1234@gmail.com" class="contact-card">
+                <div class="icon">
+                    <!-- Email Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4285F4">
+                        <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">raghabendrashah.1234@gmail.com</div>
+            </a>
+            
+            <a href="https://linkedin.com/in/raghabendrakumarshah" class="contact-card">
+                <div class="icon">
+                    <!-- LinkedIn Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0077B5">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">LinkedIn Profile</div>
+            </a>
+            
+            <a href="https://github.com/ragbendra" class="contact-card">
+                <div class="icon">
+                    <!-- GitHub Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#181717">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">GitHub Profile</div>
+            </a>
+            
+            <a href="tel:+918434246366" class="contact-card">
+                <div class="icon">
+                    <!-- Phone Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#34A853">
+                        <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/>
+                    </svg>
+                </div>
+                <div class="contact-text">Phone Number</div>
+            </a>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://leetcode.com/raghabendrashah" class="social-icon">
+                <!-- LeetCode Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#FFA116">
+                    <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.111.744 1.715.744 2.121 0 2.968-2.254 1.209-3.993L13.8 2.794C12.094 1.088 9.57.416 7.164.416s-4.904.672-6.61 2.378L.554 2.794C.2 3.147 0 3.613 0 4.12s.2.973.554 1.325l9.427 9.426c.467.468 1.111.702 1.823.702s1.356-.234 1.824-.702l3.586-3.586c1.758-1.758.912-4.023-1.209-4.023-.604 0-1.185.229-1.716.744l-2.586 2.586c-.467.468-1.111.702-1.823.702s-1.357-.234-1.823-.702l-.744-.743c-.467-.468-.702-1.111-.702-1.824s.235-1.356.702-1.823l3.96-3.96C6.93 1.55 8.818 1.247 10.571 1.901c1.38.515 2.606 1.436 3.586 2.777.236.323.748.323.983 0 .983-1.341 2.19-2.262 3.586-2.777 1.753-.654 3.64-.35 5.17 1.119l3.96 3.96c.467.467.702 1.111.702 1.823s-.235 1.356-.702 1.824l-.743.743c-.468.467-1.111.702-1.824.702s-1.356-.235-1.823-.702l-2.586-2.586c-.467-.467-.642-1.13-.619-1.779.076-1.847-2.419-2.709-3.615-1.21z"/>
+                </svg>
+            </a>
+            <a href="https://medium.com/@raghabendra" class="social-icon">
+                <!-- Medium Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000000">
+                    <path d="M0 0v24h24V0H0zm19.938 5.686L18.651 6.92a.376.376 0 0 0-.143.362v9.067a.376.376 0 0 0 .143.361l1.257 1.234v.271h-6.322v-.27l1.302-1.265c.128-.128.128-.165.128-.36V8.99l-3.62 9.195h-.49L6.69 8.99v6.163a.85.85 0 0 0 .233.707l1.694 2.054v.271H3.815v-.27L5.51 15.86a.82.82 0 0 0 .218-.707V8.027a.624.624 0 0 0-.203-.527L4.019 5.686v-.27h4.674l3.613 7.923 3.176-7.924h4.456v.271z"/>
+                </svg>
+            </a>
+            <a href="https://www.kaggle.com/raghabendra" class="social-icon">
+                <!-- Kaggle Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#20BEFF">
+                    <path d="M18.825 23.859c-.022.092-.097.141-.214.141h-3.055c-.118 0-.197-.049-.22-.141l-7.054-12.09v12.08c0 .097-.052.141-.151.141H5.019c-.1 0-.148-.044-.148-.141V.15c0-.097.048-.15.148-.15h3.112c.1 0 .148.053.148.15v12.08l7.054-12.08c.022-.092.102-.15.22-.15h3.055c.116 0 .191.059.214.15.021.09-.021.167-.08.222L11.427 12.02l7.461 11.618c.058.055.097.13.075.221z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
     </section>
+
+    <script>
+        // Add click event to copy email address
+        document.querySelectorAll('.contact-card')[0].addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = 'raghabendrashah.1234@gmail.com';
+            navigator.clipboard.writeText(email)
+                .then(() => {
+                    alert('Email address copied to clipboard!');
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+        });
+    </script>
+
 
     <footer>
       <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
