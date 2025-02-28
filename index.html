@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
@@ -269,40 +269,77 @@
       <h2 style="font-family: 'Noah Regular', sans-serif; font-size: 28px">
         SKILLS
       </h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3 style="font-family: 'Roboto Slab', serif">Machine Learning</h3>
-          <p>
-            Experience in developing and implementing machine learning
-            algorithms for predictive analytics.
-          </p>
-        </div>
-        <div class="skill-card">
-          <h3 style="font-family: 'Roboto Slab', serif">Power BI</h3>
-          <p>
-            Skilled in creating interactive dashboards and reports to visualize
-            data insights effectively.
-          </p>
-        </div>
-        <div class="skill-card">
-          <h3 style="font-family: 'Roboto Slab', serif">Data Analytics</h3>
-          <p>
-            Proficient in analyzing complex datasets to derive actionable
-            insights and support decision-making.
-          </p>
-        </div>
-        <div class="skill-card">
-          <h3 style="font-family: 'Roboto Slab', serif">Model Deployment</h3>
-          <p>
-            Knowledgeable in deploying machine learning models into production
-            environments for real-time predictions.
-          </p>
-        </div>
-        <div class="skill-card">
-          <h3 style="font-family: 'Roboto Slab', serif">SQL</h3>
-          <p>
-            Expertise in performing SQL queries to manipulate and analyze data.
-          </p>
+      <div class="skills-section">
+        <div class="skills-container">
+          <!-- Python Card -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="skill-logo" alt="Python">
+                <h3 class="skill-title">Python</h3>
+              </div>
+              <div class="flip-card-back">
+                <h3 class="skill-title">Python</h3>
+                <p class="skill-description">Proficient in Python programming for data analysis, automation, and application development with libraries like Pandas, NumPy, and Scikit-learn.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Visualizations Card -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/d3js/d3js-original.svg" class="skill-logo" alt="Data Visualization">
+                <h3 class="skill-title">Data Visualizations</h3>
+              </div>
+              <div class="flip-card-back">
+                <h3 class="skill-title">Data Visualizations</h3>
+                <p class="skill-description">Creating insightful visualizations using tools like Matplotlib, Seaborn, and Plotly to communicate complex data stories effectively.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Power BI Card -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" class="skill-logo" alt="Power BI">
+                <h3 class="skill-title">Power BI</h3>
+              </div>
+              <div class="flip-card-back">
+                <h3 class="skill-title">Power BI</h3>
+                <p class="skill-description">Skilled in creating interactive dashboards and reports to visualize data insights effectively for business intelligence needs.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Machine Learning Card -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" class="skill-logo" alt="Machine Learning">
+                <h3 class="skill-title">Machine Learning</h3>
+              </div>
+              <div class="flip-card-back">
+                <h3 class="skill-title">Machine Learning</h3>
+                <p class="skill-description">Experience in developing and implementing machine learning algorithms for predictive analytics and data-driven decision making.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SQL Card -->
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" class="skill-logo" alt="SQL">
+                <h3 class="skill-title">SQL</h3>
+              </div>
+              <div class="flip-card-back">
+                <h3 class="skill-title">SQL</h3>
+                <p class="skill-description">Expertise in performing SQL queries to manipulate and analyze data efficiently across various database systems.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -759,5 +796,171 @@
       AOS.init();
     </script>
     <script src="./assets/js/main.js"></script>
+    <script>
+      // Add click event listeners to all flip cards
+      document.querySelectorAll('.flip-card').forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flipped');
+        });
+      });
+
+      // Add entrance animation when page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.flip-card');
+        cards.forEach((card, index) => {
+          // Apply initial styles for animation
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          
+          // Animate cards with staggered timing
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100 * index);
+        });
+      });
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      body {
+        color: #333;
+        position: relative;
+        background-color: #f8f9fa;
+        overflow-x: hidden;
+      }
+
+      /* Skills section styling */
+      .skills-section {
+        padding: 100px 60px; /* Increased padding for more space */
+        max-width: 1400px; /* Increased max width for a larger section */
+        margin: 0 auto; /* Center the section */
+        position: relative;
+        z-index: 1;
+      }
+
+      .section-title {
+        text-align: center;
+        margin: 60px 0 40px; /* Increased top margin to move the title down */
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-top: 40px; /* Added margin to lower the text */
+      }
+
+      .section-title .divider {
+        width: 60px;
+        height: 4px;
+        background-color: #4f46e5;
+        margin: 10px auto;
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusted min size for cards */
+        gap: 50px; /* Increased gap between cards */
+        margin-top: 40px;
+      }
+
+      /* Flip Card Styles */
+      .flip-card {
+        perspective: 1000px;
+        height: 250px;
+        cursor: pointer;
+        background: transparent;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: translateY(-10px);
+      }
+
+      .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card.flipped:hover .flip-card-inner {
+        transform: rotateY(180deg) translateY(-10px);
+      }
+
+      .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .flip-card-front {
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+      }
+
+      .flip-card-back {
+        background-color: rgba(18, 18, 18, 0.95);
+        color: white;
+        transform: rotateY(180deg);
+        backdrop-filter: blur(5px);
+      }
+
+      .skill-logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .flip-card:hover .skill-logo {
+        transform: scale(1.1);
+      }
+
+      .skill-title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 15px;
+      }
+
+      .skill-description {
+        line-height: 1.6;
+        font-weight: 300;
+        max-width: 90%;
+      }
+
+      @media (max-width: 768px) {
+        .skills-container {
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }
+      }
+
+      @media (max-width: 576px) {
+        .skills-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </body>
 </html>
