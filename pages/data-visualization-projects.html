@@ -6,9 +6,7 @@
     <title>Data Visualization Projects</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css"/>
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/tippy.js@6"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/project-cards.css">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
@@ -19,6 +17,7 @@
   gtag('config', 'G-9VC1JJG0L4');
 </script>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-content">
             <button class="menu-btn">☰</button>
@@ -31,7 +30,7 @@
                     <div class="dropdown-content">
                         <a href="../pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
                         <a href="../pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
-                        <a href="./data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
+                        <a href="../pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
                         <a href="../pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
                     </div>
                 </li>
@@ -39,32 +38,29 @@
             </ul>
         </div>
     </nav>
-    <section class="projects-page viz-projects">
+
+    <!-- Main Content -->
+    <section class="projects-page data-viz-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">Data Visualization Projects</h1>
-            <p class="header-description">Transforming complex data into compelling visual stories</p>
+            <p class="header-description">Transforming complex data into insightful visualizations for better decision-making.</p>
         </div>
+        
+        <!-- Project grid -->
         <div class="project-grid">
             <!-- Data Viz Project Card 1 -->
-            <div class="project-card" data-modal="vizModal1">
+            <div class="project-card" data-category="interactive-visualization" data-modal="vizModal1">
               <img src="../assets/images/viz-project1.jpg" alt="Data Viz Project 1" class="project-image">
-              <h3 class="project-title">Interactive Sales Dashboard</h3>
-              <p class="project-description">Dynamic sales analytics visualization using D3.js</p>
-              <a href="https://github.com/yourusername/sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
+              <h3 class="project-title">Interactive Dashboard</h3>
+              <p class="project-description">An interactive dashboard for visualizing sales performance data using D3.js.</p>
+              <a href="https://github.com/yourusername/interactive-dashboard" target="_blank" class="view-code-btn">View Code</a>
             </div>
             <!-- Data Viz Project Card 2 -->
-            <div class="project-card" data-modal="vizModal2">
+            <div class="project-card" data-category="data-analysis" data-modal="vizModal2">
               <img src="../assets/images/viz-project2.jpg" alt="Data Viz Project 2" class="project-image">
-              <h3 class="project-title">COVID-19 Data Tracker</h3>
-              <p class="project-description">Real-time visualization of COVID-19 statistics</p>
-              <a href="https://github.com/yourusername/covid-tracker" target="_blank" class="view-code-btn">View Code</a>
-            </div>
-            <!-- Data Viz Project Card 3 -->
-            <div class="project-card" data-modal="vizModal3">
-              <img src="../assets/images/viz-project3.jpg" alt="Data Viz Project 3" class="project-image">
-              <h3 class="project-title">Stock Market Trends</h3>
-              <p class="project-description">Interactive tool for visualizing stock market trends with technical indicators and pattern recognition.</p>
-              <a href="https://github.com/yourusername/stock-viz" target="_blank" class="view-code-btn">View Code</a>
+              <h3 class="project-title">COVID-19 Data Visualization</h3>
+              <p class="project-description">Visualizing COVID-19 trends using interactive charts built with Chart.js.</p>
+              <a href="https://github.com/yourusername/covid-visualization" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
         <!-- Data Viz Project Modals -->
@@ -72,85 +68,48 @@
           <div class="modal-content">
             <span class="close-btn">&times;</span>
             <img src="../assets/images/viz-project1.jpg" alt="Data Viz Project 1" class="modal-image">
-            <h3 class="modal-title">Interactive Sales Dashboard</h3>
-            <p class="modal-description">A comprehensive sales analytics dashboard with interactive charts, filters, and real-time updates using D3.js and React.</p>
+            <h3 class="modal-title">Interactive Dashboard</h3>
+            <p class="modal-description">An interactive dashboard designed to visualize sales performance data. Built with D3.js, it allows users to filter and explore data dynamically.</p>
             <div class="tech-tags">
+              <span class="tag">JavaScript</span>
               <span class="tag">D3.js</span>
-              <span class="tag">React</span>
-              <span class="tag">SVG</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Web Development</span>
             </div>
-            <a href="https://github.com/yourusername/sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
+            <div class="modal-actions">
+              <a href="https://github.com/yourusername/interactive-dashboard" target="_blank" class="modal-btn">View Code</a>
+            </div>
           </div>
         </div>
         <div id="vizModal2" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
             <img src="../assets/images/viz-project2.jpg" alt="Data Viz Project 2" class="modal-image">
-            <h3 class="modal-title">COVID-19 Data Tracker</h3>
-            <p class="modal-description">Real-time visualization of COVID-19 statistics with interactive maps and trend analysis.</p>
+            <h3 class="modal-title">COVID-19 Data Visualization</h3>
+            <p class="modal-description">A set of interactive visualizations using Chart.js to show COVID-19 data trends across different countries and regions.</p>
             <div class="tech-tags">
-              <span class="tag">Plotly</span>
-              <span class="tag">Python</span>
-              <span class="tag">GeoJSON</span>
-            </div>
-            <a href="https://github.com/yourusername/covid-tracker" target="_blank" class="view-code-btn">View Code</a>
-          </div>
-        </div>
-        <div id="vizModal3" class="project-modal">
-          <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <img src="../assets/images/viz-project3.jpg" alt="Data Viz Project 3" class="modal-image">
-            <h3 class="modal-title">Stock Market Trends</h3>
-            <p class="modal-description">Interactive tool for visualizing stock market trends with technical indicators and pattern recognition.</p>
-            <div class="tech-tags">
-              <span class="tag">Chart.js</span>
               <span class="tag">JavaScript</span>
-              <span class="tag">API Integration</span>
+              <span class="tag">Chart.js</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">COVID-19</span>
             </div>
-            <a href="https://github.com/yourusername/stock-viz" target="_blank" class="view-code-btn">View Code</a>
+            <div class="modal-actions">
+              <a href="https://github.com/yourusername/covid-visualization" target="_blank" class="modal-btn">View Code</a>
+            </div>
           </div>
         </div>
     </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-    <script type="module" src="../assets/js/script.js"></script>
+
+    <!-- External Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-    <script>
-    // Navigation behavior
-    let lastScrollTop = 0;
-    let scrollTimer = null;
-    const navbar = document.querySelector('.navbar');
-    // Set initial state for non-home pages
-    navbar.classList.add('not-home');
-    // Single scroll handler for navigation
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Clear the existing timer
-        clearTimeout(scrollTimer);
-        // Handle hide/show with delay
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scrolling down - hide navbar after delay
-            scrollTimer = setTimeout(() => {
-                navbar.style.transform = 'translateY(-100%)';
-            }, 300);
-        } else {
-            // Scrolling up - show navbar immediately
-            navbar.style.transform = 'translateY(0)';
-        }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.menu-btn'); // Corrected selector
-    const navLinks = document.querySelector('.nav-links'); // Corrected selector
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active'); // Toggle the active class
-    });
-    </script>
-    <script src="../assets/js/project-cards.js"></script>
+    <script src="../assets/js/project-pages.js"></script>
 </body>
 </html>

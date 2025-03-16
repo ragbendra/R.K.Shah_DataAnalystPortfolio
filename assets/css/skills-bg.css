@@ -1,0 +1,85 @@
+/* Skills Section Background Styles */
+.skills {
+  position: relative;
+  padding-top: 1em;
+  z-index: 2;
+  background-color: #fff; /* Simple white background */
+}
+
+/* Skills section content container */
+.skills-section {
+  position: relative;
+  z-index: 5;
+}
+
+.skills-container {
+  position: relative;
+  z-index: 5;
+}
+
+/* Section title styles to ensure it's selectable */
+.section-title {
+  position: relative;
+  z-index: 10;
+  user-select: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  cursor: text;
+  pointer-events: auto;
+  color: #000;
+}
+
+/* Loading state styles - simplified */
+.skills.loading .flip-card {
+  opacity: 1;
+  transform: none !important;
+}
+
+/* Remove loading overlay */
+.skills.loading::after {
+  display: none;
+}
+
+/* Ensure flip cards are visible even without JS */
+.flip-card {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Remove all background animations */
+.skills::before {
+  display: none;
+}
+
+.graph-bg, .wave-bg, .graph-line, .graph-dot, .data-point {
+  display: none;
+}
+
+/* Simplified flip card styles without animations */
+.flip-card {
+  position: relative;
+  z-index: 1;
+  transition: none;
+}
+
+.flip-card:hover {
+  transform: none;
+}
+
+/* Remove AOS animations */
+[data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Ensure particles don't interfere with skills section */
+#particles-js {
+  pointer-events: auto !important;
+}
+
+#particles-js ~ div {
+  position: relative;
+  z-index: 1;
+} 

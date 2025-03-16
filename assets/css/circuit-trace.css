@@ -1,0 +1,193 @@
+/* Circuit Trace Animation Styles */
+.about-text {
+  position: relative;
+}
+
+/* Reset all styles for about-description */
+.about-text .about-description {
+  font-weight: normal;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  opacity: 1;
+  position: static;
+  line-height: 1.6;
+  color: #000000;
+  padding: 0;
+  animation: none;
+  text-shadow: none;
+  background: none;
+  transform: none;
+  transition: none;
+}
+
+/* Remove all animations and special effects */
+.about-text .about-description::before,
+.about-text .about-description::after,
+.about-text .about-description > *::before,
+.about-text .about-description > *::after {
+  display: none;
+  content: none;
+  animation: none;
+}
+
+/* Main circuit trace line */
+.about-text .about-description .circuit-line {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, transparent, #1A1A1A 50%, transparent) !important; /* Dark circuit line */
+  opacity: 0 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+/* Split ends for circuit trace - left side */
+.about-text .about-description::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: -10px !important;
+  width: 15px !important;
+  height: 1px !important;
+  background: #1A1A1A !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+/* Split ends for circuit trace - right side */
+.about-text .about-description > span::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: -10px !important;
+  width: 15px !important;
+  height: 1px !important;
+  background: #1A1A1A !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+/* Vertical split lines - left */
+.about-text .about-description .left-split {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: -10px !important;
+  width: 1px !important;
+  height: 10px !important;
+  background: #1A1A1A !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+/* Vertical split lines - right */
+.about-text .about-description .right-split {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  right: -10px !important;
+  width: 1px !important;
+  height: 10px !important;
+  background: #1A1A1A !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+/* Text reveal animation */
+@keyframes traceText {
+  0% { opacity: 0; transform: translateX(-10px); filter: blur(2px); }
+  50% { opacity: 0.7; transform: translateX(0); filter: blur(0); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Circuit trace animation */
+@keyframes circuitTrace {
+  0% { opacity: 1; transform: scaleX(0); }
+  50% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(1); }
+}
+
+/* Split ends animation */
+@keyframes splitEnds {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Staggered animation for paragraphs */
+.about-text .about-description.animate { animation: traceText 1s ease-in-out forwards !important; }
+.about-text .about-description:nth-of-type(1).animate { animation-delay: 0s !important; }
+.about-text .about-description:nth-of-type(2).animate { animation-delay: 0.3s !important; }
+.about-text .about-description:nth-of-type(3).animate { animation-delay: 0.6s !important; }
+
+.about-text .about-description.animate .circuit-line {
+  animation: circuitTrace 1s ease-in-out forwards !important;
+}
+
+.about-text .about-description.animate::after,
+.about-text .about-description.animate > span::after,
+.about-text .about-description.animate .left-split,
+.about-text .about-description.animate .right-split {
+  animation: splitEnds 1s ease-in-out forwards !important;
+}
+
+/* Subtle grid background - ADJUSTED to be moderately pronounced and limited to text area only */
+.about-text::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: calc(100% - 100px) !important; /* Exclude the button area with more space */
+  background: linear-gradient(90deg, rgba(26, 26, 26, 0.1) 1px, transparent 1px),
+              linear-gradient(rgba(26, 26, 26, 0.1) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  opacity: 0.5 !important; /* Adjusted from 0.7 to 0.5 */
+  z-index: -1 !important;
+  pointer-events: none !important; /* Ensure it doesn't interfere with clicks */
+}
+
+/* Optional: Add faint glow to text during animation */
+.about-text .about-description.animate {
+  transition: text-shadow 0.5s ease-out !important;
+}
+.about-text .about-description.animate.active {
+  text-shadow: 0 0 5px rgba(26, 26, 26, 0.5) !important;
+}
+
+/* Override any text-particle canvas styles */
+.about-text .about-description .text-particle-canvas {
+  display: none !important;
+}
+
+/* Ensure the text becomes visible when animated */
+.about-text .about-description.animate {
+  opacity: 1 !important;
+}
+
+/* Make sure the about-cta section is not affected by the grid background */
+.about-cta {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  margin-top: 20px;
+}
+
+/* Ensure buttons are not affected by the grid */
+.about-cta .cta-button {
+  position: relative;
+  z-index: 3;
+} 

@@ -17,6 +17,7 @@
   gtag('config', 'G-9VC1JJG0L4');
 </script>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-content">
             <button class="menu-btn">☰</button>
@@ -28,7 +29,7 @@
                     <a href="#" class="nav-link">Portfolio <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="../pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
-                        <a href="./sql-projects.html" class="dropdown-link">SQL Projects</a>
+                        <a href="../pages/sql-projects.html" class="dropdown-link active">SQL Projects</a>
                         <a href="../pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
                         <a href="../pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
                     </div>
@@ -37,119 +38,78 @@
             </ul>
         </div>
     </nav>
-    <!-- SQL Projects Content -->
+
+    <!-- Main Content -->
     <section class="projects-page sql-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">SQL Projects</h1>
-            <p class="header-description">Complex database solutions and analytical queries for data-driven insights</p>
+            <p class="header-description">Querying and analyzing data with precision using SQL</p>
         </div>
+        
+        <!-- Project grid -->
         <div class="project-grid">
             <!-- SQL Project Card 1 -->
-            <div class="project-card" data-modal="sqlModal1">
-                <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="project-image">
-                <h3 class="project-title">E-commerce Database Analysis</h3>
-                <p class="project-description">Complex SQL queries for e-commerce data analysis</p>
-                <a href="https://github.com/yourusername/ecommerce-sql-analysis" target="_blank" class="view-code-btn">View Code</a>
+            <div class="project-card" data-category="sql" data-modal="sqlModal1">
+              <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="project-image">
+              <h3 class="project-title">Sales Data Analysis</h3>
+              <p class="project-description">SQL queries to analyze sales performance and trends.</p>
+              <a href="https://github.com/yourusername/sales-data-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
             <!-- SQL Project Card 2 -->
-            <div class="project-card" data-modal="sqlModal2">
-                <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="project-image">
-                <h3 class="project-title">Healthcare Data Modeling</h3>
-                <p class="project-description">Database design for healthcare management system</p>
-                <a href="https://github.com/yourusername/healthcare-db" target="_blank" class="view-code-btn">View Code</a>
-            </div>
-            <!-- SQL Project Card 3 -->
-            <div class="project-card" data-modal="sqlModal3">
-                <img src="../assets/images/sql-project3.jpg" alt="SQL Project 3" class="project-image">
-                <h3 class="project-title">Financial Data ETL</h3>
-                <p class="project-description">ETL pipeline for financial data processing</p>
-                <a href="https://github.com/yourusername/financial-etl" target="_blank" class="view-code-btn">View Code</a>
+            <div class="project-card" data-category="sql" data-modal="sqlModal2">
+              <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="project-image">
+              <h3 class="project-title">Customer Churn Prediction</h3>
+              <p class="project-description">SQL-based analysis to identify factors contributing to customer churn.</p>
+              <a href="https://github.com/yourusername/customer-churn-prediction" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
         <!-- SQL Project Modals -->
         <div id="sqlModal1" class="project-modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="modal-image">
-                <h3 class="modal-title">E-commerce Database Analysis</h3>
-                <p class="modal-description">Advanced SQL analysis of e-commerce data including customer behavior, sales patterns, and inventory management. Features complex joins, window functions, and CTEs.</p>
-                <div class="tech-tags">
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">Data Analysis</span>
-                    <span class="tag">E-commerce</span>
-                </div>
-                <a href="https://github.com/yourusername/ecommerce-sql-analysis" target="_blank" class="view-code-btn">View Code</a>
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="modal-image">
+            <h3 class="modal-title">Sales Data Analysis</h3>
+            <p class="modal-description">A series of SQL queries designed to extract insights from sales data, including revenue growth, product performance, and regional trends.</p>
+            <div class="tech-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Data Analysis</span>
+              <span class="tag">Queries</span>
+              <span class="tag">Database</span>
             </div>
+            <div class="modal-actions">
+              <a href="https://github.com/yourusername/sales-data-analysis" target="_blank" class="modal-btn">View Code</a>
+            </div>
+          </div>
         </div>
         <div id="sqlModal2" class="project-modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="modal-image">
-                <h3 class="modal-title">Healthcare Data Modeling</h3>
-                <p class="modal-description">Comprehensive database design for healthcare management system including patient records, appointments, and medical history tracking.</p>
-                <div class="tech-tags">
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Database Design</span>
-                    <span class="tag">Healthcare</span>
-                </div>
-                <a href="https://github.com/yourusername/healthcare-db" target="_blank" class="view-code-btn">View Code</a>
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="modal-image">
+            <h3 class="modal-title">Customer Churn Prediction</h3>
+            <p class="modal-description">An SQL-based project to analyze customer behavior and identify patterns leading to churn, enabling proactive retention strategies.</p>
+            <div class="tech-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">Churn Analysis</span>
+              <span class="tag">Data Insights</span>
+              <span class="tag">Customer Behavior</span>
             </div>
-        </div>
-        <div id="sqlModal3" class="project-modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <img src="../assets/images/sql-project3.jpg" alt="SQL Project 3" class="modal-image">
-                <h3 class="modal-title">Financial Data ETL</h3>
-                <p class="modal-description">ETL pipeline for processing financial data, including data cleaning, transformation, and loading into a data warehouse.</p>
-                <div class="tech-tags">
-                    <span class="tag">SQL Server</span>
-                    <span class="tag">ETL</span>
-                    <span class="tag">Finance</span>
-                </div>
-                <a href="https://github.com/yourusername/financial-etl" target="_blank" class="view-code-btn">View Code</a>
+            <div class="modal-actions">
+              <a href="https://github.com/yourusername/customer-churn-prediction" target="_blank" class="modal-btn">View Code</a>
             </div>
+          </div>
         </div>
     </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-    <script type="module" src="../assets/js/script.js"></script>
+
+    <!-- External Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-    <script>
-    // Navigation behavior
-    let lastScrollTop = 0;
-    let scrollTimer = null;
-    const navbar = document.querySelector('.navbar');
-    // Set initial state for non-home pages
-    navbar.classList.add('not-home');
-    // Single scroll handler for navigation
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        
-        // Clear the existing timer
-        clearTimeout(scrollTimer);
-        // Handle hide/show with delay
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-            // Scrolling down - hide navbar after delay
-            scrollTimer = setTimeout(() => {
-                navbar.style.transform = 'translateY(-100%)';
-            }, 300);
-        } else {
-            // Scrolling up - show navbar immediately
-            navbar.style.transform = 'translateY(0)';
-        }
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-    });
-    // Mobile menu toggle
-    const menuBtn = document.querySelector('.menu-btn'); // Corrected selector
-    const navLinks = document.querySelector('.nav-links'); // Corrected selector
-    menuBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('active'); // Toggle the active class
-    });
-    </script>
-    <script src="../assets/js/project-cards.js"></script>
+    <script src="../assets/js/project-pages.js"></script>
 </body>
 </html>

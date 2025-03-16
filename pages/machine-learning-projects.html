@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Machine Learning Projects</title>
-    <link rel="stylesheet" href="../assets/css/styles.css?v=1.0.1">
+    <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/project-cards.css?v=1.0.1">
+    <link rel="stylesheet" href="../assets/css/project-cards.css">
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
 <script>
@@ -45,16 +45,18 @@
             <h1 style="font-family: 'Noah Regular', sans-serif;">Machine Learning Projects</h1>
             <p class="header-description">Exploring data patterns through advanced algorithms and predictive modeling</p>
         </div>
+        
+        <!-- Project grid -->
         <div class="project-grid">
             <!-- ML Project Card 1 -->
-            <div class="project-card" data-modal="mlModal1">
+            <div class="project-card" data-category="classification" data-modal="mlModal1">
               <img src="../assets/images/ml-project1.jpg" alt="ML Project 1" class="project-image">
               <h3 class="project-title">Sentiment Analysis Model</h3>
               <p class="project-description">NLP model for sentiment analysis using BERT.</p>
               <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
             <!-- ML Project Card 2 -->
-            <div class="project-card" data-modal="mlModal2">
+            <div class="project-card" data-category="classification" data-modal="mlModal2">
               <img src="../assets/images/ml-project2.jpg" alt="ML Project 2" class="project-image">
               <h3 class="project-title">Image Classification CNN</h3>
               <p class="project-description">Deep learning model for image classification.</p>
@@ -70,11 +72,13 @@
             <p class="modal-description">A comprehensive sentiment analysis model built using BERT. This project analyzes customer feedback and social media comments to determine sentiment polarity.</p>
             <div class="tech-tags">
               <span class="tag">Python</span>
-              <span class="tag">BERT</span>
               <span class="tag">NLP</span>
-              <span class="tag">PyTorch</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Text Analysis</span>
             </div>
-            <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
+            <div class="modal-actions">
+              <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="modal-btn">View Code</a>
+            </div>
           </div>
         </div>
         <div id="mlModal2" class="project-modal">
@@ -85,11 +89,13 @@
             <p class="modal-description">A convolutional neural network for image classification trained on custom dataset. Achieves high accuracy in categorizing different object classes.</p>
             <div class="tech-tags">
               <span class="tag">Python</span>
-              <span class="tag">CNN</span>
-              <span class="tag">TensorFlow</span>
+              <span class="tag">Computer Vision</span>
               <span class="tag">Deep Learning</span>
+              <span class="tag">CNN</span>
             </div>
-            <a href="https://github.com/yourusername/image-classification" target="_blank" class="view-code-btn">View Code</a>
+            <div class="modal-actions">
+              <a href="https://github.com/yourusername/image-classification" target="_blank" class="modal-btn">View Code</a>
+            </div>
           </div>
         </div>
     </section>
@@ -100,61 +106,10 @@
     </footer>
 
     <!-- External Scripts -->
-    <script type="module" src="../assets/js/script.js?v=1.0.1"></script>
-    <script src="../assets/js/project-cards.js?v=1.0.1"></script>
-
-    <!-- Main JavaScript -->
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Navigation behavior
-        let lastScrollTop = 0;
-        let scrollTimer = null;
-        const navbar = document.querySelector('.navbar');
-
-        // Set initial state for non-home pages
-        navbar.classList.add('not-home');
-
-        // Single scroll handler for navigation
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            // Clear the existing timer
-            clearTimeout(scrollTimer);
-
-            // Handle hide/show with delay
-            if (currentScroll > lastScrollTop && currentScroll > 100) {
-                // Scrolling down - hide navbar after delay
-                scrollTimer = setTimeout(() => {
-                    navbar.style.transform = 'translateY(-100%)';
-                }, 300);
-            } else {
-                // Scrolling up - show navbar immediately
-                navbar.style.transform = 'translateY(0)';
-            }
-
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        });
-
-        // Mobile menu toggle using event delegation
-        document.addEventListener('click', (event) => {
-            if (event.target.matches('.menu-btn')) {
-                console.log('Menu button clicked!');
-                const navLinks = document.querySelector('.nav-links');
-                if (navLinks) {
-                    navLinks.classList.toggle('active'); // Toggle the active class
-                    console.log('Nav links toggled:', navLinks.classList.contains('active'));
-                } else {
-                    console.error('Navigation links not found!');
-                }
-            }
-        });
-    });
-    </script>
-
-    <!-- AOS Initialization -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
+    <script src="../assets/js/project-pages.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@ body, nav, .nav-links a {
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
 }
 
 body {
@@ -23,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Light Mode Styles */
@@ -41,14 +43,14 @@ body, .nav-content, .dropdown-content {
 /* Navigation */
 .navbar {
     position: fixed;
-    top: 0;
+    top: 0 !important; /* Force navbar to stay at top */
     left: 0;
     width: 100%;
     z-index: 1000;
     background-color: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     padding: 0.6rem 0;
-    transform: translateY(0) !important;
+    transform: translateY(0) !important; /* Force navbar to remain visible */
     font-family: 'Montserrat', Arial, sans-serif;
 }
 
@@ -407,7 +409,7 @@ section .dropdown-content {
     height: 100%;
     max-height: 250px;
     display: block;
-    margin: 0 auto;
+    /* margin: auto; */
 }
 
 /* Personal Info Section */
@@ -445,14 +447,23 @@ section .dropdown-content {
     padding: 20px;
 }
 
-.about h2, .skills h2, .projects h2 {
+.skills h2{
     font-size: 36px;
-    margin-bottom: 50px;
+    margin-top: 500px;
     color: #000000;
     text-align: center;
     font-weight: 700;
     letter-spacing: -0.5px;
 }
+
+/* .about h2, .skills h2, .projects h2 {
+    font-size: 36px;
+    margin-top: 500px;
+    color: #000000;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+} */
 
 .about-text h3 {
     font-size: 28px;
@@ -463,17 +474,21 @@ section .dropdown-content {
 
 .about-description {
     font-size: 16px;
-    line-height: 1.8;
-    color: #000000;
-    margin-bottom: 30px;
-    font-weight: 400;
+    /* Remove any animation or special styling */
+    animation: none;
+    transition: none;
+    transform: none;
+    opacity: 1;
+    position: static;
+    background: none;
+    text-shadow: none;
 }
 
 .about-details {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    margin: 30px 0;
+    margin: 90px;
 }
 
 .detail-item {
@@ -561,56 +576,91 @@ section .dropdown-content {
     margin-bottom: 30px;
 }
 
-.filter-buttons {
+.filter-container {
     display: flex;
     justify-content: center;
-    gap: 15px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
-    padding: 15px 40px;
-    font-size: 18px;
-    color: #000000;
-    background-color: transparent;
-    border: 2px solid #000000;
-    border-radius: 30px;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1rem;
     cursor: pointer;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    position: relative;
     transition: all 0.3s ease;
+    text-decoration: none;
+    border-radius: 20px; /* Added rounded edges */
 }
 
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.filter-btn:hover,
 .filter-btn.active {
-    background-color: #000000;
-    color: #ffffff !important;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+    border-radius: 20px; /* Ensure rounded edges on hover/active */
 }
 
-/* Remove any possible inherited underlines */
-.filter-btn::after,
-.filter-btn::before {
-    display: none;
+.filter-btn:hover::after,
+.filter-btn.active::after {
+    transform: scaleX(0); /* Remove underline on hover and active */
 }
 
-@media (max-width: 768px) {
-    .filter-buttons {
-        flex-wrap: wrap;
-        gap: 10px;
+/* Project card visibility classes */
+.project-card {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.project-card.hide {
+    opacity: 0;
+    transform: scale(0.8);
+    height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.project-card.show {
+    opacity: 1;
+    transform: scale(1);
+    height: auto;
+}
+
+/* Animation for filtered cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    .filter-btn {
-        padding: 12px 30px;
-        font-size: 16px;
-        font-weight: 500;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0;
+    gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .project-card {
@@ -621,12 +671,8 @@ section .dropdown-content {
     transform: scale(1);
     transition: opacity 0.5s ease, transform 0.5s ease;
     cursor: pointer;
-}
-
-.project-card.hide {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project-image {
@@ -644,6 +690,7 @@ section .dropdown-content {
     padding: 20px;
     background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     color: #fff;
+    z-index: 2;
 }
 
 .project-preview h3 {
@@ -665,7 +712,8 @@ section .dropdown-content {
     opacity: 0;
     transition: all 0.3s ease;
     pointer-events: none;
-    padding: 30px;
+    padding: 20px;
+    z-index: 3;
 }
 
 .project-card:hover .project-overlay {
@@ -691,6 +739,7 @@ section .dropdown-content {
     line-height: 1.6;
     text-align: center;
     margin-bottom: 20px;
+    padding: 0 10px;
 }
 
 .project-tech {
@@ -698,6 +747,7 @@ section .dropdown-content {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    padding: 0 10px;
 }
 
 .tech-tag {
@@ -709,28 +759,89 @@ section .dropdown-content {
     backdrop-filter: blur(5px);
 }
 
+/* Responsive adjustments for project cards */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .project-title {
+        font-size: 1.4rem;
+    }
+    
+    .project-description {
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     .projects {
-        padding: 80px 20px;
+        padding: 60px 15px;
     }
     
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     
-    .projects-header h2 {
-        font-size: 2rem;
+    .project-card {
+        aspect-ratio: 16/10;
+        width: 100%;
+        max-width: 100%;
     }
-
-    .filter-buttons {
-        flex-wrap: wrap;
-        gap: 10px;
+    
+    .project-overlay {
+        padding: 15px;
+        width: 100%;
     }
+    
+    .project-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+    
+    .project-description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+    
+    .tech-tag {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+    }
+}
 
-    .filter-btn {
-        padding: 12px 30px;
-        font-size: 16px;
-        font-weight: 500;
+@media (max-width: 480px) {
+    .project-card {
+        aspect-ratio: 16/12;
+    }
+    
+    .project-overlay {
+        padding: 10px;
+    }
+    
+    .project-title {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .project-description {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+        line-height: 1.4;
+    }
+    
+    .project-tech {
+        gap: 6px;
+    }
+    
+    .tech-tag {
+        padding: 4px 10px;
+        font-size: 0.75rem;
     }
 }
 
@@ -841,32 +952,47 @@ section .dropdown-content {
 }
 
 /* Contact Section Adjustments */
+#contact {
+    background-color: #dcdcdc;
+    position: relative;
+    z-index: 1;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
 .contact-content {
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 60px; /* Increased left padding */
 }
+
 .contact-info {
     display: grid;
     gap: 20px;
     margin-bottom: 40px;
 }
+
 .contact-item {
     background: white;
     border-radius: 10px;
     padding: 20px;
     transition: transform 0.3s ease;
 }
+
 /* Remove hover transform from contact-item */
 .contact-item:hover {
     transform: none;
 }
+
 .contact-item h2 {
     margin-left: 20px;
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
 }
+
 .contact-link {
     display: flex;
     align-items: center;
@@ -877,31 +1003,37 @@ section .dropdown-content {
     transition: background-color 0.3s ease;
     border-radius: 5px;
 }
+
 /* Change hover effect to background color instead of transform */
 .contact-link:hover {
     background-color: rgba(0, 0, 0, 0.03);
 }
+
 .contact-link i {
     font-size: 24px;
     color: #152238;
     /* Remove transform transition */
     transition: color 0.3s ease;
 }
+
 /* Modify icon hover effect */
 .contact-link:hover i {
     color: #152238;
     transform: none;
 }
+
 .contact-link p {
     margin: 0;
     font-size: 16px;
 }
+
 .social-links {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 30px;
 }
+
 .social-icon {
     display: flex;
     align-items: center;
@@ -914,38 +1046,21 @@ section .dropdown-content {
     text-decoration: none;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
+
 .social-icon i {
     font-size: 24px;
     color: #001f3f;
     transition: color 0.3s ease;
 }
+
 .social-icon:hover {
     transform: translateY(-5px);
     background-color: #001f3f;
 }
+
 .social-icon:hover i {
     color: white;
 }
-/* Responsive design for contact section */
-@media (max-width: 768px) {
-    .contact-content {
-        padding: 0 10px;
-    }
-    
-    .social-links {
-        gap: 15px;
-    }
-    
-    .social-icon {
-        width: 45px;
-        height: 45px;
-    }
-    
-    .social-icon i {
-        font-size: 20px;
-    }
-}
-
 
 /* Responsive design for contact section */
 @media (max-width: 768px) {
@@ -964,446 +1079,13 @@ section .dropdown-content {
     
     .social-icon i {
         font-size: 20px;
-    }
-}
-
-/* Service Pages */
-.service-page {
-    padding-top: 120px;
-    min-height: calc(100vh - 60px);
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-}
-
-.service-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-.service-content h1 {
-    font-size: 36px;
-    color: #000000;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.service-description {
-    background: white;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: none;
-}
-
-.service-description h2 {
-    font-size: 24px;
-    color: #3498db;
-    margin-bottom: 20px;
-}
-
-.service-description p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.service-description ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.service-description ul li {
-    padding: 10px 0;
-    padding-left: 25px;
-    position: relative;
-}
-
-.service-description ul li:before {
-    content: '✓';
-    color: #3498db;
-    position: absolute;
-    left: 0;
-}
-
-.service-cta {
-    text-align: center;
-    margin-top: 30px;
-}
-
-@media (max-width: 768px) {
-    .service-content {
-        padding: 20px;
-    }
-    
-    .service-description {
-        padding: 20px;
-    }
-}
-
-/* Portfolio Section Styles */
-.portfolio {
-    padding: 80px 20px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-}
-
-.portfolio-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.portfolio-header h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-.portfolio-filters {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-}
-
-.filter-btn {
-    padding: 15px 40px;
-    font-size: 18px;
-    color: #000000;
-    background-color: transparent;
-    border: 2px solid #000000;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active {
-    background-color: #000000;
-    color: #ffffff !important;
-}
-
-/* Remove any possible inherited underlines */
-.filter-btn::after,
-.filter-btn::before {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .filter-buttons {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .filter-btn {
-        padding: 6px 15px;
-        font-size: 0.8rem;
-    }
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.portfolio-item {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
-}
-
-.portfolio-image-wrapper {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 16/9;
-}
-
-.portfolio-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    text-align: center;
-}
-
-.portfolio-overlay h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
-}
-
-.portfolio-overlay p {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.project-link {
-    padding: 8px 20px;
-    background: #ffffff;
-    color: #1a1a1a;
-    text-decoration: none;
-    border-radius: 25px;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.portfolio-item:hover .portfolio-image-wrapper img {
-    transform: scale(1.1);
-}
-
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-item:hover .portfolio-overlay h3,
-.portfolio-item:hover .portfolio-overlay p,
-.portfolio-item:hover .portfolio-overlay .project-link {
-    transform: translateY(0);
-}
-
-.project-link:hover {
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(0) scale(1.05);
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-    }
-
-    .portfolio-header h2 {
-        font-size: 2rem;
-    }
-
-    .filter-btn {
-        padding: 6px 15px;
-        font-size: 0.8rem;
-    }
-}
-
-/* Project Detail Page Styles */
-.project-detail {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: #ffffff;
-    background-color: #1a1a1a;
-    min-height: 100vh;
-}
-
-.project-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.project-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.project-category {
-    color: #888;
-    font-size: 1.1rem;
-}
-
-.project-content {
-    position: relative;
-    display: grid;
-    gap: 40px;
-}
-
-.project-image {
-    width: 100%;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.full-width-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.project-description {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 15px;
-}
-
-.project-description h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.project-description p {
-    margin-bottom: 25px;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.project-description ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.project-description li {
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.project-description li:before {
-    content: "•";
-    color: #4a90e2;
-    position: absolute;
-    left: 0;
-}
-
-.visualization-container {
-    margin-top: 40px;
-}
-
-.visualization-frame {
-    width: 100%;
-    height: 600px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.visualization-frame iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.back-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.back-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-5px);
-}
-
-/* Responsive Design for Project Detail */
-@media screen and (max-width: 768px) {
-    .project-header h1 {
-        font-size: 2rem;
-    }
-
-    .project-description {
-        padding: 20px;
-    }
-
-    .visualization-frame {
-        height: 400px;
-    }
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: auto;
-    background-color: #f8f9fa;
-    color: #000000;
-}
-
-footer .social-links {
-    margin-bottom: 30px;
-}
-
-footer .copyright {
-    position: relative;
-    font-size: 14px;
-    color: #000000;
-}
-
-footer p {
-    margin-top: 10px;
-    color: #000000;
-    font-size: 14px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-items {
-        display: none;
-    }
-    
-    .hero-content h1 {
-        font-size: 36px;
-    }
-    
-    .hero-content p {
-        font-size: 20px;
-    }
-    
-    .about h2, .skills h2, .projects h2 {
-        font-size: 30px;
-    }
-    
-    .about-text h3 {
-        font-size: 24px;
-    }
-    
-    .about-description {
-        font-size: 16px;
     }
 }
 
 /* Different Backgrounds for Each Section */
 #about {
     padding: 80px 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: #ffffff;
 }
 
 #about h2 {
@@ -1411,15 +1093,15 @@ footer p {
 }
 
 #skills {
-    background-color: rgba(240, 240, 240, 0.8);
+    background-color: #f0f0f0;
 }
 
 #projects {
-    background-color: rgba(230, 230, 230, 0.8);
+    background-color: #e6e6e6;
 }
 
 #contact {
-    background-color: rgba(220, 220, 220, 0.8);
+    background-color: #dcdcdc;
 }
 
 /* Dynamic Background Animation */
@@ -1430,11 +1112,13 @@ footer p {
 
 /* Ensure particles.js is visible */
 #particles-js {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: #ffffff;
     z-index: -1;
+    top: 0;
+    left: 0;
 }
 
 /* Visualization Grid Styles */
@@ -1580,7 +1264,8 @@ footer p {
     cursor: pointer;
     padding: 0.5rem 1rem;
     position: relative;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .filter-btn::after {
@@ -1597,12 +1282,14 @@ footer p {
 
 .filter-btn:hover,
 .filter-btn.active {
-    color: #000;
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
 }
 
 .filter-btn:hover::after,
 .filter-btn.active::after {
-    transform: scaleX(1);
+    transform: scaleX(0); /* Remove underline on hover and active */
 }
 
 /* Project Items */
@@ -1827,8 +1514,6 @@ footer p {
     display: flex;
     justify-content: space-around;
     color: white;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
 }
 
 .project-card:hover .db-stats {
@@ -2409,4 +2094,236 @@ footer p {
     border-radius: 5px;
     text-align: center;
     display: block;
+}
+
+/* Skills section styling - moved from index.html */
+.skills-section {
+    padding: 40px 60px; /* Added top padding to create space */
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    text-align: center;
+    margin: 30px 0 40px; /* Reduced top margin */
+    padding-top: 20px; /* Added padding instead of large margin */
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 0; /* Removed top margin that was pushing heading down */
+    position: relative; /* For better positioning control */
+}
+
+.section-title .divider {
+    width: 60px;
+    height: 4px;
+    background-color: #4f46e5;
+    margin: 10px auto;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 50px;
+    margin-top: 20px; /* Reduced top margin */
+}
+
+/* Flip Card Styles - Optimized for performance */
+.flip-card {
+    perspective: 1000px;
+    height: 250px;
+    cursor: pointer;
+    background: transparent;
+    transform-style: preserve-3d;
+    will-change: transform;
+    margin-bottom: 20px;
+    contain: layout style; /* Improve performance with CSS containment */
+}
+
+/* Add a container for better 3D rendering */
+.skills-container .flip-card {
+    background-color: transparent;
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    box-shadow: none;
+    will-change: transform;
+    contain: layout style; /* Improve performance with CSS containment */
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: translateY(-10px);
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card.flipped:hover .flip-card-inner {
+    transform: rotateY(180deg) translateY(-10px);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+    contain: content; /* Improve performance with CSS containment */
+}
+
+.flip-card-front {
+    background-color: #ffffff;
+    z-index: 2; /* Ensure front is above back when not flipped */
+}
+
+.flip-card-back {
+    background-color: #121212;
+    color: white;
+    transform: rotateY(180deg);
+    z-index: 1; /* Ensure back is below front when not flipped */
+}
+
+.skill-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.flip-card:hover .skill-logo {
+    transform: scale(1.1);
+}
+
+.skill-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.skill-description {
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 90%;
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px; /* Reduced gap for better fit */
+    }
+    
+    .flip-card {
+        height: 220px;
+        margin-bottom: 15px; /* Ensure proper spacing between cards */
+    }
+    
+    /* Ensure text is readable on smaller screens */
+    .skill-title {
+        font-size: 1.3rem;
+    }
+    
+    .skill-description {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .flip-card {
+        height: 200px; /* Slightly smaller height for very small screens */
+    }
+}
+
+/* Lazy loading image placeholder */
+img[src*="placeholder.jpg"] {
+    background-color: #f0f0f0;
+    min-height: 100px;
+    position: relative;
+}
+
+img[src*="placeholder.jpg"]::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+/* Fade in animation for lazy-loaded images */
+@keyframes imgFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+img.lazy-loaded {
+    animation: imgFadeIn 0.5s ease-in;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px 0;
+    background-color: #24292e;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin-top: auto; /* This pushes the footer to the bottom */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 0;
+    }
+    
+    footer p {
+        font-size: 12px;
+    }
+}
+
+.data-viz-projects {
+    min-height: calc(100vh - 150px); /* Subtract header and footer height */
+    padding-bottom: 50px; /* Add padding at the bottom to create space before footer */
 }
