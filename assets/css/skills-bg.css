@@ -2,19 +2,29 @@
 .skills {
   position: relative;
   padding-top: 1em;
+  padding-bottom: 3em;
   z-index: 2;
-  background-color: #fff; /* Simple white background */
+  background-color: transparent; /* Transparent background to let the marble bg show through */
+  position: relative;
 }
 
 /* Skills section content container */
 .skills-section {
   position: relative;
   z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em 20px;
 }
 
 .skills-container {
   position: relative;
   z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 2em;
 }
 
 /* Section title styles to ensure it's selectable */
@@ -28,6 +38,12 @@
   cursor: text;
   pointer-events: auto;
   color: #000;
+  text-align: center;
+  margin-bottom: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 /* Loading state styles - simplified */
@@ -56,15 +72,77 @@
   display: none;
 }
 
-/* Simplified flip card styles without animations */
+/* Enhanced flip card styles with animations */
 .flip-card {
   position: relative;
-  z-index: 1;
-  transition: none;
+  z-index: 5;
+  width: 280px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .flip-card:hover {
-  transform: none;
+  transform: translateY(-10px);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.flip-card-front {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.flip-card-back {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.skill-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+.skill-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.skill-description {
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /* Remove AOS animations */

@@ -16,7 +16,7 @@
     
     <!-- Defer non-critical CSS -->
     <link rel="stylesheet" href="./assets/css/circuit-trace.css" media="print" onload="this.media='all'" />
-    <link rel="stylesheet" href="./assets/css/skills-bg.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="./assets/css/skills-bg.css?v=1.1" media="print" onload="this.media='all'" />
     
     <!-- Font Awesome with reduced subset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'" />
@@ -41,7 +41,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
       <link rel="stylesheet" href="./assets/css/circuit-trace.css" />
-      <link rel="stylesheet" href="./assets/css/skills-bg.css" />
+      <link rel="stylesheet" href="./assets/css/skills-bg.css?v=1.1" />
     </noscript>
     
     <!-- Google Analytics - async loading -->
@@ -57,6 +57,47 @@
     <script defer src="https://unpkg.com/@popperjs/core@2"></script>
     <script defer src="https://unpkg.com/tippy.js@6"></script>
     <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css" media="print" onload="this.media='all'" />
+    
+    <!-- Custom styles for marble background in skills section -->
+    <style>
+      #skills {
+        background: none !important;
+        position: relative !important;
+        padding-bottom: 3em !important;
+      }
+      
+      #skills-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('./assets/images/marble.jpg');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+      }
+      
+      #skills-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.4);
+        z-index: 2;
+      }
+      
+      #skills .skills-section,
+      #skills .skills-container,
+      #skills .section-title,
+      #skills .flip-card {
+        position: relative;
+        z-index: 5;
+      }
+    </style>
   </head>
   <body>
     <div
@@ -354,8 +395,11 @@
       </script>
 
       <section id="skills" class="skills">
-        <h2 class="section-title" style="font-family: 'Noah Regular', sans-serif; font-size: 28px; margin-top: 4em; position: relative; z-index: 10;">
-          SKILLS
+        <div id="skills-bg"></div>
+        <div id="skills-overlay"></div>
+        
+        <h2 class="section-title" style="font-family: 'Noah Regular', sans-serif; font-size: 32px; margin-top: 2em; position: relative; z-index: 10;">
+          MY SKILLS
         </h2>
         
         <div class="skills-section">
@@ -570,13 +614,10 @@
       </section>
 
       <section id="contact" class="contact">
-      <title>Contact Me</title>
       <style>
-          body {
+          #contact {
               font-family: Arial, sans-serif;
-              background-color: #e8e8e8;
-              margin: 0;
-              padding: 0;
+              padding: 40px 0;
           }
 
           .contact-container {
@@ -713,8 +754,6 @@
               }
           }
       </style>
-  </head>
-  <body>
       <div class="contact-container">
           <h1 class="contact-heading">CONTACT ME</h1>
           
@@ -781,7 +820,6 @@
               </a>
           </div>
       </div>
-      </section>
 
       <script>
           // Get the email contact card
@@ -868,6 +906,7 @@
                   });
           });
       </script>
+      </section>
 
       <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
@@ -910,6 +949,29 @@
           startEvent: 'DOMContentLoaded'
         });
       "></script>
+      
+      <!-- Enhanced Parallax Effect for Skills Section -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Parallax effect for skills section
+          window.addEventListener('scroll', function() {
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+              const scrollPosition = window.pageYOffset;
+              const skillsRect = skillsSection.getBoundingClientRect();
+              
+              // Only apply effect when skills section is in viewport
+              if (skillsRect.top < window.innerHeight && skillsRect.bottom > 0) {
+                // Calculate parallax offset - slower movement for background
+                const yPos = -(scrollPosition * 0.15);
+                
+                // Apply the parallax effect
+                skillsSection.style.backgroundPosition = `center ${yPos}px`;
+              }
+            }
+          });
+        });
+      </script>
       
       <!-- All scripts are loaded through script.js module -->
     </div>
