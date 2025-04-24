@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Raghabendra Kumar Shah - Portfolio</title>
     
     <!-- Resource hints for faster loading -->
@@ -784,16 +784,87 @@
       </section>
 
       <script>
-          // Add click event to copy email address
-          document.querySelectorAll('.contact-card')[0].addEventListener('click', function(e) {
+          // Get the email contact card
+          const emailCard = document.querySelectorAll('.contact-card')[0];
+          const email = 'raghabendrashah.1234@gmail.com';
+          
+          // Remove any existing event listeners by cloning and replacing
+          const newEmailCard = emailCard.cloneNode(true);
+          emailCard.parentNode.replaceChild(newEmailCard, emailCard);
+          
+          // Add a copy icon to the email card
+          const copyIcon = document.createElement('div');
+          copyIcon.className = 'copy-icon';
+          copyIcon.innerHTML = `
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#4285F4" style="margin-left: 8px; cursor: pointer;">
+                  <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+              </svg>
+          `;
+          
+          // Add styles for the copy icon
+          const style = document.createElement('style');
+          style.textContent = `
+              .contact-card {
+                  position: relative;
+                  display: flex;
+                  align-items: center;
+              }
+              .copy-icon {
+                  margin-left: 10px;
+                  opacity: 0.7;
+                  transition: opacity 0.3s ease;
+              }
+              .copy-icon:hover {
+                  opacity: 1;
+              }
+              .copy-message {
+                  position: absolute;
+                  background: rgba(0,0,0,0.7);
+                  color: white;
+                  padding: 5px 10px;
+                  border-radius: 4px;
+                  font-size: 12px;
+                  bottom: -30px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  opacity: 0;
+                  transition: opacity 0.3s ease;
+                  pointer-events: none;
+              }
+              .copy-message.show {
+                  opacity: 1;
+              }
+          `;
+          document.head.appendChild(style);
+          
+          // Find the contact text element and append the copy icon
+          const contactText = newEmailCard.querySelector('.contact-text');
+          contactText.style.display = 'flex';
+          contactText.style.alignItems = 'center';
+          contactText.appendChild(copyIcon);
+          
+          // Create a message element for copy feedback
+          const copyMessage = document.createElement('div');
+          copyMessage.className = 'copy-message';
+          copyMessage.textContent = 'Email copied!';
+          newEmailCard.appendChild(copyMessage);
+          
+          // Add click event to the copy icon
+          copyIcon.addEventListener('click', function(e) {
               e.preventDefault();
-              const email = 'raghabendrashah.1234@gmail.com';
+              e.stopPropagation(); // Prevent the email client from opening
+              
               navigator.clipboard.writeText(email)
                   .then(() => {
-                      alert('Email address copied to clipboard!');
+                      // Show the copy message
+                      copyMessage.classList.add('show');
+                      setTimeout(() => {
+                          copyMessage.classList.remove('show');
+                      }, 2000);
                   })
                   .catch(err => {
                       console.error('Could not copy text: ', err);
+                      alert('Could not copy email. Please try again.');
                   });
           });
       </script>

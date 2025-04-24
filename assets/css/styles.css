@@ -52,6 +52,7 @@ body, .nav-content, .dropdown-content {
     padding: 0.6rem 0;
     transform: translateY(0) !important; /* Force navbar to remain visible */
     font-family: 'Montserrat', Arial, sans-serif;
+    will-change: transform; /* Optimize for animations */
 }
 
 /* White background for non-home pages and when scrolled */
@@ -309,17 +310,20 @@ section .dropdown-content {
     
     .dropdown-content {
         display: none;
-        opacity: 1;
-        visibility: visible;
+        opacity: 0;
+        visibility: hidden;
         transform: none;
         box-shadow: none;
         padding: 0;
         margin: 0;
         width: 100%;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     
     .dropdown.active .dropdown-content {
         display: block;
+        opacity: 1;
+        visibility: visible;
     }
     
     .dropdown-link {
@@ -338,7 +342,8 @@ section .dropdown-content {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    height: 100vh; /* Fallback for browsers that do not support custom properties */
+    height: calc(var(--vh, 1vh) * 100);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -368,6 +373,15 @@ section .dropdown-content {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo:hover {
+    transform: scale(1.05) rotate(5deg);
+    background-color: #505050;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .logo span {
@@ -375,6 +389,12 @@ section .dropdown-content {
     font-size: 40px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.logo:hover span {
+    color: #f0f0f0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 .brand-name {

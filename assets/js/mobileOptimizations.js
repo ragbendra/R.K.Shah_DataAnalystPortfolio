@@ -40,9 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 250));
 
     // Listen for orientation change on mobile devices
-    window.addEventListener('orientationchange', throttle(() => {
+    window.addEventListener('orientationchange', () => {
+        // Fix vh units immediately on orientation change
         fixVhUnits();
-    }, 250));
+        
+        // Then fix again after the orientation change has completed
+        setTimeout(() => {
+            fixVhUnits();
+            
+            // Reinitialize mobile dropdowns after orientation change
+            if (window.innerWidth <= 768) {
+                initMobileDropdowns();
+            }
+        }, 300);
+    });
 });
 
 // Initialize all optimizations
@@ -90,13 +101,41 @@ function initMobileDropdowns() {
             // Toggle active class for dropdown
             dropdown.classList.toggle('active');
             
-            // Log for debugging
-            console.log('Mobile dropdown toggled:', dropdown.classList.contains('active'));
+            // Ensure dropdown content is properly displayed
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+            if (dropdownContent) {
+                if (dropdown.classList.contains('active')) {
+                    dropdownContent.style.display = 'block';
+                    // Force a reflow before changing other properties
+                    void dropdownContent.offsetWidth;
+                    dropdownContent.style.opacity = '1';
+                    dropdownContent.style.visibility = 'visible';
+                } else {
+                    dropdownContent.style.opacity = '0';
+                    dropdownContent.style.visibility = 'hidden';
+                    // Hide after transition completes
+                    setTimeout(() => {
+                        if (!dropdown.classList.contains('active')) {
+                            dropdownContent.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }
             
             // Close all other dropdowns
             document.querySelectorAll('.dropdown').forEach(d => {
                 if (d !== dropdown && d.classList.contains('active')) {
                     d.classList.remove('active');
+                    const content = d.querySelector('.dropdown-content');
+                    if (content) {
+                        content.style.opacity = '0';
+                        content.style.visibility = 'hidden';
+                        setTimeout(() => {
+                            if (!d.classList.contains('active')) {
+                                content.style.display = 'none';
+                            }
+                        }, 300);
+                    }
                 }
             });
         };
@@ -149,6 +188,12 @@ function fixVhUnits() {
     const vh = window.innerHeight * 0.01;
     // Then we set the value in the --vh custom property to the root of the document
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    
+    // Apply the height to any elements that need it immediately
+    const heroSection = document.querySelector('.hero');
+    if (heroSection) {
+        heroSection.style.height = `calc(var(--vh, 1vh) * 100)`;
+    }
 }
 
 // Improve touch interactions
@@ -160,6 +205,11 @@ function improveTouchInteractions() {
 
     // Fix 300ms delay on mobile browsers
     document.addEventListener('touchstart', function() {}, {passive: true});
+    
+    // Add passive event listeners for common touch events to improve scrolling performance
+    document.addEventListener('touchmove', function() {}, {passive: true});
+    document.addEventListener('wheel', function() {}, {passive: true});
+    document.addEventListener('scroll', function() {}, {passive: true});
 
     // Use event delegation for flip cards to improve performance
     const mainContainer = document.querySelector('main') || document.body;

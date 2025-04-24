@@ -40,12 +40,14 @@ export function initNavbar() {
 
     // Ensure menuBtn exists before adding event listener
     if (menuBtn) {
-        // Remove any existing event listeners to prevent duplicates
-        const newMenuBtn = menuBtn.cloneNode(true);
-        menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
+        // Clear any existing event listeners by using the clone technique
+        menuBtn.replaceWith(menuBtn.cloneNode(true));
+        
+        // Get the fresh reference to the button
+        const freshMenuBtn = document.querySelector('.menu-btn');
         
         // Add click event listener to toggle menu
-        newMenuBtn.addEventListener('click', (e) => {
+        freshMenuBtn.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent event from bubbling
             navLinks.classList.toggle('active');
             console.log('Menu button clicked, navLinks active:', navLinks.classList.contains('active'));
@@ -56,12 +58,23 @@ export function initNavbar() {
     document.addEventListener('click', (e) => {
         if (navLinks && navLinks.classList.contains('active')) {
             // Only close if clicking outside menu and menu button
-            if (menuBtn && !menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+            if (!navLinks.contains(e.target) && !e.target.closest('.menu-btn')) {
                 navLinks.classList.remove('active');
                 console.log('Clicked outside, closing menu');
             }
         }
     });
+    
+    // Close mobile menu when a nav link is clicked (except dropdown toggles)
+    if (navLinks) {
+        navLinks.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            // Only close menu if it's a regular link (not a dropdown toggle)
+            if (link && !link.closest('.dropdown') && window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+            }
+        });
+    }
     
     // Add escape key handler to close menu
     document.addEventListener('keydown', (e) => {
