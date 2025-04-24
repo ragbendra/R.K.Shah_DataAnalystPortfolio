@@ -1,48 +1,71 @@
+// Import required modules
+import { initNavbar } from './navbar.js';
+import './mobileOptimizations.js';
+import { openModal, closeModal } from './modal.js';
+
 // Shared functionality for all project pages
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize navbar first
+    initNavbar();
+    
+    // Initialize project-specific functionality
     initProjectPageNavigation();
-    initMobileMenu();
     initProjectModals();
+    
+    // Initialize mobile dropdowns
+    if (typeof window.initMobileDropdowns === 'function') {
+        window.initMobileDropdowns();
+    }
+    
+    // Ensure mobile menu works on project pages
+    initMobileMenu();
 });
 
-// Navigation behavior for project pages
-function initProjectPageNavigation() {
-    const navbar = document.querySelector('.navbar');
-    
-    // Set initial state for non-home pages
-    navbar.classList.add('not-home');
-    
-    // Always ensure navbar is visible
-    navbar.style.transform = 'translateY(0)';
-    
-    // Single scroll handler for navigation
-    window.addEventListener('scroll', () => {
-        // Always keep navbar visible
-        navbar.style.transform = 'translateY(0)';
-    });
-}
-
-// Mobile menu toggle
+// Mobile menu functionality specifically for project pages
 function initMobileMenu() {
     const menuBtn = document.querySelector('.menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
     if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => {
+        // Remove any existing event listeners to prevent duplicates
+        const newMenuBtn = menuBtn.cloneNode(true);
+        menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
+        
+        // Add click event listener to toggle menu
+        newMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling
             navLinks.classList.toggle('active');
+            console.log('Project page menu button clicked');
         });
         
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (menuBtn && navLinks && !menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.classList.remove('active');
-            }
+        // Handle dropdown toggles on mobile
+        document.querySelectorAll('.dropdown > a').forEach(dropdownToggle => {
+            dropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = dropdownToggle.parentElement;
+                    dropdown.classList.toggle('active');
+                }
+            });
         });
+    }
+}
+
+// Additional navigation behavior for project pages
+function initProjectPageNavigation() {
+    const navbar = document.querySelector('.navbar');
+    
+    // Ensure navbar is always visible on project pages
+    if (navbar) {
+        navbar.style.transform = 'translateY(0)';
     }
 }
 
 // Project modal functionality
 function initProjectModals() {
+    console.log('Initializing project modals');
+    
     // Open modal when clicking on project card
     document.querySelectorAll('.project-card[data-modal]').forEach(card => {
         card.addEventListener('click', (e) => {
@@ -50,21 +73,29 @@ function initProjectModals() {
             if (!e.target.closest('.view-code-btn')) {
                 const modalId = card.getAttribute('data-modal');
                 const modal = document.getElementById(modalId);
+                console.log('Opening modal:', modalId);
                 if (modal) {
-                    modal.style.display = 'flex';
-                    setTimeout(() => {
-                        modal.classList.add('show');
-                    }, 10);
+                    openModal(modal);
                 }
             }
         });
+        
+        // Prevent default behavior for view code button
+        const viewCodeBtn = card.querySelector('.view-code-btn');
+        if (viewCodeBtn) {
+            viewCodeBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event from bubbling up to card
+            });
+        }
     });
     
-    // Close modal when clicking on close button or outside
+    // Close modal when clicking on close button
     document.querySelectorAll('.close-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const modal = btn.closest('.project-modal');
-            closeModal(modal);
+            if (modal) {
+                closeModal(modal);
+            }
         });
     });
     
@@ -76,12 +107,14 @@ function initProjectModals() {
             }
         });
     });
-}
-
-// Function to close modal with animation
-function closeModal(modal) {
-    modal.classList.remove('show');
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 300);
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const openModal = document.querySelector('.project-modal.show');
+            if (openModal) {
+                closeModal(openModal);
+            }
+        }
+    });
 } 

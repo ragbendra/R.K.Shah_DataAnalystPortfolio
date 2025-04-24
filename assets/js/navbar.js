@@ -38,13 +38,36 @@ export function initNavbar() {
         navbar.style.top = '0';
     });
 
-    menuBtn?.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+    // Ensure menuBtn exists before adding event listener
+    if (menuBtn) {
+        // Remove any existing event listeners to prevent duplicates
+        const newMenuBtn = menuBtn.cloneNode(true);
+        menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
+        
+        // Add click event listener to toggle menu
+        newMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling
+            navLinks.classList.toggle('active');
+            console.log('Menu button clicked, navLinks active:', navLinks.classList.contains('active'));
+        });
+    }
 
+    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+        if (navLinks && navLinks.classList.contains('active')) {
+            // Only close if clicking outside menu and menu button
+            if (menuBtn && !menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                console.log('Clicked outside, closing menu');
+            }
+        }
+    });
+    
+    // Add escape key handler to close menu
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
+            console.log('Escape key pressed, closing menu');
         }
     });
 }

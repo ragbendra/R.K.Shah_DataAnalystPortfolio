@@ -16,6 +16,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   aspect-ratio: 2 / 1;
+  position: relative;
 }
 
 .project-card:hover {
@@ -28,6 +29,29 @@
   height: 60%;
   object-fit: cover;
   display: block;
+  transition: all 0.3s ease;
+}
+
+/* Add overlay effect on hover */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+.project-card:hover::after {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover .project-image {
+  filter: brightness(0.95);
 }
 
 .project-title {
@@ -53,13 +77,46 @@
   text-decoration: none;
   border-radius: 5px;
   font-size: 0.9rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
   margin: 10px 15px;
+  z-index: 5;
+}
+
+/* Fixed position button for project cards on hover */
+.project-card .view-code-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transform: translateY(10px);
+  margin: 0;
+}
+
+.project-card:hover .view-code-btn {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .view-code-btn:hover {
   background-color: #1a1a1a;
   transform: scale(1.05);
+}
+
+/* For modal, keep the button at the bottom */
+.modal-actions .modal-btn {
+  position: static;
+  opacity: 1;
+  transform: none;
+  margin: 0;
+  border-radius: 25px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  min-width: 140px;
+}
+
+/* Hide the original view-code-btn in the modal */
+.project-modal .view-code-btn:not(.modal-btn) {
+  display: none;
 }
 
 /* Modal Styling */
@@ -167,11 +224,14 @@
   min-width: 140px;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: static;
+  opacity: 1;
+  transform: none;
 }
 
 .modal-btn:hover {
   background-color: #1a1a1a;
-  transform: translateY(-2px);
+  transform: translateY(-2px) !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -225,5 +285,20 @@
 @media (max-width: 768px) {
   .project-grid {
     grid-template-columns: 1fr;
+  }
+  
+  /* Make view code button always visible on mobile */
+  .project-card .view-code-btn {
+    opacity: 1;
+    transform: translateY(0);
+    bottom: 10px;
+    right: 10px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  
+  /* Adjust card height for better mobile display */
+  .project-card {
+    aspect-ratio: 16/10;
   }
 }

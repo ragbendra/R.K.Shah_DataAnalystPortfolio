@@ -10,6 +10,8 @@ import './tippy.js';
 import './circuitTraceAnimation.js';
 import './skillsBgAnimation.js';
 import './textParticleAnimation.js';
+import './flipCards.js';
+import { lazyLoadImages } from './mobileOptimizations.js';
 import initProjectFilters from './projectFilter.js';
 import initCircuitTraceAnimation from './circuitTraceAnimation.js';
 import initSkillsBgAnimation from './skillsBgAnimation.js';
@@ -76,6 +78,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Critical operations that should run immediately
     updateActiveMenuItem();
     handleNavigation();
+    
+    // Initialize mobile dropdowns immediately for better user experience
+    if (window.innerWidth <= 768) {
+        if (typeof window.initMobileDropdowns === 'function') {
+            window.initMobileDropdowns();
+        } else {
+            // If the function isn't available yet, try again after a short delay
+            setTimeout(() => {
+                if (typeof window.initMobileDropdowns === 'function') {
+                    window.initMobileDropdowns();
+                }
+            }, 100);
+        }
+    }
     
     // Initialize skills section without animations
     initSkillsBgAnimation();
@@ -146,36 +162,9 @@ document.addEventListener('DOMContentLoaded', () => {
     processDeferredOperations();
 });
 
-// Lazy load images for better performance
-function lazyLoadImages() {
-    // Use Intersection Observer if available
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const src = img.getAttribute('data-src');
-                    if (src) {
-                        img.src = src;
-                        img.removeAttribute('data-src');
-                    }
-                    observer.unobserve(img);
-                }
-            });
-        });
-        
-        // Target all images with data-src attribute
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    } else {
-        // Fallback for browsers that don't support Intersection Observer
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            img.src = img.getAttribute('data-src');
-            img.removeAttribute('data-src');
-        });
-    }
-}
+// Import lazyLoadImages from mobileOptimizations.js instead of duplicating code
+// This function is now imported from mobileOptimizations.js
+// See the import statement at the top of this file
 
 // Update active menu item based on scroll position
 function updateActiveMenuItem() {

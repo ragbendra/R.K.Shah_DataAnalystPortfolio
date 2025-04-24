@@ -76,15 +76,6 @@ body, .nav-content, .dropdown-content {
 }
 
 .nav-links {
-    display: none; /* Hidden by default */
-}
-
-.nav-links.active {
-    display: block; /* Show when active */
-    flex-direction: column;
-}
-
-.nav-links {
     display: flex;
     gap: 1.5rem;
     align-items: center;
@@ -255,31 +246,84 @@ section .dropdown-content {
 @media (max-width: 768px) {
     .menu-btn {
         display: block;
+        z-index: 1010;
+        position: relative;
     }
 
     .nav-links {
         position: fixed;
-        top: 48px;
+        top: 60px; /* Adjust based on navbar height */
         right: -100%;
         width: 80%;
         max-width: 300px;
-        height: calc(100vh - 80px);
+        height: calc(100vh - 60px);
         background: #ffffff;
         flex-direction: column;
-        padding: 0.5rem 0;
-        gap: 20px;
+        gap: 0;
         transition: right 0.3s ease-in-out;
         list-style: none;
-        padding: 0;
+        padding: 1rem 0;
         margin: 0;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        z-index: 1005;
     }
 
     .nav-links.active {
         right: 0;
     }
+    
+    .nav-links li {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+        color: #333333;
+        font-size: 14px;
+        font-family: 'Montserrat', Arial, sans-serif;
+        letter-spacing: 0.5px;
+    }
+    
+    .nav-link:hover::after {
+        transform: scaleX(0); /* Disable underline effect on mobile */
+    }
+    
+    .nav-link:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
 
-    .nav-link,
+    .dropdown {
+        width: 100%;
+        padding: 0;
+    }
+    
+    .dropdown > a {
+        display: block;
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+    }
+    
+    .dropdown-content {
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+    
     .dropdown-link {
+        padding: 0.8rem 2.5rem;
         color: #333333;
         font-size: 13px;
         font-family: 'Montserrat', Arial, sans-serif;
@@ -288,6 +332,7 @@ section .dropdown-content {
 
     .nav-content {
         padding: 0 1rem;
+        justify-content: space-between;
     }
 }
 

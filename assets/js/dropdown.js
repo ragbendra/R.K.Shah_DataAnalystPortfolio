@@ -1,9 +1,11 @@
 // Dropdown functionality
 export function initDropdowns() {
+    // Only initialize desktop dropdowns here
+    // Mobile dropdowns are handled by mobileOptimizations.js
     document.querySelectorAll('.dropdown').forEach(dropdown => {
         const dropdownContent = dropdown.querySelector('.dropdown-content');
         let hideTimeout;
-        
+
         // For desktop: mouse hover events
         if (window.innerWidth > 768) {
             dropdown.addEventListener('mouseenter', () => {
@@ -34,47 +36,30 @@ export function initDropdowns() {
                     }
                 }, 200);
             });
-        }
-        
-        // For mobile: click events
-        if (window.innerWidth <= 768) {
-            const dropdownLink = dropdown.querySelector('a');
-            
-            if (dropdownLink) {
-                dropdownLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Toggle dropdown visibility
-                    if (dropdownContent.style.display === 'block') {
-                        // Close dropdown
-                        dropdownContent.style.opacity = '0';
-                        dropdownContent.style.visibility = 'hidden';
-                        dropdownContent.style.transform = 'translateY(10px)';
-                        dropdownContent.style.pointerEvents = 'none';
-                        setTimeout(() => {
-                            dropdownContent.style.display = 'none';
-                        }, 300);
-                    } else {
-                        // Open dropdown
-                        dropdownContent.style.display = 'block';
-                        requestAnimationFrame(() => {
-                            dropdownContent.style.opacity = '1';
-                            dropdownContent.style.visibility = 'visible';
-                            dropdownContent.style.transform = 'translateY(0)';
-                            dropdownContent.style.pointerEvents = 'auto';
-                        });
-                    }
-                });
+        } else {
+            // For mobile: make sure we initialize mobile dropdowns
+            if (typeof window.initMobileDropdowns === 'function') {
+                window.initMobileDropdowns();
             }
         }
+
+        // We're removing the mobile click events from here since they're handled in mobileOptimizations.js
     });
-    
-    // Handle window resize to update dropdown behavior
+
+    // Handle window resize to update dropdown behavior with throttling for better performance
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        // Re-initialize dropdowns when window size changes
-        setTimeout(() => {
+        // Cancel any pending re-initialization
+        clearTimeout(resizeTimeout);
+        
+        // Re-initialize dropdowns when window size changes, but throttle to avoid performance issues
+        resizeTimeout = setTimeout(() => {
             initDropdowns();
+            
+            // Also reinitialize mobile dropdowns if we're on mobile
+            if (window.innerWidth <= 768 && typeof window.initMobileDropdowns === 'function') {
+                window.initMobileDropdowns();
+            }
         }, 300);
     });
 }
