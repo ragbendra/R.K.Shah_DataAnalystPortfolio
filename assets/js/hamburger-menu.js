@@ -134,12 +134,21 @@
         // Handle dropdown links (the actual links inside dropdown menus)
         const dropdownLinks = navLinks.querySelectorAll('.dropdown-content a');
         dropdownLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
+            // Remove existing listeners by cloning
+            const newLink = link.cloneNode(true);
+            link.parentNode.replaceChild(newLink, link);
+            
+            newLink.addEventListener('click', function(e) {
                 // Don't stop propagation - we want the click to bubble up
                 // so the link works, but we do want to close the mobile menu
                 if (window.innerWidth <= 768) {
                     // Small delay to allow the click to register before closing the menu
                     setTimeout(() => {
+                        // Close both the dropdown and the mobile menu
+                        const parentDropdown = newLink.closest('.dropdown');
+                        if (parentDropdown) {
+                            parentDropdown.classList.remove('active');
+                        }
                         navLinks.classList.remove('active');
                     }, 100);
                 }
@@ -158,27 +167,16 @@
             // If window is resized to desktop size, remove active class from mobile menu
             if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-            }
-            
-            // Reinitialize dropdowns if needed
-            if (window.innerWidth <= 768) {
-                // Make sure dropdown links have proper event listeners for mobile
+                
+                // Also close any open dropdowns when switching to desktop
                 dropdowns.forEach(dropdown => {
-                    if (!dropdown._hasInitializedMobile) {
-                        const dropdownLink = dropdown.querySelector('a');
-                        if (dropdownLink) {
-                            dropdownLink.addEventListener('click', function(e) {
-                                if (window.innerWidth <= 768) {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    dropdown.classList.toggle('active');
-                                }
-                            });
-                            dropdown._hasInitializedMobile = true;
-                        }
+                    if (dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
                     }
                 });
             }
+            
+            // No need to reinitialize dropdowns - we already set up the event handlers properly
         });
         
         // Add a CSS fix for mobile menu if needed
