@@ -143,6 +143,46 @@
         .slide:first-child {
             display: block;
         }
+        
+        /* Project Preview Styles */
+        .project-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        .project-preview h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0 15px;
+            margin: 0;
+        }
+        
+        .project-card:hover .project-preview {
+            opacity: 1;
+        }
+        
+        .card-content {
+            padding: 15px;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        /* Override project-title styles since we're only showing title on hover */
+        .project-title {
+            display: none;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .slideshow-container {
@@ -159,6 +199,9 @@
                 height: 35px;
                 line-height: 35px;
                 font-size: 28px;
+            }
+            .project-preview h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -196,16 +239,24 @@
             <!-- SQL Project Card 1 -->
             <div class="project-card" data-category="data-analysis" data-modal="sqlModal1">
               <img src="../assets/images/SQL/SalesAnalysis/sales_query.png" alt="SQL Project 1" class="project-image">
-              <h3 class="project-title">Sales Data Analysis</h3>
-              <p class="project-description">Analyzed sales performance using advanced SQL queries to identify trends and key metrics.</p>
-              <a href="https://github.com/yourusername/sales-data-analysis" target="_blank" class="view-code-btn">View Code</a>
+              <div class="project-preview">
+                <h3>Sales Data Analysis</h3>
+              </div>
+              <div class="card-content">
+                <p class="project-description">Analyzed sales performance using advanced SQL queries to identify trends and key metrics.</p>
+                <a href="https://github.com/yourusername/sales-data-analysis" target="_blank" class="view-code-btn">View Code</a>
+              </div>
             </div>
             <!-- SQL Project Card 2 -->
             <div class="project-card" data-category="database-design" data-modal="sqlModal2">
               <img src="../assets/images/SQL/DatabaseDesign/schema_diagram.png" alt="SQL Project 2" class="project-image">
-              <h3 class="project-title">Database Schema Design</h3>
-              <p class="project-description">Designed a normalized database schema for an e-commerce platform to optimize data storage and retrieval.</p>
-              <a href="https://github.com/yourusername/database-schema-design" target="_blank" class="view-code-btn">View Code</a>
+              <div class="project-preview">
+                <h3>Database Schema Design</h3>
+              </div>
+              <div class="card-content">
+                <p class="project-description">Designed a normalized database schema for an e-commerce platform to optimize data storage and retrieval.</p>
+                <a href="https://github.com/yourusername/database-schema-design" target="_blank" class="view-code-btn">View Code</a>
+              </div>
             </div>
         </div>
         <!-- SQL Project Modals -->

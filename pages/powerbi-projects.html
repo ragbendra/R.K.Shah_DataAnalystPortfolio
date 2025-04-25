@@ -143,6 +143,45 @@
         .slide:first-child {
             display: block;
         }
+        /* Project Preview Styles */
+        .project-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        .project-preview h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0 15px;
+            margin: 0;
+        }
+        
+        .project-card:hover .project-preview {
+            opacity: 1;
+        }
+        
+        .card-content {
+            padding: 15px;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        /* Override project-title styles since we're only showing title on hover */
+        .project-title {
+            display: none;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .slideshow-container {
@@ -159,6 +198,9 @@
                 height: 35px;
                 line-height: 35px;
                 font-size: 28px;
+            }
+            .project-preview h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -196,16 +238,24 @@
             <!-- Power BI Project Card 1 -->
             <div class="project-card" data-category="business-intelligence" data-modal="powerbiModal1">
               <img src="../assets/images/PowerBI/SalesDashboard/sales_dashboard.png" alt="Power BI Project 1" class="project-image">
-              <h3 class="project-title">Sales Performance Dashboard</h3>
-              <p class="project-description">A comprehensive sales performance dashboard built using Power BI to track key metrics and trends.</p>
-              <a href="https://github.com/yourusername/powerbi-sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
+              <div class="project-preview">
+                <h3>Sales Performance Dashboard</h3>
+              </div>
+              <div class="card-content">
+                <p class="project-description">A comprehensive sales performance dashboard built using Power BI to track key metrics and trends.</p>
+                <a href="https://github.com/yourusername/powerbi-sales-dashboard" target="_blank" class="view-code-btn">View Code</a>
+              </div>
             </div>
             <!-- Power BI Project Card 2 -->
             <div class="project-card" data-category="data-analytics" data-modal="powerbiModal2">
               <img src="../assets/images/PowerBI/CustomerSegmentation/customer_segmentation.png" alt="Power BI Project 2" class="project-image">
-              <h3 class="project-title">Customer Segmentation Analysis</h3>
-              <p class="project-description">Analyzed customer behavior and segmented customers based on purchasing patterns using Power BI.</p>
-              <a href="https://github.com/yourusername/powerbi-customer-segmentation" target="_blank" class="view-code-btn">View Code</a>
+              <div class="project-preview">
+                <h3>Customer Segmentation Analysis</h3>
+              </div>
+              <div class="card-content">
+                <p class="project-description">Analyzed customer behavior and segmented customers based on purchasing patterns using Power BI.</p>
+                <a href="https://github.com/yourusername/powerbi-customer-segmentation" target="_blank" class="view-code-btn">View Code</a>
+              </div>
             </div>
         </div>
         <!-- Power BI Project Modals -->

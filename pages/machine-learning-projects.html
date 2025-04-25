@@ -143,6 +143,46 @@
         .slide:first-child {
             display: block;
         }
+        
+        /* Project Preview Styles */
+        .project-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        .project-preview h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 0 15px;
+            margin: 0;
+        }
+        
+        .project-card:hover .project-preview {
+            opacity: 1;
+        }
+        
+        .card-content {
+            padding: 15px;
+            text-align: center;
+            margin-top: 0;
+        }
+        
+        /* Override project-title styles since we're only showing title on hover */
+        .project-title {
+            display: none;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .slideshow-container {
@@ -159,6 +199,9 @@
                 height: 35px;
                 line-height: 35px;
                 font-size: 28px;
+            }
+            .project-preview h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -196,16 +239,24 @@
             <!-- Machine Learning Project Card 1 -->
             <div class="project-card" data-category="deep-learning" data-modal="mlModal1">
               <img src="../assets/images/MachineLearning/ImageClassification/model_architecture.png" alt="ML Project 1" class="project-image">
-              <h3 class="project-title">Image Classification Model</h3>
-              <p class="project-description">A convolutional neural network (CNN) model for classifying images into multiple categories.</p>
-              <a href="https://github.com/yourusername/image-classification" target="_blank" class="view-code-btn">View Code</a>
+              <div class="project-preview">
+                <h3>Image Classification Model</h3>
+              </div>
+              <div class="card-content">
+                <p class="project-description">A convolutional neural network (CNN) model for classifying images into multiple categories.</p>
+                <a href="https://github.com/yourusername/image-classification" target="_blank" class="view-code-btn">View Code</a>
+              </div>
             </div>
             <!-- Machine Learning Project Card 2 -->
             <div class="project-card" data-category="natural-language-processing" data-modal="mlModal2">
               <img src="../assets/images/MachineLearning/SentimentAnalysis/sentiment_results.png" alt="ML Project 2" class="project-image">
-              <h3 class="project-title">Sentiment Analysis</h3>
-              <p class="project-description">A natural language processing (NLP) model for analyzing sentiment in customer reviews.</p>
-              <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
+              <div class="project-preview">
+                <h3>Sentiment Analysis</h3>
+              </div>
+              <div class="card-content">
+                <p class="project-description">A natural language processing (NLP) model for analyzing sentiment in customer reviews.</p>
+                <a href="https://github.com/yourusername/sentiment-analysis" target="_blank" class="view-code-btn">View Code</a>
+              </div>
             </div>
         </div>
         <!-- Machine Learning Project Modals -->
