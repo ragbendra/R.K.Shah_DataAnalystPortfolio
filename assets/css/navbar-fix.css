@@ -1,0 +1,41 @@
+/**
+ * Navbar Fix
+ * Ensures the navbar doesn't hide when scrolling
+ * White background on all pages except home section
+ */
+
+/* Ensure navbar is always visible */
+.navbar {
+    position: fixed;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transform: none !important;
+    transition: background-color 0.3s ease;
+    background-color: white;
+}
+
+/* Transparent background for home section */
+.navbar.transparent {
+    background-color: transparent;
+}
+
+/* White background for all other sections */
+.navbar.white-bg {
+    background-color: white;
+}
+
+/* Prevent any hiding behavior */
+.navbar.nav-hidden,
+.navbar.hide-nav {
+    transform: none !important;
+    top: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Ensure proper spacing for content */
+body {
+    padding-top: 60px;
+}

@@ -13,6 +13,7 @@
     
     <!-- Critical CSS first -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="stylesheet" href="./assets/css/navbar-fix.css" />
     
     <!-- Defer non-critical CSS -->
     <link rel="stylesheet" href="./assets/css/circuit-trace.css" media="print" onload="this.media='all'" />
@@ -560,23 +561,23 @@
             onclick="window.location.href='./pages/data-visualization-projects.html'"
           >
             <img
-              src="assets/images/placeholder.jpg"
-              data-src="./assets/images/projects/viz1.jpg"
+              src="assets/images/BrandPref.png"
+              data-src="./assets/images/DataVisualization/CustomerSegmentation/AvgPricePerUnit.png"
               alt="Data Visualization"
               class="project-image"
               loading="lazy"
             />
-            <div class="project-preview">
-              <h3>Interactive Dashboard</h3>
-            </div>
+            <!-- <div class="project-preview">
+              <h3>Customer Segmentation Analysis</h3>
+            </div> -->
             <div class="project-overlay">
-              <h3 class="project-title">Interactive Dashboard</h3>
-              <p class="project-description">
-                Real-time data visualization dashboard.
-              </p>
+              <h3 class="project-title">Customer Segmentation Analysis</h3>
+              <!-- <p class="project-description">
+                Interactive visualization of customer purchasing patterns.
+              </p> -->
               <div class="project-tech">
                 <span class="tech-tag">D3.js</span>
-                <span class="tech-tag">SVG</span>
+                <span class="tech-tag">Data Analysis</span>
                 <span class="tech-tag">JavaScript</span>
               </div>
             </div>
@@ -914,6 +915,12 @@
       
       <!-- Load critical scripts first -->
       <script type="module" src="./assets/js/script.js"></script>
+      
+      <!-- Hamburger Menu Script - non-module for compatibility -->
+      <script src="./assets/js/hamburger-menu.js"></script>
+      
+      <!-- Navbar Scroll Fix -->
+      <script src="./assets/js/navbar-scroll-fix.js"></script>
       
       <!-- Load particles.js with improved loading strategy -->
       <script>

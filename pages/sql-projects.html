@@ -5,17 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Projects</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/navbar-fix.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/project-cards.css">
+    <style>
+        /* Modal Styles */
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        .modal-content {
+            margin: 5% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 900px;
+            background-color: #fff;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #aaa;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #000;
+            background-color: #e0e0e0;
+        }
+        /* Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 30px auto;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 0;
+            padding-bottom: 45%; /* Reduced from 56.25% for a smaller window */
+        }
+        .slide {
+            display: none;
+            text-align: center;
+            animation: fadeEffect 1s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures the image fits within the container */
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: transparent;
+        }
+        /* Preview Mode */
+        .preview-mode .slideshow-container {
+            padding-bottom: 25%; /* Shorter height for preview mode */
+        }
+        .preview-mode .modal-content {
+            padding: 15px;
+        }
+        .preview-mode .modal-title,
+        .preview-mode .modal-description,
+        .preview-mode .tech-tags,
+        .preview-mode .modal-actions {
+            display: none; /* Hide details in preview mode */
+        }
+        /* Navigation Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            margin-top: -25px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            border-radius: 50%;
+            user-select: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            opacity: 0; /* Hide by default */
+        }
+        .next {
+            right: 15px;
+        }
+        .prev {
+            left: 15px;
+        }
+        /* Show navigation buttons on hover */
+        .slideshow-container:hover .prev,
+        .slideshow-container:hover .next {
+            opacity: 1;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+        /* Ensure first slide is visible by default */
+        .slide:first-child {
+            display: block;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slideshow-container {
+                padding-bottom: 75%; /* Taller container on mobile */
+            }
+            .prev, .next {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 18px;
+            }
+            .close-btn {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9VC1JJG0L4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9VC1JJG0L4');
-</script>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -29,7 +176,7 @@
                     <a href="#" class="nav-link">Portfolio <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
                         <a href="../pages/machine-learning-projects.html" class="dropdown-link">Machine Learning Projects</a>
-                        <a href="../pages/sql-projects.html" class="dropdown-link active">SQL Projects</a>
+                        <a href="../pages/sql-projects.html" class="dropdown-link">SQL Projects</a>
                         <a href="../pages/data-visualization-projects.html" class="dropdown-link">Data Visualization Projects</a>
                         <a href="../pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
                     </div>
@@ -38,43 +185,55 @@
             </ul>
         </div>
     </nav>
-
     <!-- Main Content -->
     <section class="projects-page sql-projects">
         <div class="page-header">
             <h1 style="font-family: 'Noah Regular', sans-serif;">SQL Projects</h1>
-            <p class="header-description">Querying and analyzing data with precision using SQL</p>
+            <p class="header-description">Leveraging SQL to extract, analyze, and visualize insights from complex datasets.</p>
         </div>
-        
         <!-- Project grid -->
         <div class="project-grid">
             <!-- SQL Project Card 1 -->
-            <div class="project-card" data-category="sql" data-modal="sqlModal1">
-              <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="project-image">
+            <div class="project-card" data-category="data-analysis" data-modal="sqlModal1">
+              <img src="../assets/images/SQL/SalesAnalysis/sales_query.png" alt="SQL Project 1" class="project-image">
               <h3 class="project-title">Sales Data Analysis</h3>
-              <p class="project-description">SQL queries to analyze sales performance and trends.</p>
+              <p class="project-description">Analyzed sales performance using advanced SQL queries to identify trends and key metrics.</p>
               <a href="https://github.com/yourusername/sales-data-analysis" target="_blank" class="view-code-btn">View Code</a>
             </div>
             <!-- SQL Project Card 2 -->
-            <div class="project-card" data-category="sql" data-modal="sqlModal2">
-              <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="project-image">
-              <h3 class="project-title">Customer Churn Prediction</h3>
-              <p class="project-description">SQL-based analysis to identify factors contributing to customer churn.</p>
-              <a href="https://github.com/yourusername/customer-churn-prediction" target="_blank" class="view-code-btn">View Code</a>
+            <div class="project-card" data-category="database-design" data-modal="sqlModal2">
+              <img src="../assets/images/SQL/DatabaseDesign/schema_diagram.png" alt="SQL Project 2" class="project-image">
+              <h3 class="project-title">Database Schema Design</h3>
+              <p class="project-description">Designed a normalized database schema for an e-commerce platform to optimize data storage and retrieval.</p>
+              <a href="https://github.com/yourusername/database-schema-design" target="_blank" class="view-code-btn">View Code</a>
             </div>
         </div>
         <!-- SQL Project Modals -->
         <div id="sqlModal1" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <img src="../assets/images/sql-project1.jpg" alt="SQL Project 1" class="modal-image">
+            <!-- Slideshow Container -->
+            <div class="slideshow-container">
+              <div class="slide fade">
+                <img src="../assets/images/SQL/SalesAnalysis/sql-project1.jpg" alt="SQL Project 1 - Image 1" class="modal-image">
+              </div>
+              <div class="slide fade">
+                <img src="../assets/images/SQL/SalesAnalysis/sql-project1-2.jpg" alt="SQL Project 1 - Image 2" class="modal-image">
+              </div>
+              <div class="slide fade">
+                <img src="../assets/images/SQL/SalesAnalysis/sql-project1-3.jpg" alt="SQL Project 1 - Image 3" class="modal-image">
+              </div>
+              <!-- Navigation Buttons -->
+              <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+              <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
             <h3 class="modal-title">Sales Data Analysis</h3>
-            <p class="modal-description">A series of SQL queries designed to extract insights from sales data, including revenue growth, product performance, and regional trends.</p>
+            <p class="modal-description">Performed comprehensive analysis of sales data using SQL queries to uncover trends, customer behavior, and revenue drivers.</p>
             <div class="tech-tags">
               <span class="tag">SQL</span>
               <span class="tag">Data Analysis</span>
-              <span class="tag">Queries</span>
-              <span class="tag">Database</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Business Intelligence</span>
             </div>
             <div class="modal-actions">
               <a href="https://github.com/yourusername/sales-data-analysis" target="_blank" class="modal-btn">View Code</a>
@@ -84,33 +243,163 @@
         <div id="sqlModal2" class="project-modal">
           <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <img src="../assets/images/sql-project2.jpg" alt="SQL Project 2" class="modal-image">
-            <h3 class="modal-title">Customer Churn Prediction</h3>
-            <p class="modal-description">An SQL-based project to analyze customer behavior and identify patterns leading to churn, enabling proactive retention strategies.</p>
+            <!-- Slideshow Container -->
+            <div class="slideshow-container">
+              <div class="slide fade">
+                <img src="../assets/images/SQL/DatabaseDesign/sql-project2.jpg" alt="SQL Project 2 - Image 1" class="modal-image">
+              </div>
+              <div class="slide fade">
+                <img src="../assets/images/SQL/DatabaseDesign/sql-project2-2.jpg" alt="SQL Project 2 - Image 2" class="modal-image">
+              </div>
+              <div class="slide fade">
+                <img src="../assets/images/SQL/DatabaseDesign/sql-project2-3.jpg" alt="SQL Project 2 - Image 3" class="modal-image">
+              </div>
+              <!-- Navigation Buttons -->
+              <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+              <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+            <h3 class="modal-title">Database Schema Design</h3>
+            <p class="modal-description">Developed a normalized database schema for an e-commerce platform, ensuring efficient data storage and retrieval.</p>
             <div class="tech-tags">
               <span class="tag">SQL</span>
-              <span class="tag">Churn Analysis</span>
-              <span class="tag">Data Insights</span>
-              <span class="tag">Customer Behavior</span>
+              <span class="tag">Database Design</span>
+              <span class="tag">Normalization</span>
+              <span class="tag">ER Diagrams</span>
             </div>
             <div class="modal-actions">
-              <a href="https://github.com/yourusername/customer-churn-prediction" target="_blank" class="modal-btn">View Code</a>
+              <a href="https://github.com/yourusername/database-schema-design" target="_blank" class="modal-btn">View Code</a>
             </div>
           </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Data Science Portfolio. All rights reserved.</p>
     </footer>
-
     <!-- External Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../assets/js/hamburger-menu.js"></script>
     <script>
         AOS.init();
+        // Modal and Slideshow Logic
+        let currentSlide = 0;
+        let slideInterval;
+        let isPreviewMode = false;
+        // Initialize slides when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up initial slide display
+            document.querySelectorAll('.project-modal').forEach(modal => {
+                const slides = modal.querySelectorAll('.slide');
+                if (slides.length > 0) {
+                    slides.forEach((slide, index) => {
+                        slide.style.display = index === 0 ? 'block' : 'none';
+                    });
+                }
+            });
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                const modal = document.querySelector('.project-modal[style*="display: block"]');
+                if (!modal) return;
+                if (e.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(1);
+                } else if (e.key === 'Escape') {
+                    modal.style.display = 'none';
+                    stopSlideshow();
+                }
+            });
+        });
+        // Open Modal
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    // Check if Shift key is pressed for preview mode
+                    if (window.event && window.event.shiftKey) {
+                        isPreviewMode = true;
+                        modal.querySelector('.modal-content').classList.add('preview-mode');
+                    } else {
+                        isPreviewMode = false;
+                        modal.querySelector('.modal-content').classList.remove('preview-mode');
+                    }
+                    modal.style.display = 'block';
+                    currentSlide = 0; // Reset to first slide
+                    showSlides(currentSlide, modal);
+                    // Always start slideshow, even in preview mode
+                    startSlideshow(modal);
+                }
+            });
+        });
+        // Close Modal
+        document.querySelectorAll('.close-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.project-modal');
+                if (modal) {
+                    modal.style.display = 'none';
+                    stopSlideshow(); // Stop automatic slideshow
+                    // Reset preview mode
+                    if (isPreviewMode) {
+                        isPreviewMode = false;
+                        modal.querySelector('.modal-content').classList.remove('preview-mode');
+                    }
+                }
+            });
+        });
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('project-modal')) {
+                event.target.style.display = 'none';
+                stopSlideshow(); // Stop automatic slideshow
+                // Reset preview mode
+                if (isPreviewMode) {
+                    isPreviewMode = false;
+                    event.target.querySelector('.modal-content').classList.remove('preview-mode');
+                }
+            }
+        });
+        // Slideshow Functions
+        function changeSlide(n) {
+            // Get the currently visible modal
+            const visibleModal = document.querySelector('.project-modal[style*="display: block"]');
+            if (!visibleModal) return;
+            const slides = visibleModal.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+            currentSlide += n;
+            if (currentSlide >= slides.length) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = slides.length - 1;
+            showSlides(currentSlide, visibleModal);
+        }
+        function showSlides(index, modal) {
+            if (!modal) return;
+            const slides = modal.querySelectorAll('.slide');
+            if (slides.length === 0) return;
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[index].style.display = 'block';
+        }
+        // Automatic Slideshow
+        function startSlideshow(modal) {
+            stopSlideshow(); // Ensure no duplicate intervals
+            // Start slideshow in all modes
+            slideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 3000); // Change slide every 3 seconds (faster transition)
+        }
+        function stopSlideshow() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+                slideInterval = null;
+            }
+        }
+        // Toggle preview mode
+        function togglePreviewMode(modal) {
+            if (!modal) return;
+            isPreviewMode = !isPreviewMode;
+            modal.querySelector('.modal-content').classList.toggle('preview-mode', isPreviewMode);
+            // Keep slideshow running in both modes
+            startSlideshow(modal);
+        }
     </script>
-    <!-- Load project-pages.js as a module which will handle all necessary functionality -->
-    <script type="module" src="../assets/js/project-pages.js"></script>
 </body>
 </html>

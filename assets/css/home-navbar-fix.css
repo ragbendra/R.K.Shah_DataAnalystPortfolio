@@ -1,0 +1,58 @@
+/**
+ * Home Page Navbar Fix
+ * Ensures the navbar doesn't hide when scrolling on the home page
+ * Makes navbar transparent on home page
+ */
+
+/* Force navbar to stay visible on home page with transparent background */
+body:not(.portfolio-page):not(.project-page) .navbar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transform: none !important;
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    transition: background-color 0.3s ease;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: transparent !important;
+}
+
+/* Specific fix for mobile view on home page */
+@media (max-width: 768px) {
+    body:not(.portfolio-page):not(.project-page) .navbar {
+        position: fixed !important;
+        top: 0 !important;
+        transform: none !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
+        -ms-transform: none !important;
+        -o-transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Ensure menu button is always visible on home page */
+    body:not(.portfolio-page):not(.project-page) .menu-btn {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: relative !important;
+        z-index: 1010 !important;
+    }
+    
+    /* Prevent any scroll-based hiding */
+    body:not(.portfolio-page):not(.project-page) .navbar.scrolled,
+    body:not(.portfolio-page):not(.project-page) .navbar:not(.scrolled) {
+        transform: none !important;
+        -webkit-transform: none !important;
+        -moz-transform: none !important;
+        -ms-transform: none !important;
+        -o-transform: none !important;
+        top: 0 !important;
+    }
+}

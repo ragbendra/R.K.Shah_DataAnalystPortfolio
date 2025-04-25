@@ -1,0 +1,10 @@
+Please replace this file with your actual passport photo.
+
+Requirements:
+1. Name the file "passport-photo.jpg"
+2. Recommended size: 300x300 pixels or larger
+3. Square aspect ratio works best
+4. Clear face photo with good lighting
+5. JPG format is preferred
+
+The photo will be displayed in a circular frame with interactive particle effects.
