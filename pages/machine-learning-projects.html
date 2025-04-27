@@ -243,7 +243,7 @@
                 <h3>Movie Recommendation System</h3>
               </div>
               <div class="card-content">
-                <p class="project-description">A convolutional neural network (CNN) model for classifying images into multiple categories.</p>
+                <p class="project-description">A content-based movie recommendation system using natural language processing techniques to suggest similar movies.</p>
                 <a href="https://github.com/ragbendra/PortfolioProjects/tree/main/Machine%20Learning%20Projects/Movie%20Recommendation" target="_blank" class="view-code-btn">View Code</a>
               </div>
             </div>
@@ -278,8 +278,14 @@
               <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
               <a class="next" onclick="changeSlide(1)">&#10095;</a>
             </div>
-            <h3 class="modal-title">Image Classification Model</h3>
-            <p class="modal-description">A convolutional neural network (CNN) trained to classify images into multiple categories. Achieves high accuracy on benchmark datasets.</p>
+            <h3 class="modal-title">Movie Recommendation System</h3>
+            <p class="modal-description">
+              <span style="display: block; margin-bottom: 10px; text-align: left;"><strong style="color: #333; font-family: 'Roboto', sans-serif;">• Data Preparation:</strong> <span style="font-family: 'Roboto', sans-serif;"><br>The process begins by loading and merging two CSV files—one with movie metadata and another with credits—using pandas. Unnecessary columns are dropped, and relevant features like cast, crew, keywords, and genres are retained to form a clean dataset.</span></span>
+              
+              <span style="display: block; margin-bottom: 10px; text-align: left;"><strong style="color: #333; font-family: 'Roboto', sans-serif;">• Building the Recommendation System:</strong> <span style="font-family: 'Roboto', sans-serif;"><br>Movie features (top 3 cast members, director, keywords, genres) are extracted, cleaned, and combined into a metadata "soup." This soup is transformed into numerical vectors using CountVectorizer for similarity computation.</span></span>
+              
+              <span style="display: block; text-align: left;"><strong style="color: #333; font-family: 'Roboto', sans-serif;">• Getting Recommendations:</strong> <span style="font-family: 'Roboto', sans-serif;"><br>Cosine similarity is calculated between movie vectors, and a get_recommendations function uses these scores to return the top 10 movies similar to a given title, such as "The Dark Knight Rises."</span></span>
+            </p>
             <div class="tech-tags">
               <span class="tag">Python</span>
               <span class="tag">Pandas</span>
@@ -310,7 +316,13 @@
               <a class="next" onclick="changeSlide(1)">&#10095;</a>
             </div>
             <h3 class="modal-title">Sentiment Analysis</h3>
-            <p class="modal-description">An NLP-based model using transformers to analyze sentiment in customer reviews. Provides insights into customer satisfaction trends.</p>
+            <p class="modal-description">
+              <span style="display: block; margin-bottom: 10px; text-align: left;"><strong style="color: #333; font-family: 'Roboto', sans-serif;">• Data Preprocessing:</strong> <span style="font-family: 'Roboto', sans-serif;"><br>A dataset of over 14,000 tweets is loaded, neutral sentiments are filtered out for binary classification (positive/negative), and text is tokenized and padded to uniform length using TensorFlow's Tokenizer and padding utilities.</span></span>
+              
+              <span style="display: block; margin-bottom: 10px; text-align: left;"><strong style="color: #333; font-family: 'Roboto', sans-serif;">• Building the Text Classifier:</strong> <span style="font-family: 'Roboto', sans-serif;"><br>An LSTM-based neural network is constructed with an embedding layer, LSTM layers with dropout to prevent overfitting, and a dense layer with sigmoid activation for binary sentiment prediction.</span></span>
+              
+              <span style="display: block; text-align: left;"><strong style="color: #333; font-family: 'Roboto', sans-serif;">• Training and Evaluation:</strong> <span style="font-family: 'Roboto', sans-serif;"><br>The model is trained for 5 epochs with a batch size of 32 and a 20% validation split, achieving 96% training accuracy and 94.33% validation accuracy, with a function provided to predict sentiment on new text inputs.</span></span>
+            </p>
             <div class="tech-tags">
               <span class="tag">Python</span>
               <span class="tag">Tensorflow</span>
