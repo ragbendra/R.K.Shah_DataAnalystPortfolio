@@ -11,6 +11,7 @@ import './circuitTraceAnimation.js';
 import './skillsBgAnimation.js';
 import './textParticleAnimation.js';
 import './flipCards.js';
+
 import { lazyLoadImages } from './mobileOptimizations.js';
 import initProjectFilters from './projectFilter.js';
 import initCircuitTraceAnimation from './circuitTraceAnimation.js';
