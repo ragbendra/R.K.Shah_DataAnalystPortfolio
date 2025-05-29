@@ -6,7 +6,7 @@
 }
 
 body, nav, .nav-links a {
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Courier Prime', monospace;
 }
 
 html {
@@ -51,7 +51,7 @@ body, .nav-content, .dropdown-content {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     padding: 0.6rem 0;
     transform: translateY(0) !important; /* Force navbar to remain visible */
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Courier Prime', monospace;
     will-change: transform; /* Optimize for animations */
 }
 
@@ -93,13 +93,13 @@ body, .nav-content, .dropdown-content {
 .nav-link {
     color: #333333;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     text-transform: uppercase;
     transition: all 0.3s ease;
     padding: 0.3rem 0;
     position: relative;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Courier Prime', monospace;
     letter-spacing: 0.5px;
 }
 
@@ -173,13 +173,13 @@ body, .nav-content, .dropdown-content {
     display: block;
     padding: 0.6rem 1.2rem;
     color: #333333;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     transition: all 0.3s ease;
     white-space: nowrap;
     text-decoration: none;
     background-color: transparent !important;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Courier Prime', monospace;
     letter-spacing: 0.5px;
     text-transform: uppercase;
 }
@@ -201,7 +201,8 @@ section .dropdown-content {
 /* Ensure white background in all contexts */
 .navbar.not-home .dropdown-content,
 .navbar.scrolled .dropdown-content {
-    background-color: #ffffff !important;
+    background-color: #ffffff !importantflex-end;
+    background-color: transparent;
 }
 
 /* Mobile adjustments */
@@ -241,7 +242,7 @@ section .dropdown-content {
     font-size: 24px;
     cursor: pointer;
     padding: 5px;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: 'Courier Prime', monospace;
 }
 
 @media (max-width: 768px) {
@@ -284,8 +285,8 @@ section .dropdown-content {
         padding: 0.8rem 1.5rem;
         width: 100%;
         color: #333333;
-        font-size: 14px;
-        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 16px;
+        font-family: 'Courier Prime', monospace;
         letter-spacing: 0.5px;
     }
     
@@ -357,8 +358,8 @@ section .dropdown-content {
     .dropdown-link {
         padding: 1rem 2.5rem;
         color: #333333;
-        font-size: 13px;
-        font-family: 'Montserrat', Arial, sans-serif;
+        font-size: 15px;
+        font-family: 'Courier Prime', monospace;
         letter-spacing: 0.5px;
         display: block;
         width: 100%;
@@ -426,7 +427,7 @@ section .dropdown-content {
 .logo span {
     color: #ffffff;
     font-size: 40px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Courier Prime', monospace;
     font-weight: 400;
     transition: all 0.3s ease;
 }
@@ -441,7 +442,7 @@ section .dropdown-content {
 }
 
 .brand-name h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Courier Prime', monospace;
     font-size: 42px;
     line-height: 1.2;
     margin: 0;
@@ -450,7 +451,7 @@ section .dropdown-content {
 }
 
 .brand-name p {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Courier Prime', monospace;
     font-size: 24px;
     color: #666666;
     margin: 10px 0 0 0;
@@ -547,7 +548,7 @@ section .dropdown-content {
 
 /* About text section */
 .about-text {
-    font-family: 'Roboto Slab', serif; /* Apply Roboto Slab font */
+    font-family: 'Courier Prime', monospace; /* Apply Courier Prime font */
     padding: 20px;
 }
 
@@ -578,6 +579,7 @@ section .dropdown-content {
 
 .about-description {
     font-size: 16px;
+    font-family: 'Courier Prime', monospace;
     /* Remove any animation or special styling */
     animation: none;
     transition: none;
