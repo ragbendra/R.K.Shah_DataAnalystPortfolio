@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/project-cards.css">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Modal Styles */
         .project-modal {
@@ -219,9 +220,9 @@
         <div class="nav-content">
             <button class="menu-btn">☰</button>
             <ul class="nav-links">
-                <li><a href="../index.html#home" class="nav-link">Home</a></li>
-                <li><a href="../index.html#about" class="nav-link">About</a></li>
-                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#home" class="nav-link" data-section="home">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link" data-section="about">About</a></li>
+                <li><a href="../index.html#skills" class="nav-link" data-section="skills">Skills</a></li>
                 <li class="dropdown dropdown-2">
                     <a href="#" class="nav-link">Portfolio <i class="fas fa-caret-down"></i></a>
                     <div class="dropdown-content">
@@ -231,14 +232,14 @@
                         <a href="../pages/powerbi-projects.html" class="dropdown-link">Power BI Projects</a>
                     </div>
                 </li>
-                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="../index.html#contact" class="nav-link" data-section="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
     <!-- Main Content -->
     <section class="projects-page ml-projects">
         <div class="page-header">
-            <h1 style="font-family: 'Noah Regular', sans-serif;">Machine Learning Projects</h1>
+            <h1 style="font-family: 'Inter', sans-serif; font-weight: 600;">Machine Learning Projects</h1>
             <p class="header-description">Building intelligent systems through advanced machine learning techniques.</p>
         </div>
         <!-- Project grid -->
@@ -470,6 +471,23 @@
             // Keep slideshow running in both modes
             startSlideshow(modal);
         }
+    </script>
+    
+    <!-- Smooth scrolling without URL changes -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle navigation links that go back to main page
+            document.querySelectorAll('a[data-section]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetSection = this.getAttribute('data-section');
+                    const targetUrl = this.getAttribute('href').split('#')[0];
+                    
+                    // Navigate to main page and scroll to section
+                    window.location.href = targetUrl + '#' + targetSection;
+                });
+            });
+        });
     </script>
 
 </body>
